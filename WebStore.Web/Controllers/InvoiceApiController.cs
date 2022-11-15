@@ -16,8 +16,8 @@ public class InvoiceApiController : BaseApiController
     {
         try
         {
-            var invoicees = _service.GetInvoices();
-            return Ok(invoicees);
+            var invoices = _service.GetInvoices();
+            return Ok(invoices);
         }
         catch (Exception ex)
         {
