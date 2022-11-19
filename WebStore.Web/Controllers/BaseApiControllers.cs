@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 namespace WebStore.Web.Controllers;
+
 [ApiController]
 [Produces("application/json")]
 [Route("api/[controller]")]
