@@ -1,4 +1,4 @@
-﻿namespace Webstore.Services;
+﻿namespace WebStore.Services;
 public class Class1
 {
 

@@ -1,4 +1,4 @@
-﻿namespace Webstore.DAL;
+﻿namespace WebStore.DAL;
 public class Class1
 {
 
