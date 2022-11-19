@@ -1,3 +1,5 @@
+using Xunit;
+
 namespace WebStore.Tests;
 
 public class UnitTest1
