@@ -1,0 +1,32 @@
+.product-list {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  background-color: white;
+  box-shadow: 24px 24px 12px -4px rgba(15, 15, 16, 1);
+  padding: 30px;
+  margin: 50px;
+}
+.product-list-name-change-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 0 40px 0;
+}
+
+.product-list-name-change-container > input {
+  padding: 15px;
+  font-size: 25px;
+  border-radius: 1rem;
+  border: 3px solid black;
+}
+
+input {
+  padding: 15px;
+  border-radius: 1rem;
+  border: 3px solid black;
+}
+.product-list-name-text {
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}

@@ -1,0 +1,22 @@
+.product-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+  border-radius: 1rem;
+  padding: 10px;
+  margin: 20px;
+}
+.product-item-span {
+  display: block;
+}
+.product-item-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: bold;
+}

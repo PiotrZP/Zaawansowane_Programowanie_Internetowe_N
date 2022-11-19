@@ -21,6 +21,8 @@ namespace WebStore.DAL.EF
         public virtual DbSet<Product> Products { get; set; } = default!;
         public virtual DbSet<ProductStock> ProductStocks { get; set; } = default!;
 
+        public virtual DbSet<StationaryStore> StationaryStores { get; set; } = default!;
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 

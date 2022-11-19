@@ -21,7 +21,7 @@
 //             {
 //                 if (filterExpression == null)
 //                     throw new ArgumentNullException("Filter expression parameter is null");
-//                 // var storeEntity = DbContext.
+//                 var storeEntity = DbContext.StationaryStores
 //             }
 //             catch (Exception ex)
 //             {

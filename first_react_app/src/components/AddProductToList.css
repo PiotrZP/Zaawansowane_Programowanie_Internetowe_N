@@ -1,0 +1,14 @@
+.form-container {
+  border: 3px solid black;
+  border-radius: 1rem;
+  padding: 20px;
+}
+
+button {
+  border-radius: 5rem;
+  font-size: 20px;
+  padding: 10px 30px;
+  background-color: rgba(89, 131, 252, 1);
+  font-weight: bold;
+  color: white;
+}
