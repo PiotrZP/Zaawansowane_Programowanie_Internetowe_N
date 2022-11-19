@@ -3,3 +3,6 @@
 3. What is differents between Transit and Scope?
 4. How does work IList type in Date Base?
 5. Why do we use atritbute [FromBody]?
+6. How do work routeing and template next to atritbute HTTP?
+7. What does check this method "ModelState.IsValid"
+8. How do make correctly AddressService and maps?

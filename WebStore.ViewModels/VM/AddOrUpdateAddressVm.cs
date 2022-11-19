@@ -4,6 +4,7 @@ namespace WebStore.ViewModels.Vm
     public class AddOrUpdateAddressVm
     {       
         public int? Id {get; set;}
+        public int? StationaryStoreId {get; set;}    
 
         [Required]
         public string City {get; set;} = default!;

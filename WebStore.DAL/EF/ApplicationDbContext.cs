@@ -64,6 +64,8 @@ namespace WebStore.DAL.EF
             modelBuilder.Entity<Order>().Property(o => o.CustomerId).IsRequired(false);
             modelBuilder.Entity<Order>().Property(o => o.InvoiceId).IsRequired(false);
 
+            modelBuilder.Entity<StationaryStoreAddress>().Property(a => a.StationaryStoreId).IsRequired(false);
+
         }
     }
 }

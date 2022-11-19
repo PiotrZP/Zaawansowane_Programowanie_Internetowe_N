@@ -68,5 +68,12 @@ namespace WebStore.Test.UnitTest
             Assert.NotNull(editedAddressVm);
             Assert.Equal(85612, editedAddressVm.ZipCode);
         }
+
+        [Fact]
+        public void DeleteAddressTest()
+        {
+            var changeAddresses = _addressService.DeleteAddress(a => a.Id == 1);
+            Assert.Equal(1, changeAddresses.Count());
+        }
     }
 }
