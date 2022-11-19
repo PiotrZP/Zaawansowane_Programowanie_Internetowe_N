@@ -1,27 +1,29 @@
+using WebStore.Services.Configuration;
+using WebStore.Web.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddTransient(typeof(ILogger), typeof(Logger<Program>));
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+builder.Services.AddDataAccess(builder.Configuration);
+builder.Services.AddCoreIdentity(builder.Configuration);
+builder.Services.AddJwt(builder.Configuration);
+builder.Services.AddDomainServices();
+builder.Services.AddSwagger();
+
+builder.Services.AddControllersWithViews()
+   .AddNewtonsoftJson(options =>
+       options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-app.UseRouting();
-
+app.ConfigurePipeline(app.Environment.IsDevelopment());
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
-app.MapFallbackToFile("index.html");;
+app.MapFallbackToFile("index.html");
 
 app.Run();
