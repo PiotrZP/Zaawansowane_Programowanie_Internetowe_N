@@ -2,8 +2,10 @@ import React from "react";
 import { IProductListState } from "../models/IProductListState";
 import './ProductListItem.css'
 import IProduct from "../models/IProduct";
+import { AddProductToList } from "./AddProductToList";
 import { ProductListItem } from "./ProductListItem";
 export class ProductList extends React.Component<{ products: Array<IProduct> }, IProductListState>{
+
     constructor(props: { products: Array<IProduct> }) {
         super(props);
         this.state = {
@@ -11,6 +13,13 @@ export class ProductList extends React.Component<{ products: Array<IProduct> }, 
             name: ""
         }
     }
+
+    onAddNewProductSubmit = (product: IProduct) => {
+        let newState = { ...this.state }
+        newState.products.push(product);
+        this.setState(newState);
+    }
+
     onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let newState = { ...this.state }
         newState.name = e.target.value;
@@ -35,11 +44,11 @@ export class ProductList extends React.Component<{ products: Array<IProduct> }, 
                                 key={product.id}
                                 name={product.name}
                                 type={product.type}
-                                price={product.price}>
-                            </ProductListItem>
+                                price={product.price}></ProductListItem>
                         )
                     }
                 </div>
+                <AddProductToList submit={this.onAddNewProductSubmit}></AddProductToList>
             </div>
         );
     }

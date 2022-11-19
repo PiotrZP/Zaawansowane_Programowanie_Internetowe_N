@@ -1,7 +1,15 @@
 .product-item-span{
     display: block;
     }
+
+    .product-item-label{
+        font-size: x-large;
+        font-weight: bold;
+        font-style: italic;
+        color: blue;
+
+    }
     .product-item-element{
     display: block;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     }
