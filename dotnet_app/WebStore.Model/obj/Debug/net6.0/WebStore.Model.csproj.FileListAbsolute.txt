@@ -1,0 +1,12 @@
+/mnt/Dane/Coding/Studia/ZPI_sem7/zpi/WebStore.Model/bin/Debug/net6.0/WebStore.Model.deps.json
+/mnt/Dane/Coding/Studia/ZPI_sem7/zpi/WebStore.Model/bin/Debug/net6.0/WebStore.Model.dll
+/mnt/Dane/Coding/Studia/ZPI_sem7/zpi/WebStore.Model/bin/Debug/net6.0/ref/WebStore.Model.dll
+/mnt/Dane/Coding/Studia/ZPI_sem7/zpi/WebStore.Model/bin/Debug/net6.0/WebStore.Model.pdb
+/mnt/Dane/Coding/Studia/ZPI_sem7/zpi/WebStore.Model/obj/Debug/net6.0/WebStore.Model.csproj.AssemblyReference.cache
+/mnt/Dane/Coding/Studia/ZPI_sem7/zpi/WebStore.Model/obj/Debug/net6.0/WebStore.Model.GeneratedMSBuildEditorConfig.editorconfig
+/mnt/Dane/Coding/Studia/ZPI_sem7/zpi/WebStore.Model/obj/Debug/net6.0/WebStore.Model.AssemblyInfoInputs.cache
+/mnt/Dane/Coding/Studia/ZPI_sem7/zpi/WebStore.Model/obj/Debug/net6.0/WebStore.Model.AssemblyInfo.cs
+/mnt/Dane/Coding/Studia/ZPI_sem7/zpi/WebStore.Model/obj/Debug/net6.0/WebStore.Model.csproj.CoreCompileInputs.cache
+/mnt/Dane/Coding/Studia/ZPI_sem7/zpi/WebStore.Model/obj/Debug/net6.0/WebStore.Model.dll
+/mnt/Dane/Coding/Studia/ZPI_sem7/zpi/WebStore.Model/obj/Debug/net6.0/ref/WebStore.Model.dll
+/mnt/Dane/Coding/Studia/ZPI_sem7/zpi/WebStore.Model/obj/Debug/net6.0/WebStore.Model.pdb
