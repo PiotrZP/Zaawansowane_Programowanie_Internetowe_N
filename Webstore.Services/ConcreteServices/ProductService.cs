@@ -61,5 +61,9 @@ public class ProductService : BaseService, IProductService
             throw;
         }
     }
-    
+
+    bool IProductService.DeleteProduct(Expression<Func<Product, bool>> filterExpression)
+    {
+        throw new NotImplementedException();
+    }
 }
