@@ -47,7 +47,6 @@ namespace WebStore.Test.UnitTest
         {
             var newInvoiceVm = new AddOrUpdateInvoiceVm
             {
-                Id = 1,
                 TotalAmount = 500
             };
             var createdInvoice = _invoiceService.AddOrUpdateInvoice(newInvoiceVm);
@@ -67,6 +66,13 @@ namespace WebStore.Test.UnitTest
             var editedInvoiceVm = _invoiceService.AddOrUpdateInvoice (updateinvoiceVm);
             Assert.NotNull(editedInvoiceVm);
             Assert.Equal(900, editedInvoiceVm.TotalAmount);
+        }
+
+        [Fact]
+        public void DeleteInvoiceTest()
+        {
+            var changeInvoices = _invoiceService.DeleteInvoice(i => i.Id == 1);
+            Assert.Equal(1, changeInvoices.Count());
         }
     }
 }

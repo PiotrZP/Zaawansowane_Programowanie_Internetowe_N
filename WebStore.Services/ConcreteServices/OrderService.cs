@@ -109,5 +109,8 @@ namespace WebStore.Services.ConcreteServices
                 throw;
             }
         }
+
+        //TODO: Add service - Add element to list 
+        //TODO: Add service - Remove element from list
     }
 }

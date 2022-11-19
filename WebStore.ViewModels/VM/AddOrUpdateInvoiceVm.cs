@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using WebStore.Model.DataModels;
 
 namespace WebStore.ViewModels.Vm
@@ -10,6 +11,6 @@ namespace WebStore.ViewModels.Vm
         [Required]
         public decimal TotalAmount {get; set;}
 
-         public IList<Order> Orders {get; set;} = default!;
+         public IList<Order>? Orders {get; set;} = default!;
     }
 }

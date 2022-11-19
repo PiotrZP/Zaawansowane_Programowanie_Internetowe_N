@@ -5,7 +5,6 @@ using WebStore.DAL.EF;
 using WebStore.Model.DataModels;
 using WebStore.Services.Interface;
 using WebStore.ViewModels.Vm;
-using System;
 
 namespace WebStore.Services.ConcreteServices
 {
@@ -85,5 +84,32 @@ namespace WebStore.Services.ConcreteServices
                 throw;
             }
         }
+        public IEnumerable<InvoiceVm> DeleteInvoice(Expression<Func<Invoice, bool>> filterExpression)
+        {
+            try
+            {
+                if(filterExpression == null)
+                {
+                    throw new ArgumentNullException("Filter expression parameter is null");
+                }
+                var invoiceEntity = DbContext.Invoices.FirstOrDefault (filterExpression);
+                
+                if(invoiceEntity == null)
+                {
+                    throw new ArgumentException("Incorrect filter expression");
+                }
+
+                DbContext.Invoices.Remove(invoiceEntity);
+                DbContext.SaveChanges();
+                return GetInvoices();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
+            }
+        }
+        //TODO: Add service - Add element to list 
+        //TODO: Add service - Remove element from list
     }
 }

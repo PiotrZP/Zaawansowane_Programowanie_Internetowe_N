@@ -9,5 +9,6 @@ namespace WebStore.Services.Interface
         InvoiceVm AddOrUpdateInvoice(AddOrUpdateInvoiceVm addOrUpdateInvoiceVm);
         InvoiceVm GetInvoice(Expression<Func<Invoice,bool>> filterExpression);
         IEnumerable<InvoiceVm> GetInvoices(Expression<Func<Invoice,bool>> ? filterExpression = null);
+        IEnumerable<InvoiceVm> DeleteInvoice(Expression<Func<Invoice, bool>> filterExpression);
     }
 }

@@ -2,3 +2,4 @@
 2. Why I must add method .IsRequired(false) to set variable on NullAble?
 3. What is differents between Transit and Scope?
 4. How does work IList type in Date Base?
+5. Why do we use atritbute [FromBody]?
