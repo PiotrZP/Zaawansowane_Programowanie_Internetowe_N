@@ -36,30 +36,30 @@ builder.Services.AddIdentity<User, IdentityRole<int>>(o =>
     builder.Services.AddScoped<IInvoiceService, InvoiceService>();
     builder.Services.AddScoped<IOrderService, OrderService>();
     builder.Services.AddScoped<IStoreService, StoreService>();
-    builder.Services.AddAuthentication(options => 
-            { 
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; 
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; 
-            }) 
-            .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
-            { 
+//     builder.Services.AddAuthentication(options => 
+//             { 
+//                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; 
+//                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; 
+//             }) 
+//             .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+//             { 
 
-                options.TokenValidationParameters = new TokenValidationParameters 
+//                 options.TokenValidationParameters = new TokenValidationParameters 
 
-            { 
+//             { 
 
-                    ValidateAudience = false, 
-                    ValidateIssuer = false, 
-                    ValidateIssuerSigningKey = true, 
-                    IssuerSigningKey = new 
-SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtOptions:SecretKey"])), 
+//                     ValidateAudience = false, 
+//                     ValidateIssuer = false, 
+//                     ValidateIssuerSigningKey = true, 
+//                     IssuerSigningKey = new 
+// SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtOptions:SecretKey"])), 
 
-                    ValidateLifetime = true, 
-                    ClockSkew = TimeSpan.FromMinutes(5) 
+//                     ValidateLifetime = true, 
+//                     ClockSkew = TimeSpan.FromMinutes(5) 
 
-            }; 
+//             }; 
 
-        }); 
+//         }); 
 
 builder.Services.AddControllersWithViews() 
     .AddNewtonsoftJson(options => 
@@ -83,8 +83,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection(); 
 app.UseStaticFiles(); 
 app.UseRouting(); 
-app.UseAuthentication(); 
-app.UseAuthorization(); 
+// app.UseAuthentication(); 
+// app.UseAuthorization(); 
 
 app.MapControllerRoute( 
 
