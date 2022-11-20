@@ -15,6 +15,7 @@ namespace WebStore.DAL.Data
         public virtual DbSet<Address> Addresses { get; set; } = default!;
         public virtual DbSet<Category> Categories { get; set; } = default!;
         public virtual DbSet<Invoice> Invoices { get; set; } = default!;
+        public virtual DbSet<User> User { get; set; } = default!;
         public virtual DbSet<StationaryStore> StationaryStores { get; set; } = default!;
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 

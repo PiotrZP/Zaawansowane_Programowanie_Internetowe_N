@@ -34,8 +34,6 @@ builder.Services.AddIdentity<User, IdentityRole<int>>(o =>
 .AddDefaultTokenProviders();
 builder.Services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
 builder.Services.AddTransient(typeof(ILogger), typeof(Logger<Program>));
-builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<IAddressService, AddressService>();
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -62,8 +60,12 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebStore API", Version = "v1" });
 });
-builder.Services.AddTransient<IProductService, ProductService>();
 
+builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<IOrderService, OrderService>();
+builder.Services.AddTransient<IStoreService, StoreService>();
+builder.Services.AddTransient<IInvoiceService, InvoiceService>();
+builder.Services.AddTransient<IAddressService, AddressService>();
 
 var app = builder.Build();
 app.UseSwagger();

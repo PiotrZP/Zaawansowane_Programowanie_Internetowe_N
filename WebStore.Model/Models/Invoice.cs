@@ -17,6 +17,6 @@ namespace WebStore.Model.Models
         public virtual IList<Order> Orders { get; set; } = default!;
         public DateTime Date { get; set; }
         public virtual StationaryStore StationaryStore { get; set; } = default!;
-        public int? StationaryStoreId { get; set; }
+        public int StationaryStoreId { get; set; }
     }
 }
