@@ -6,3 +6,4 @@
 6. How do work routeing and template next to atritbute HTTP?
 7. What does check this method "ModelState.IsValid"
 8. How do make correctly AddressService and maps?
+9. What do works export and Interface?
