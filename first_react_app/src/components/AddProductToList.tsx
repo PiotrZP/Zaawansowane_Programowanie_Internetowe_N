@@ -1,6 +1,7 @@
 import React from "react";
 import IProduct from "../models/IProduct";
 import "./AddProductToList.css";
+
 export class AddProductToList extends React.Component<
   { submit: (product: IProduct) => void },
   IProduct
