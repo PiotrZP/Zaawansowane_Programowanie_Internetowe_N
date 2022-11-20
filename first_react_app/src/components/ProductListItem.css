@@ -2,7 +2,26 @@
     display: block;
 }
 
+.product-item-input {
+    border-radius: 50px;
+    margin-top: 20px;
+
+}
+
 .product-item-element {
     display: block;
     margin-bottom: 30px;
+    margin-right: 30px;
+}
+
+.product-item {
+    display: flex;
+    margin-left: 350px;
+    margin-top: 30px;
+}
+
+button {
+    width: 100px;
+    background-color: aquamarine;
+    margin-right: 30px;
 }
