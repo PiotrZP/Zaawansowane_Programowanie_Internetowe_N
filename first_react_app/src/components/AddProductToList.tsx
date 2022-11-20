@@ -27,6 +27,7 @@ export class AddProductToList extends React.Component<
   render() {
     return (
       <div className="form-container">
+        <h1>Example 2</h1>
         <form onSubmit={this.onSubmit}>
           <div className="product-item-element">
             <input

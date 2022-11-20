@@ -28,6 +28,7 @@ export class ProductList extends React.Component<
   render() {
     return (
       <div className="product-list">
+        <h1>Example 1</h1>
         <div className="product-list-name-change-container">
           <input type="text" onChange={this.onInputChange}></input>
         </div>
