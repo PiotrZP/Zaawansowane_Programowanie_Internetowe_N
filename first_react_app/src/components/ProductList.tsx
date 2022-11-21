@@ -1,55 +1,46 @@
-import React from "react";
+import React, { FC, useState } from "react";
 import { IProductListState } from "../models/IProductListState";
-import './ProductListItem.css'
+import "./ProductListItem.css";
+import ProductListItem from "./ProductListItem";
+import AddProductToList from "./AddProductToList";
 import IProduct from "../models/IProduct";
-import { AddProductToList } from "./AddProductToList";
-import { ProductListItem } from "./ProductListItem";
-export class ProductList extends React.Component<{ products: Array<IProduct> }, IProductListState>{
+import "./ProductList.css";
 
-    constructor(props: { products: Array<IProduct> }) {
-        super(props);
-        this.state = {
-            products: this.props.products != null ? this.props.products : [],
-            name: ""
-        }
-    }
+const ProductList: FC<IProductListState> = ({ products }) => {
+  const [product, setProduct] = useState(products);
+  const [name, setName] = useState("");
 
-    onAddNewProductSubmit = (product: IProduct) => {
-        let newState = { ...this.state }
-        newState.products.push(product);
-        this.setState(newState);
-    }
+  const onAddNewProductSubmit = (product: IProduct) => {
+    setProduct((prev) => [...prev, product]);
+  };
 
-    onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        let newState = { ...this.state }
-        newState.name = e.target.value;
-        this.setState(newState);
-    }
-    render() {
-        return (
-            <div className="product-list">
-                <div className="product-list-name-change-container">
-                    <input type="text" onChange={this.onInputChange}></input>
-                </div>
-                <div className="product-list-name-container">
-                    <span className="product-list-name-text">
-                        {this.state.name}
-                    </span>
-                </div>
-                <div className="list-container">
-                    {
-                        this.state.name !== "" &&
-                        this.state.products.map(product =>
-                            <ProductListItem id={product.id}
-                                key={product.id}
-                                name={product.name}
-                                type={product.type}
-                                price={product.price}></ProductListItem>
-                        )
-                    }
-                </div>
-                <AddProductToList submit={this.onAddNewProductSubmit}></AddProductToList>
-            </div>
-        );
-    }
-}
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName((prev) => (prev = e.target.value));
+  };
+
+  return (
+    <div className="product-list">
+      <div className="product-list-name-change-container">
+        <input type="text" onChange={onInputChange}></input>
+      </div>
+      <div className="product-list-name-container">
+        <span className="product-list-name-text">{name}</span>
+      </div>
+      <div className="list-container">
+        {name !== "" &&
+          product.map((item) => (
+            <ProductListItem
+              id={item.id}
+              key={item.id}
+              name={item.name}
+              type={item.type}
+              price={item.price}
+            ></ProductListItem>
+          ))}
+      </div>
+      <AddProductToList submit={onAddNewProductSubmit} />
+    </div>
+  );
+};
+
+export default ProductList;
