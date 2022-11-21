@@ -14,6 +14,6 @@ public class StationaryStore
     public virtual IList<Order> Orders { get; set; } = default!;
     public virtual IList<Invoice> Invoices { get; set; } = default!;
     public virtual IList<StationaryStoreEmployee> StationaryStoreEmployees { get; set; } = default!;
-    public virtual IList<Address> Adresses { get; set; } = default!;
+    public virtual IList<Address> Addresses { get; set; } = default!;
 
 }

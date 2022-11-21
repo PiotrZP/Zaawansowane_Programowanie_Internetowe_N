@@ -555,11 +555,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Adam\\ZPI\\Zaawansowane_Programowanie_Internetowe_N\\WebStore.Model\\WebStore.Model.csproj",
+      "projectUniqueName": "C:\\Users\\Adam\\Documents\\ZPI\\WebStore.Model\\WebStore.Model.csproj",
       "projectName": "WebStore.Model",
-      "projectPath": "C:\\Users\\Adam\\ZPI\\Zaawansowane_Programowanie_Internetowe_N\\WebStore.Model\\WebStore.Model.csproj",
+      "projectPath": "C:\\Users\\Adam\\Documents\\ZPI\\WebStore.Model\\WebStore.Model.csproj",
       "packagesPath": "C:\\Users\\Adam\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Adam\\ZPI\\Zaawansowane_Programowanie_Internetowe_N\\WebStore.Model\\obj\\",
+      "outputPath": "C:\\Users\\Adam\\Documents\\ZPI\\WebStore.Model\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Adam\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -609,7 +609,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -9097,11 +9097,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Adam\\ZPI\\Zaawansowane_Programowanie_Internetowe_N\\WebStore.Tests\\WebStore.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Adam\\Documents\\ZPI\\WebStore.Tests\\WebStore.Tests.csproj",
       "projectName": "WebStore.Tests",
-      "projectPath": "C:\\Users\\Adam\\ZPI\\Zaawansowane_Programowanie_Internetowe_N\\WebStore.Tests\\WebStore.Tests.csproj",
+      "projectPath": "C:\\Users\\Adam\\Documents\\ZPI\\WebStore.Tests\\WebStore.Tests.csproj",
       "packagesPath": "C:\\Users\\Adam\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Adam\\ZPI\\Zaawansowane_Programowanie_Internetowe_N\\WebStore.Tests\\obj\\",
+      "outputPath": "C:\\Users\\Adam\\Documents\\ZPI\\WebStore.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Adam\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9118,14 +9118,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Adam\\ZPI\\Zaawansowane_Programowanie_Internetowe_N\\WebStore.DAL\\WebStore.DAL.csproj": {
-              "projectPath": "C:\\Users\\Adam\\ZPI\\Zaawansowane_Programowanie_Internetowe_N\\WebStore.DAL\\WebStore.DAL.csproj"
+            "C:\\Users\\Adam\\Documents\\ZPI\\WebStore.DAL\\WebStore.DAL.csproj": {
+              "projectPath": "C:\\Users\\Adam\\Documents\\ZPI\\WebStore.DAL\\WebStore.DAL.csproj"
             },
-            "C:\\Users\\Adam\\ZPI\\Zaawansowane_Programowanie_Internetowe_N\\WebStore.Model\\WebStore.Model.csproj": {
-              "projectPath": "C:\\Users\\Adam\\ZPI\\Zaawansowane_Programowanie_Internetowe_N\\WebStore.Model\\WebStore.Model.csproj"
+            "C:\\Users\\Adam\\Documents\\ZPI\\WebStore.Model\\WebStore.Model.csproj": {
+              "projectPath": "C:\\Users\\Adam\\Documents\\ZPI\\WebStore.Model\\WebStore.Model.csproj"
             },
-            "C:\\Users\\Adam\\ZPI\\Zaawansowane_Programowanie_Internetowe_N\\WebStore.Services\\WebStore.Services.csproj": {
-              "projectPath": "C:\\Users\\Adam\\ZPI\\Zaawansowane_Programowanie_Internetowe_N\\WebStore.Services\\WebStore.Services.csproj"
+            "C:\\Users\\Adam\\Documents\\ZPI\\WebStore.Services\\WebStore.Services.csproj": {
+              "projectPath": "C:\\Users\\Adam\\Documents\\ZPI\\WebStore.Services\\WebStore.Services.csproj"
             }
           }
         }
@@ -9189,7 +9189,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

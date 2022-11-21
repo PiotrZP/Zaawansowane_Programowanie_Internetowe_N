@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EZldDeWG400+3QuZ0GumsOQ7c1sQHzdLjTM/vaCfDvgL9ICwwuTAMP3VtsUXmSh9LgRYq5f3OxHdkOSwnqhhJw==",
+  "dgSpecHash": "yW+Gxw4ivDLf57n8585z2el4PWSlKP8jl/reVjsrwlPEtuceDDJvRzWW1Q1slxuvDwEKMX7TSBiyD8pEHde8Ow==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Adam\\ZPI\\Zaawansowane_Programowanie_Internetowe_N\\WebStore.DAL\\WebStore.DAL.csproj",
+  "projectFilePath": "C:\\Users\\Adam\\Documents\\ZPI\\WebStore.DAL\\WebStore.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Adam\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\Adam\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

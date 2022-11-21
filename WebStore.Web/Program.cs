@@ -13,8 +13,12 @@ using WebStore.ViewModels.VM;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+var connectionString = builder.Configuration.GetConnectionString("LocalConnection");
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(connectionString);
+    options.EnableSensitiveDataLogging(true);
+});
 builder.Services.AddAutoMapper(typeof(MainProfile));
 // builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")) //here you can define a database type.

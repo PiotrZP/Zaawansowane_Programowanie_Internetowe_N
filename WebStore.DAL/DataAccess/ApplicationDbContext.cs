@@ -43,6 +43,14 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<int>, i
         builder.Entity<User>().Property<bool>("IsDeleted");
         builder.Entity<User>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);
 
+        builder.Entity<Order>().ToTable("Order").HasMany(x => x.OrderProducts).WithOne(y => y.Order).HasForeignKey(y => y.OrderId).OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<Product>().ToTable("Product").HasMany(x => x.OrderProducts).WithOne(y => y.Product).HasForeignKey(y => y.ProductId).OnDelete(DeleteBehavior.Restrict);
+
+        builder.Entity<StationaryStore>().HasMany(x => x.StationaryStoreEmployees).WithOne(y => y.StationaryStore).HasForeignKey(y => y.StationaryStoreId).OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<StationaryStore>().HasMany(x => x.Orders).WithOne(y => y.StationaryStore).HasForeignKey(y => y.StationaryStoreId).OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<StationaryStore>().HasMany(x => x.Invoices).WithOne(y => y.StationaryStore).HasForeignKey(y => y.StationaryStoreId).OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<StationaryStore>().HasMany(x => x.Addresses).WithOne(y => y.StationaryStore).HasForeignKey(y => y.StationaryStoreId).OnDelete(DeleteBehavior.Restrict);
+
         builder.Entity<User>()
             .ToTable("AspNetUsers")
             .HasDiscriminator<int>("UserType")
@@ -58,12 +66,13 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<int>, i
             .HasOne(x => x.Order)
             .WithMany(y => y.OrderProducts)
             .HasForeignKey(x => x.OrderId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.Restrict);
         builder.Entity<OrderProduct>()
             .HasOne(x => x.Product)
             .WithMany(y => y.OrderProducts)
             .HasForeignKey(x => x.ProductId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.Restrict);
+
     }
     public override int SaveChanges()
     {
