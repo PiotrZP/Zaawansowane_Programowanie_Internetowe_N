@@ -30,8 +30,13 @@ namespace WebStore.Tests
             .AddUserManager<UserManager<User>>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddTransient(typeof(ILogger), typeof(Logger<Startup>));
+ 
             // service binding
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IAddressService, AddressService>();
+            services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<IInvoiceService, InvoiceService>();
+            services.AddTransient<IStoreService, StoreService>();
             // … other bindings…
             services.SeedData();
         }

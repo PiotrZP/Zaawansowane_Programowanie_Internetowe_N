@@ -10,7 +10,7 @@ using WebStore.Services.Interfaces;
 using WebStore.ViewModels.VM;
 namespace WebStore.Services.ConcreteServices
 {
-    public class OrderService : BaseService, IProductService
+    public class OrderService : BaseService, IOrderService
     {
         public OrderService(ApplicationDbContext dbContext, IMapper mapper, ILogger logger)
         : base(dbContext, mapper, logger) { }
