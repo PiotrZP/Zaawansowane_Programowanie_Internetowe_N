@@ -22,19 +22,19 @@ const favoriteLinks = [
 ];
 
 function MyComponent() {
-  const [chosenIndexes, setChosenIndexes] = useState<number[]>([]);
+  const [chosenIndex, setChosenIndex] = useState<number>(-1);
 
   const toggleIndex = (index: number) => {
-    if (chosenIndexes.includes(index)) return setChosenIndexes(chosenIndexes.filter((i) => i !== index));
+    if (chosenIndex == index) return setChosenIndex(-1);
 
-    return setChosenIndexes([...chosenIndexes, index]);
+    return setChosenIndex(index);
   };
 
   return (
     <div>
       <ul>
         {favoriteLinks.map((link, i) => (
-          <li data-selected={chosenIndexes.includes(i)} onClick={() => toggleIndex(i)}>
+          <li data-selected={chosenIndex == i} onClick={() => toggleIndex(i)}>
             {link.name}: {link.href}
           </li>
         ))}
