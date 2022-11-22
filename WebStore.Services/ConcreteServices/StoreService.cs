@@ -18,24 +18,22 @@ namespace WebStore.Services.ConcreteServices
         public StoreVm  AddOrUpdateStore(AddOrUpdateStoreVm addOrUpdateStoreVm){
 
             try{
-
+                if(addOrUpdateStoreVm == null)
+                    throw new ArgumentNullException("Viev model parameter is null");
+                var storeEntity = Mapper.Map<StationaryStore>(addOrUpdateStoreVm);
+                if(addOrUpdateStoreVm.Id.HasValue || addOrUpdateStoreVm.Id == 0)
+                    DbContext.StationaryStores.Update(storeEntity);
+                else
+                    DbContext.StationaryStores.Add(storeEntity);
+                DbContext.SaveChanges();
+                var storeVm = Mapper.Map<StoreVm>(storeEntity);
+                return storeVm;
             }
             catch(Exception ex){
                 Logger.LogError(ex, ex.Message);
                 throw;
 
             }
-
-            if(addOrUpdateStoreVm == null)
-                throw new ArgumentNullException("Viev model parameter is null");
-            var storeEntity = Mapper.Map<StationaryStore>(addOrUpdateStoreVm);
-            if(addOrUpdateStoreVm.Id.HasValue || addOrUpdateStoreVm.Id == 0)
-                DbContext.StationaryStores.Update(storeEntity);
-            else
-                DbContext.StationaryStores.Add(storeEntity);
-            DbContext.SaveChanges();
-            var storeVm = Mapper.Map<StoreVm>(storeEntity);
-            return storeVm;
         }
 
         public StoreVm GetStore(Expression<Func<StationaryStore, bool>> filterExpression)

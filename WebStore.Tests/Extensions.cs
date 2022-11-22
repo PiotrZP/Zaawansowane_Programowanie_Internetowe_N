@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using WebStore.DAL.EF;
 using WebStore.Model.DataModels;
 using WebStore.Services.Configuration;
+using System.Collections.Generic;
 namespace WebStore.Tests
 {
     public static class Extensions
@@ -175,6 +176,33 @@ namespace WebStore.Tests
                 CustomerId = 2
             };
             await dbContext.AddAsync(o3);
+
+            //Stores
+
+            var s1 = new StationaryStore()
+            {
+                Id = 0,
+                Name = "ABC",
+                // Address = a1
+
+            };
+            await dbContext.AddAsync(s1);
+            // var s2 = new StationaryStore()
+            // {
+            //     Id = 1,
+            //     Name = "Rzapka",
+            //     Address = a1
+
+            // };
+            // await dbContext.AddAsync(s2);
+            // var s3 = new StationaryStore()
+            // {
+            //     Id = 2,
+            //     Name = "Stonka",
+            //     Address = a4
+
+            // };
+            // await dbContext.AddAsync(s3);
 
 
             // save changes 
