@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100%;
+}
+
+.twix {
+  flex-grow: 1;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.--prawy {
+  justify-content: center;
+}
+
+.twix-miniature {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+}
+
+.twix-miniature:hover {
+  position: relative;
+  z-index: 2;
+  width: 120px;
+  height: 120px;
+  margin: 0;
+}
+
+.twix-image {
+  width: 90%;
+}
+
+.--chosen {
+  box-sizing: border-box;
+  border: 3px solid black;
+}

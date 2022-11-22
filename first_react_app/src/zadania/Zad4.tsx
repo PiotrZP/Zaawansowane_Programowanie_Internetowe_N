@@ -60,7 +60,6 @@ const Zad4 = () => {
   const containerRef = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   const handleColorItem = () => {
-    console.log(containerRef.current.children);
     let table = Array.from(containerRef.current.children);
     table.forEach((item) => console.log((item.className = "container-link")));
     console.log(table);
