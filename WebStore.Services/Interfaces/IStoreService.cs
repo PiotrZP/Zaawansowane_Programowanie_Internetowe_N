@@ -8,9 +8,9 @@ namespace WebStore.Services.Interfaces
 {
     public interface IStoreService
     {
-        // StoreVm AddOrUpdateStore(AddOrUpdateStoreVm addOrUpdateStoreVm);
-        // StoreVm GetStore(Expression<Func<StationaryStore, bool>> filterExpression);
-        // IEnumerable<StoreVm> GetStores(Expression<Func<StationaryStore, bool>>? filterExpression = null);
-        // StoreVm DeleteStore(Expression<Func<StationaryStore, bool>> filterExpression);
+        StoreVm AddOrUpdateStore(AddOrUpdateStoreVm addOrUpdateStoreVm);
+        StoreVm GetStore(Expression<Func<StationaryStore, bool>> filterExpression);
+        IEnumerable<StoreVm> GetStores(Expression<Func<StationaryStore, bool>>? filterExpression = null);
+        StoreVm DeleteStore(Expression<Func<StationaryStore, bool>> filterExpression);
     }
 }
