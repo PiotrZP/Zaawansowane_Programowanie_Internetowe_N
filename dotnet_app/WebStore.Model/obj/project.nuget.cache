@@ -1,22 +1,22 @@
 {
   "version": 2,
-  "dgSpecHash": "I/SvjADuwMF813mkQV0azicv/N2q3a/B2WIjmdGLIa33T+XbA2A00RnBsIBOrWaGv3J2Zl6+iUaEB3oh2k2G3g==",
+  "dgSpecHash": "/JrYuII1/xVqFqlPr/xl93VMyZnwf6bXdzXc3Sqm1KC1Mp0JZrUhxXdWBCRpO9LWtB2aiK6RmlzX/Rs3mDu11Q==",
   "success": true,
-  "projectFilePath": "/mnt/Dane/Coding/Studia/ZPI_sem7/zpi/WebStore.Model/WebStore.Model.csproj",
+  "projectFilePath": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.Model\\WebStore.Model.csproj",
   "expectedPackageFiles": [
-    "/home/spythere/.nuget/packages/microsoft.aspnetcore.cryptography.internal/6.0.9/microsoft.aspnetcore.cryptography.internal.6.0.9.nupkg.sha512",
-    "/home/spythere/.nuget/packages/microsoft.aspnetcore.cryptography.keyderivation/6.0.9/microsoft.aspnetcore.cryptography.keyderivation.6.0.9.nupkg.sha512",
-    "/home/spythere/.nuget/packages/microsoft.extensions.caching.abstractions/6.0.0/microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
-    "/home/spythere/.nuget/packages/microsoft.extensions.dependencyinjection/6.0.0/microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
-    "/home/spythere/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/6.0.0/microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
-    "/home/spythere/.nuget/packages/microsoft.extensions.identity.core/6.0.9/microsoft.extensions.identity.core.6.0.9.nupkg.sha512",
-    "/home/spythere/.nuget/packages/microsoft.extensions.identity.stores/6.0.9/microsoft.extensions.identity.stores.6.0.9.nupkg.sha512",
-    "/home/spythere/.nuget/packages/microsoft.extensions.logging/6.0.0/microsoft.extensions.logging.6.0.0.nupkg.sha512",
-    "/home/spythere/.nuget/packages/microsoft.extensions.logging.abstractions/6.0.0/microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
-    "/home/spythere/.nuget/packages/microsoft.extensions.options/6.0.0/microsoft.extensions.options.6.0.0.nupkg.sha512",
-    "/home/spythere/.nuget/packages/microsoft.extensions.primitives/6.0.0/microsoft.extensions.primitives.6.0.0.nupkg.sha512",
-    "/home/spythere/.nuget/packages/system.diagnostics.diagnosticsource/6.0.0/system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
-    "/home/spythere/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\spyth\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.9\\microsoft.aspnetcore.cryptography.internal.6.0.9.nupkg.sha512",
+    "C:\\Users\\spyth\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.9\\microsoft.aspnetcore.cryptography.keyderivation.6.0.9.nupkg.sha512",
+    "C:\\Users\\spyth\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\spyth\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
+    "C:\\Users\\spyth\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\spyth\\.nuget\\packages\\microsoft.extensions.identity.core\\6.0.9\\microsoft.extensions.identity.core.6.0.9.nupkg.sha512",
+    "C:\\Users\\spyth\\.nuget\\packages\\microsoft.extensions.identity.stores\\6.0.9\\microsoft.extensions.identity.stores.6.0.9.nupkg.sha512",
+    "C:\\Users\\spyth\\.nuget\\packages\\microsoft.extensions.logging\\6.0.0\\microsoft.extensions.logging.6.0.0.nupkg.sha512",
+    "C:\\Users\\spyth\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\spyth\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\spyth\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\spyth\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
+    "C:\\Users\\spyth\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }
