@@ -4,7 +4,8 @@ namespace WebStore.ViewModels.VM
 {
     public class AddOrUpdateInvoiceVm
     {
-        public int? Id {get; set; }
+        
+        public int? Id { get; set; }
         [Required]
         public int invoiceID {get; set;}
         [Required]

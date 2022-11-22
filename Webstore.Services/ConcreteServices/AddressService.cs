@@ -65,5 +65,9 @@ namespace WebStore.Services.ConcreteServices
                 throw;
             }
         }
+            bool IAddressService.DeleteAddress(Expression<Func<Address, bool>> filterExpression)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

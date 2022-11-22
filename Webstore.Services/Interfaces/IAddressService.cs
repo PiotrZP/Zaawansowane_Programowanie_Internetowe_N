@@ -9,6 +9,6 @@ namespace WebStore.Services.Interfaces {
         AddressVm AddOrUpdateAddress (AddOrUpdateAddressVm addOrUpdateAddressVm);
         AddressVm GetAddress (Expression<Func<Address, bool>> filterExpression);
         IEnumerable<AddressVm> GetAddresses (Expression<Func<Address, bool>> ? filterExpression = null);
-        
+        bool DeleteAddress(Expression<Func<Address, bool>> filterExpression);
     }
 }

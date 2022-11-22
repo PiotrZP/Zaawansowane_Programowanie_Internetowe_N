@@ -12,9 +12,5 @@ namespace WebStore.ViewModels.VM
         public string City { get; set; } = default!;
         public int PostCode { get; set; } = default!;
 
-        public int Count()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

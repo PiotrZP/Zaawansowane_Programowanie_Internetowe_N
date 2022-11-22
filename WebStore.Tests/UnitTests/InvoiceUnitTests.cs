@@ -44,12 +44,12 @@ namespace WebStore.Tests.UnitTests {
         public void AddNewInvoiceTest () { 
             var newInvoiceVm = new AddOrUpdateInvoiceVm () { 
                 invoiceID = 3,
-                totalPrice = 50,
+                totalPrice = 70,
                 invoiceDate = new DateTime()
             }; 
                 var createdInvoice = _invoiceService.AddorUpdateInvoice (newInvoiceVm); 
                 Assert.NotNull (createdInvoice); 
-                Assert.Equal (3, createdInvoice.invoiceID); 
+                Assert.Equal (70, createdInvoice.totalPrice); 
                 
         }
 
@@ -58,13 +58,12 @@ namespace WebStore.Tests.UnitTests {
         public void UpdateInvoiceTest () { 
             var updateInvoiceVm = new AddOrUpdateInvoiceVm () { 
                 invoiceID = 4,
-                totalPrice = 20,
+                totalPrice = 80,
                 invoiceDate = new DateTime()
             }; 
             var editedInvoiceVm = _invoiceService.AddorUpdateInvoice (updateInvoiceVm); 
             Assert.NotNull (editedInvoiceVm); 
-            Assert.Equal (4, editedInvoiceVm.invoiceID); 
-            Assert.Equal (20, editedInvoiceVm.totalPrice);
+            Assert.Equal (80, editedInvoiceVm.totalPrice);
         } 
     }
 }

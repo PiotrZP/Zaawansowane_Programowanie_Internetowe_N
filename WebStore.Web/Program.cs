@@ -32,7 +32,10 @@ builder.Services.AddIdentity<User, IdentityRole<int>>(o =>
     builder.Services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN"); 
     builder.Services.AddTransient(typeof(ILogger), typeof(Logger<Program>)); 
     builder.Services.AddScoped<IProductService, ProductService>(); 
-    //builder.Services.AddScoped<IAddressService, AddressService>(); 
+    builder.Services.AddScoped<IAddressService, AddressService>(); 
+    builder.Services.AddScoped<IInvoiceService, InvoiceService>();
+    builder.Services.AddScoped<IOrderService, OrderService>();
+    builder.Services.AddScoped<IStoreService, StoreService>();
     builder.Services.AddAuthentication(options => 
             { 
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; 

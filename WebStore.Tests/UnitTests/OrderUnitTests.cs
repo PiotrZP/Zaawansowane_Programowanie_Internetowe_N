@@ -47,12 +47,11 @@ namespace WebStore.Tests.UnitTests {
                 OrderDate = new DateTime(),
                 TotalAmount = 34563.89m,
                 TrackingNumber = 322323,
-                InvoiceId = 366,
-                CustomerId = 1
+                
             }; 
                 var createdOrder = _orderService.AddOrUpdateOrder (newOrderVm); 
                 Assert.NotNull (createdOrder); 
-                Assert.Equal (366, createdOrder.Invoiceid); 
+                Assert.Equal (34563.89m, createdOrder.TotalAmount); 
                 
         }
 
@@ -64,12 +63,10 @@ namespace WebStore.Tests.UnitTests {
                 OrderDate = new DateTime(),
                 TotalAmount = 1987.89m,
                 TrackingNumber = 876677,
-                InvoiceId = 234,
-                CustomerId = 1
             }; 
             var editedOrderVm = _orderService.AddOrUpdateOrder (updateOrderVm); 
             Assert.NotNull (editedOrderVm); 
-            Assert.Equal (234, editedOrderVm.Invoiceid); 
+            Assert.Equal (876677, editedOrderVm.TrackingNumber); 
             Assert.Equal (1987.89m, editedOrderVm.TotalAmount); 
         } 
     }
