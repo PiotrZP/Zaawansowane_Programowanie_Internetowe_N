@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+    flex-direction: row;
+    border: solid 2px;
+    padding: 10px;
+    color: black;
+    background-color: teal;
+    
+  }
+  .container-link {
+    padding: 20px;
+    background-color: aqua;
+  }
+  .colored {
+    background-color: violet;
+  }
