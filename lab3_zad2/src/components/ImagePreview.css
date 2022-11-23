@@ -1,0 +1,21 @@
+.image-preview {
+    width: 75%;
+
+    background-color: #fff;
+}
+
+.preview_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    height: 100%;
+}
+
+img.preview-fg {
+    position: absolute;
+    width: 100%;
+    max-height: 100vh;
+}

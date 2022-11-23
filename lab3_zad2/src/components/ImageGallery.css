@@ -1,0 +1,28 @@
+.image-gallery {
+    width: 25%;
+
+    overflow: auto;
+}
+
+.gallery_container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+
+    overflow: auto;
+
+    gap: 1rem;
+}
+
+.gallery_container img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 1em;
+
+    cursor: pointer;
+}
+
+.gallery_container img[data-selected=true] {
+    box-shadow: 0 0 12px 2px white;
+}
