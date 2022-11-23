@@ -1,19 +1,7 @@
-ul {
-    list-style: none;
-}
+div.my-component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-li {
-    padding: 0.5em;
-}
-
-li {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-
-    transition: color 150ms ease;
-}
-
-li[data-selected=true] {
-    color: greenyellow;
+    gap: 0.5em;
 }
