@@ -7,7 +7,7 @@ function MyComponent() {
 
   return (
     <div className="my-component">
-      {showComponent && <NewComponent />}
+      {showComponent && <NewComponent hide={() => setShowComponent(false)}/>}
       <br />
       <button onClick={() => setShowComponent(true)}>Pokaż nowy komponent</button>
     </div>
