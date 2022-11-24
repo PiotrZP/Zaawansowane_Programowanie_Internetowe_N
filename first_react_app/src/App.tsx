@@ -1,6 +1,9 @@
 import React from "react";
 import "./App.css";
 import { ProductList } from "./components/ProductList";
+import Zad2 from "./components/Zad2";
+import Zad3 from "./components/Zad3";
+import Zad4 from "./components/Zad4";
 import IProduct from "./models/IProduct";
 function App() {
   let staticProducts: Array<IProduct> = [
@@ -19,7 +22,8 @@ function App() {
   ];
   return (
     <div className="App">
-      <ProductList products={staticProducts}></ProductList>
+      {/* <ProductList products={staticProducts}></ProductList> */}
+      <Zad4 />
     </div>
   );
 }
