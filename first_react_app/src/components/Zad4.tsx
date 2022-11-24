@@ -21,20 +21,24 @@ const myLinks: ILink[] = [
   },
 ];
 
-const Zad3 = (): JSX.Element => {
-  const [activeLink, setActiveLink] = useState<ILink>();
+const Zad4 = (): JSX.Element => {
+  const [activeLinks, setActiveLinks] = useState<ILink[]>([]);
 
   const clickLink = useCallback(
-    (link: ILink) => link === activeLink,
-    [activeLink]
+    (link: ILink) => activeLinks.some((activeLink) => activeLink === link),
+    [activeLinks]
   );
 
-  const highlightedLink = useCallback(
-    (link: ILink) => {
-      setActiveLink(link);
-    },
-    [setActiveLink]
-  );
+  const highlightedLink = (link: ILink) => {
+    const index: number = activeLinks.findIndex((value) => value === link);
+    if (index > -1) {
+      const newLinks = [...activeLinks];
+      newLinks.splice(index, 1);
+      setActiveLinks([...newLinks]);
+    } else {
+      setActiveLinks((activeLinks) => [...activeLinks, link]);
+    }
+  };
 
   return (
     <div className="main">
@@ -54,4 +58,4 @@ const Zad3 = (): JSX.Element => {
   );
 };
 
-export default Zad3;
+export default Zad4;
