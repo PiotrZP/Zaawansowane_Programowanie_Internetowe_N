@@ -5,6 +5,7 @@ import Zad2 from "./components/Zad2";
 import Zad3 from "./components/Zad3";
 import Zad4 from "./components/Zad4";
 import Zad5 from "./components/Zad5";
+import Zad6 from "./components/Zad6";
 
 import IProduct from "./models/IProduct";
 function App() {
@@ -25,7 +26,7 @@ function App() {
   return (
     <div className="App">
       {/* <ProductList products={staticProducts}></ProductList> */}
-      <Zad5 />
+      <Zad6 />
     </div>
   );
 }

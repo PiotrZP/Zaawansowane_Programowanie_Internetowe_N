@@ -1,0 +1,13 @@
+.main {
+    display: flex;
+    flex-direction: column;
+  }
+   
+  .click {
+    background: rgb(255, 136, 0);
+  }
+
+  .normal {
+    background: none;
+  }
+ 
