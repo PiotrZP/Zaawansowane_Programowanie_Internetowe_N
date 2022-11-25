@@ -1,0 +1,9 @@
+.menu{
+    display: flex;
+}
+
+.color{
+    width: 60px;
+    height: 60px;
+    background: yellow;
+}

@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { ProductList } from "./components/ProductList";
 import Zad10_first from "./components/Zad10_first";
+import Zad11 from "./components/Zad11";
 import Zad2 from "./components/Zad2";
 import Zad3 from "./components/Zad3";
 import Zad4 from "./components/Zad4";
@@ -30,7 +31,7 @@ function App() {
   return (
     <div className="App">
       {/* <ProductList products={staticProducts}></ProductList> */}
-      <Zad10_first />
+      <Zad11 />
     </div>
   );
 }
