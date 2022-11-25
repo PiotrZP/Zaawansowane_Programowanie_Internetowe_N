@@ -8,6 +8,7 @@ import Zad5 from "./components/Zad5";
 import Zad6 from "./components/Zad6";
 import Zad7 from "./components/Zad7";
 import Zad8_first from "./components/Zad8_first";
+import Zad9_first from "./components/Zad9_first";
 
 import IProduct from "./models/IProduct";
 function App() {
@@ -28,7 +29,7 @@ function App() {
   return (
     <div className="App">
       {/* <ProductList products={staticProducts}></ProductList> */}
-      <Zad8_first />
+      <Zad10_first />
     </div>
   );
 }
