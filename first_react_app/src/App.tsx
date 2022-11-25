@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { ProductList } from "./components/ProductList";
+import Zad10_first from "./components/Zad10_first";
 import Zad2 from "./components/Zad2";
 import Zad3 from "./components/Zad3";
 import Zad4 from "./components/Zad4";
