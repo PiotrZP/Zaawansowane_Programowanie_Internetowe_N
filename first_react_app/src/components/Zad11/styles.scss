@@ -1,0 +1,32 @@
+.gallery-wrapper-with-preview{
+    display: flex;
+    flex-wrap: wrap;
+    >div{
+        &:first-child{
+            max-width: 30%;
+            width: 100%;
+        }
+        max-width: calc(70% - 50px);
+        width: 100%;
+    }
+    .grid-miniatures{
+        display: flex;
+        flex-wrap: wrap;
+        img{
+            max-width: 50%;
+            padding: 0 12px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+            object-fit: contain;
+        }
+    }
+    .preview{
+        margin-left: 50px;
+    }
+    .fluid-img{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}
