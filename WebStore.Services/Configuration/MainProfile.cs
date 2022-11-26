@@ -27,6 +27,11 @@ namespace WebStore.Services.Configuration.Profiles
             CreateMap<StationaryStoreAddress, AddressVm>(); //map from Address(src) to AddressVm(dst)
             CreateMap<AddOrUpdateAddressVm, StationaryStoreAddress>();
             CreateMap<AddressVm, AddOrUpdateAddressVm>();  
+
+             //Invoice maps
+            CreateMap<Invoice, InvoiceVm>(); //map from Invoice(src) to InvoiceVm(dst)
+            CreateMap<AddOrUpdateInvoiceVm, Invoice>();
+            CreateMap<InvoiceVm, AddOrUpdateInvoiceVm>();  
         }
     }
 }

@@ -31,6 +31,8 @@ services.AddTransient<IProductService, ProductService> ();
  services.AddTransient<IOrderService, OrderService> ();
  services.AddTransient<IStationaryStoreService, StationaryStoreService> ();
    services.AddTransient<IAddressService, AddressService>();
+  services.AddTransient<IInvoiceService, InvoiceService> ();
+
 // … other bindings…
 services.SeedData ();
 }
