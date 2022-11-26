@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
@@ -8,26 +5,29 @@ using WebStore.DAL.EF;
 using WebStore.Model.DataModels;
 using WebStore.Services.Interfaces;
 using WebStore.ViewModels.VM;
+
 namespace WebStore.Services.ConcreteServices
 {
     public class StoreService : BaseService, IStoreService
     {
-        public StoreService(ApplicationDbContext dbContext, IMapper mapper, ILogger logger)
-        : base(dbContext, mapper, logger) { }
-        public ProductVm AddOrUpdateProduct(AddOrUpdateProductVm addOrUpdateProductVm)
+        public StoreService(ApplicationDbContext dbContext, IMapper mapper, ILogger logger) : base(dbContext, mapper, logger)
+        {
+        }
+
+        public StoreVm AddOrUpdateStore(AddOrUpdateStoreVm addOrUpdateStoreVm)
         {
             try
             {
-                if (addOrUpdateProductVm == null)
-                    throw new ArgumentNullException("View model parameter is null");
-                var productEntity = Mapper.Map<Product>(addOrUpdateProductVm);
-                if (addOrUpdateProductVm.Id.HasValue || addOrUpdateProductVm.Id == 0)
-                    DbContext.Products.Update(productEntity);
+                if (addOrUpdateStoreVm == null)
+                    throw new ArgumentNullException("View model parametr is null");
+                var storeEntity = Mapper.Map<StationaryStore>(addOrUpdateStoreVm);
+                if (addOrUpdateStoreVm.Id.HasValue || addOrUpdateStoreVm.Id == 0)
+                    DbContext.StationaryStores.Update(storeEntity);
                 else
-                    DbContext.Products.Add(productEntity);
+                    DbContext.StationaryStores.Add(storeEntity);
                 DbContext.SaveChanges();
-                var productVm = Mapper.Map<ProductVm>(productEntity);
-                return productVm;
+                var storeVm = Mapper.Map<StoreVm>(storeEntity);
+                return storeVm;
             }
             catch (Exception ex)
             {
@@ -36,47 +36,41 @@ namespace WebStore.Services.ConcreteServices
             }
         }
 
-        public object DeleteProduct(Func<object, bool> value)
+        public StoreVm GetStore(Expression<Func<StationaryStore, bool>> filterExpression)
+        {
+            try {
+            if (filterExpression == null)
+                throw new ArgumentNullException ("Filter expression parameter is null");
+            var storeEntity = DbContext.StationaryStores.FirstOrDefault (filterExpression);
+            var storeVm = Mapper.Map<StoreVm> (storeEntity);
+            return storeVm;
+        } catch (Exception ex) {
+            {
+                Logger.LogError (ex, ex.Message);
+                throw;
+            }
+        }
+        }
+
+        public IEnumerable<StoreVm> GetStores(Expression<Func<StationaryStore, bool>>? filterExpression = null)
+        {
+            try {
+            var storesQuery = DbContext.StationaryStores.AsQueryable ();
+            if (filterExpression != null)
+                storesQuery = storesQuery.Where (filterExpression);
+            var storeVms = Mapper.Map<IEnumerable<StoreVm>> (storesQuery);
+            return storeVms;
+        } catch (Exception ex) {
+            Logger.LogError (ex, ex.Message);
+            throw;
+        }
+        }
+            bool IStoreService.DeleteStore(Expression<Func<StationaryStore, bool>> filterExpression)
         {
             throw new NotImplementedException();
-        }
-
-        public bool DeleteProduct(Expression<Func<Product, bool>> filterExpression)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ProductVm GetProduct(Expression<Func<Product, bool>> filterExpression)
-        {
-            try
-            {
-                if (filterExpression == null)
-                    throw new ArgumentNullException("Filter expression parameter is null");
-                var productEntity = DbContext.Products.FirstOrDefault(filterExpression);
-                var productVm = Mapper.Map<ProductVm>(productEntity);
-                return productVm;
-            }
-            catch (Exception ex)
-            {
-                Logger.LogError(ex, ex.Message);
-                throw;
-            }
-        }
-        public IEnumerable<ProductVm> GetProducts(Expression<Func<Product, bool>>? filterExpression = null)
-        {
-            try
-            {
-                var productsQuery = DbContext.Products.AsQueryable();
-                if (filterExpression != null)
-                    productsQuery = productsQuery.Where(filterExpression);
-                var productVms = Mapper.Map<IEnumerable<ProductVm>>(productsQuery);
-                return productVms;
-            }
-            catch (Exception ex)
-            {
-                Logger.LogError(ex, ex.Message);
-                throw;
-            }
         }
     }
 }
+    
+    
+
