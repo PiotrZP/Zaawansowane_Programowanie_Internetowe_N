@@ -21,8 +21,8 @@ namespace WebStore.Tests
                 Id = 1,
                 FirstName = "Adam",
                 LastName = "Bednarski",
-                UserName = "supp1@eg.eg",
-                Email = "supp1@eg.eg",
+                //UserName = "supp1@eg.eg",
+                //Email = "supp1@eg.eg",
                 RegistrationDate = new DateTime(2010, 1, 1),
             };
             await userManager.CreateAsync(supplier1, "User1234");
