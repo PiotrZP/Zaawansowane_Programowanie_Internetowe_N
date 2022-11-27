@@ -7,9 +7,15 @@ namespace WebStore.Model.DataModels
 {
     public class Address
     {
-        public virtual Customer Customer { get; set; } = default!;
-        [ForeignKey("Customer")]
-        public int? CustomerId { get; set; }
+
+        public int Id { get; set; }
+       //public virtual Customer Customer { get; set; } = default!;
+        //[ForeignKey("Customer")]
+        //public int? CustomerId { get; set; }
+
+        //public virtual IList<Customer> Customers { get; set; } = default!;
+
+        //public virtual IList<Adress> CustomersShipp { get; set; } = default!;
 
         public virtual StationaryStore StationaryStore { get; set; } = default!;
         [ForeignKey("StationaryStore")]

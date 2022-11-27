@@ -7,6 +7,9 @@ namespace WebStore.Model.DataModels
 {
     public class Order
     {
+        [Key]
+        public int Id { get; set; } = default!;
+
         public virtual Customer Customer { get; set; } = default!;
         [ForeignKey("Customer")]
         public int? CustomerId { get; set; }
@@ -16,8 +19,6 @@ namespace WebStore.Model.DataModels
         public int? InvoiceId { get; set; }
 
         public DateTime DeliveryDate { get; set; } = default!;
-
-        public int Id { get; set; } = default!;
 
         public DateTime OrderDate { get; set; } = default!;
 

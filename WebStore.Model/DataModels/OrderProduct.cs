@@ -1,16 +1,19 @@
 using Microsoft.AspNetCore.Identity;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebStore.Model.DataModels
 {
     public class OrderProduct
     {
         public virtual Order Order { get; set; } = default!;
-        public int OrderId { get; set; } = default!;
+        [ForeignKey("Order")]
+        public int? OrderId { get; set; }
 
         public virtual Product Product { get; set; } = default!;
-
-        public int ProductId { get; set; } = default!;
+        [ForeignKey("Product")]
+        public int? ProductId { get; set; }
 
          public int Quantity { get; set; } = default!;
 

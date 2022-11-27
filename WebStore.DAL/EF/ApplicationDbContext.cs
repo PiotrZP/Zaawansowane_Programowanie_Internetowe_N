@@ -32,7 +32,11 @@ namespace WebStore.DAL.EF
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<User>()
             .ToTable("AspNetUsers")
-            .HasDiscriminator<int>("UserType");
+            .HasDiscriminator<int>("UserType")
+            .HasValue<Customer>(1)
+            .HasValue<User>(0)
+            .HasValue<Supplier>(3)
+            .HasValue<StationaryStoreEmployee>(2);
 
             modelBuilder.Entity<OrderProduct>()
             .HasKey(po => new { po.OrderId, po.ProductId });
@@ -47,6 +51,24 @@ namespace WebStore.DAL.EF
             .WithMany(po => po.ProductOrders)
             .HasForeignKey(o => o.OrderId)
             .OnDelete(DeleteBehavior.Restrict);
+
+            /*modelBuilder.Entity<Customer>()
+            .HasOne(o => o.BillingAddress)
+            .WithMany(po => po.Customers)
+            .HasForeignKey(o => o.BillingAddressId)
+            .OnDelete(DeleteBehavior.Restrict); */
+
+            /*modelBuilder.Entity<Address>()
+            .HasOne(o => o.Customer)
+            .WithMany(po => po.Addresses)
+            .HasForeignKey(o => o.CustomerId)
+            .OnDelete(DeleteBehavior.Restrict); */
+
+            /*modelBuilder.Entity<Customer>()
+            .HasOne(o => o.ShippingAddress)
+            .WithMany(po => po.Customers)
+            .HasForeignKey(o => o.ShippingAddressId)
+            .OnDelete(DeleteBehavior.Restrict); */
 
         }
 
