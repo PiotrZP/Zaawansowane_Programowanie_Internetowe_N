@@ -9,5 +9,6 @@ namespace WebStore.Services.Interfaces {
     public interface IAddressService {
         AddressVm AddOrUpdateAddress (AddOrUpdateAddressVm addOrUpdateAddressVm);
         AddressVm GetAddress (Expression<Func<Address, bool>> ? filterExpression = null);
+        public Task DeleteAddress(Expression<Func<Address, bool>> filterExpression);
     }
 }

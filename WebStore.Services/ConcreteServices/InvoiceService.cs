@@ -43,4 +43,39 @@ public class InvoiceService : BaseService, IInvoiceService
             throw;
         }
     }
+    public IEnumerable<InvoiceVm> GetInvoices(Expression<Func<Invoice, bool>>? filterExpression = null)
+    {
+        try {
+            var invoicesQuery = DbContext.Invoices.AsQueryable ();
+            if (filterExpression != null)
+                invoicesQuery = invoicesQuery.Where (filterExpression);
+            var invoicesVms = Mapper.Map<IEnumerable<InvoiceVm>> (invoicesQuery);
+            return invoicesVms;
+        } catch (Exception ex) {
+            Logger.LogError (ex, ex.Message);
+            throw;
+        }
+    }
+    public async Task DeleteInvoice(Expression<Func<Invoice, bool>> filterExpression)
+    {
+        try {
+            if (filterExpression == null) {
+                throw new ArgumentNullException("Filter expression parameter is null");
+            }
+
+            var invoiceEntity = DbContext.Invoices.FirstOrDefault(filterExpression);
+
+            if (invoiceEntity == null) {
+                throw new Exception("Product not found");
+            }
+
+            DbContext.Invoices.Remove(invoiceEntity);
+
+            await DbContext.SaveChangesAsync();
+
+        }catch(Exception ex) {
+            Logger.LogError(ex, ex.Message);
+            throw;
+        }
+    }
 }

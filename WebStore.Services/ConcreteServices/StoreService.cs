@@ -47,5 +47,40 @@ public class StoreService : BaseService, IStoreService
             }
         }
     }
+    public IEnumerable<StoreVm> GetStores(Expression<Func<StationaryStore, bool>>? filterExpression = null)
+    {
+        try {
+            var storeQuery = DbContext.StationaryStores.AsQueryable ();
+            if (filterExpression != null)
+                storeQuery = storeQuery.Where (filterExpression);
+            var storeVms = Mapper.Map<IEnumerable<StoreVm>> (storeQuery);
+            return storeVms;
+        } catch (Exception ex) {
+            Logger.LogError (ex, ex.Message);
+            throw;
+        }
+    }
+    public async Task DeleteStore(Expression<Func<StationaryStore, bool>> filterExpression)
+    {
+        try {
+            if (filterExpression == null) {
+                throw new ArgumentNullException("Filter expression parameter is null");
+            }
+
+            var storeEntity = DbContext.StationaryStores.FirstOrDefault(filterExpression);
+
+            if (storeEntity == null) {
+                throw new Exception("Product not found");
+            }
+
+            DbContext.StationaryStores.Remove(storeEntity);
+
+            await DbContext.SaveChangesAsync();
+
+        }catch(Exception ex) {
+            Logger.LogError(ex, ex.Message);
+            throw;
+        }
+    }
     
 }
