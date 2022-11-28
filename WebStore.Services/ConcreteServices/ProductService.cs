@@ -61,5 +61,28 @@ public class ProductService : BaseService, IProductService
             throw;
         }
     }
+
+    public async Task DeleteProduct(Expression<Func<Product, bool>> filterExpression)
+    {
+        try {
+            if (filterExpression == null) {
+                throw new ArgumentNullException("Filter expression parameter is null");
+            }
+
+            var productEntity = DbContext.Products.FirstOrDefault(filterExpression);
+
+            if (productEntity == null) {
+                throw new Exception("Product not found");
+            }
+
+            DbContext.Products.Remove(productEntity);
+
+            await DbContext.SaveChangesAsync();
+
+        }catch(Exception ex) {
+            Logger.LogError(ex, ex.Message);
+            throw;
+        }
+    }
     
 }
