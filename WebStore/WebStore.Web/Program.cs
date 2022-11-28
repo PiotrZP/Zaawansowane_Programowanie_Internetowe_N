@@ -18,6 +18,8 @@ builder.Services.AddControllersWithViews()
 
 var app = builder.Build();
 
+app.UseCorsConfig();
+
 app.ConfigurePipeline(app.Environment.IsDevelopment());
 
 app.MapControllerRoute(

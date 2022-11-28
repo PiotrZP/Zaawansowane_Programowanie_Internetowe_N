@@ -1,0 +1,42 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+  min-height: 100%;
+  padding: 24px 0;
+}
+
+.side-bar {
+  height: 100%;
+  border-radius: 16px;
+  background: #344966;
+  min-height: 400px;
+  width: 100%;
+  min-width: 200px;
+  max-width: 240px;
+  flex-direction: column;
+  gap: 12px;
+  padding: 48px 0;
+  align-items: center;
+  color: white;
+}
+
+.component-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.menu-item {
+  padding: 12px 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+.menu-item-active {
+  padding: 12px 0;
+  width: 100%;
+  cursor: pointer;
+  background: blue;
+}
