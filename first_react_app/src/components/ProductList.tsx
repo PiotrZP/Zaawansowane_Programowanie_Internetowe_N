@@ -1,37 +1,54 @@
 import React from "react";
 import { IProductListState } from "../models/IProductListState";
-import './ProductListItem.css'
+import './ProductList.css'
 import IProduct from "../models/IProduct";
 import { ProductListItem } from "./ProductListItem";
+import { AddProductToList } from "./AddProductToList";
+import { Console } from "console";
 export class ProductList extends React.Component<{products: Array<IProduct>}, IProductListState>{
 
     constructor(props: {products: Array<IProduct>}){
         super(props);
         this.state = {
             products: this.props.products != null? this.props.products : [],
-            name: ""
+            showList: false,
+            buttonName: "Show list Element"
         }
     }
 
-    onInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
-        let newState = {...this.state}
-        newState.name = e.target.value;
+    onAddNewProductSubmit = (product: IProduct) =>{
+        let newState ={...this.state}
+        newState.products.push(product);
         this.setState(newState);
+    }
+
+    showOrHideListElements = () =>{
+        let newState = {...this.state}
+        if(newState.showList === false)
+        {
+            newState.showList = true;
+            newState.buttonName = "Hide List Element"
+            this.setState(newState);
+        }
+        else
+        {
+            newState.showList = false;
+            newState.buttonName = "Show list Element"
+            this.setState(newState);
+        }
+        
     }
     render(){
         return(
             <div className="product-list">
                 <div className="product-list-name-change-container">
-                    <input type="text" onChange={this.onInputChange}></input>
+                    {/* <input type="text" onChange={this.onInputChange}></input> */}
+                    <input type="button" className="buttonClass" onClick={this.showOrHideListElements} value={this.state.buttonName} ></input>
                 </div>
-                <div className="product-list-name-container">
-                    <span className="product-list-name-text">
-                        {this.state.name}
-                    </span>
-                </div>
+
                 <div className="list-container">
                     {
-                        this.state.name !== "" &&
+                        this.state.showList == true &&
                         this.state.products.map(product =>
                             <ProductListItem id={product.id}
                                 key={product.id}
@@ -41,6 +58,7 @@ export class ProductList extends React.Component<{products: Array<IProduct>}, IP
                             )
                     }
                 </div>
+                <AddProductToList submit={this.onAddNewProductSubmit}></AddProductToList>
             </div>
         )
     }

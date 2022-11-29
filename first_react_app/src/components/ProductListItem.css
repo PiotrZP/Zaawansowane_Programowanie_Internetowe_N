@@ -6,4 +6,12 @@
     display: block;
     margin-bottom: 30px;
 }
+
+.product-item
+{
+    border-width: medium;
+    border-style: solid;
+    border-color: red;
+    background-color: aqua;
+}
     
