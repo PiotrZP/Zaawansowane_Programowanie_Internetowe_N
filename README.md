@@ -53,8 +53,8 @@
     dotnet run --project .\Kolokwium.Web\Kolokwium.Web.csproj
     ```
 
-    Aplikacja powinna być dostępna pod adresem: [Link startowy](https://localhost:7000).
-    [Link do aplikacji] (https://localhost:44420)
+    Aplikacja powinna być dostępna pod adresem: [Link startowy](https://localhost:7000),
+    [Link do aplikacji](https://localhost:44420)
     ![Alt text](Img/react_run.png?raw=true)
 
     Web API powinno być dostępne pod adresem: `https://localhost:44420/api/{controller}` 
