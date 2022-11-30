@@ -53,12 +53,13 @@
     dotnet run --project .\Kolokwium.Web\Kolokwium.Web.csproj
     ```
 
-    Aplikacja powinna być dostępna pod adresem: [http://localhost:5000](http://localhost:5000).
+    Aplikacja powinna być dostępna pod adresem: [Link startowy](https://localhost:7000).
+    [Link do aplikacji] (https://localhost:44420)
     ![Alt text](Img/react_run.png?raw=true)
 
-    Web API powinno być dostępne pod adresem: `http://localhost:5000/api/{controller}` 
+    Web API powinno być dostępne pod adresem: `https://localhost:44420/api/{controller}` 
 
-    Aplikacja Swagger jest dostępna pod adresem: [http://localhost:5000/swagger](http://localhost:5000/swagger).
+    Aplikacja Swagger jest dostępna pod adresem: [https://localhost:44420/swagger](https://localhost:44420/swagger).
     ![Alt text](Img/swagger.png?raw=true)
     
 6) Jeśli aplikacja działa poprawnie proszę zamknąć przy pomocy kombinacji klawiszy `ctrl + c`.
@@ -70,7 +71,7 @@
 ```
 
 ### Umieszenie rozwiązania w archiwum
-1)  Po otrzymaniu oceny proszę w folderze `Kolokwium` wykonać poniższe polecenia.
+1)  Po zakoczeniu pracy nad kolokwium proszę w folderze `Kolokwium` wykonać poniższe polecenia.
     ```powershell
     rmdir Kolokwium.Web/ClientApp/node_modules -recurse
     rmdir Kolokwium.Web/obj -recurse
