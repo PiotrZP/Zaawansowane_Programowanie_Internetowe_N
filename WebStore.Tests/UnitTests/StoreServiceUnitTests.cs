@@ -18,7 +18,7 @@ namespace WebStore.Tests.UnitTests
             _storeService = storeService;
         }
 
-        // [Fact]
+        [Fact]
         public void GetStoreTest()
         {
             var store = _storeService.GetStore(s => s.Id == 1);

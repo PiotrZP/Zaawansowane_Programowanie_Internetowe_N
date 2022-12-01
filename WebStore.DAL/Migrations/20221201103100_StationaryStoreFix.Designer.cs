@@ -12,8 +12,8 @@ using WebStore.DAL.EF;
 namespace WebStore.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221119130648_StationaryStoresFix")]
-    partial class StationaryStoresFix
+    [Migration("20221201103100_StationaryStoreFix")]
+    partial class StationaryStoreFix
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -179,30 +179,30 @@ namespace WebStore.Tests
 
             //Stores
 
-            var s1 = new StationaryStore()
+            var store1 = new StationaryStore()
             {
                 Id = 0,
                 Name = "ABC",
                 // Address = a1
 
             };
-            await dbContext.AddAsync(s1);
-            // var s2 = new StationaryStore()
-            // {
-            //     Id = 1,
-            //     Name = "Rzapka",
-            //     Address = a1
+            await dbContext.AddAsync(store1);
+            var store2 = new StationaryStore()
+            {
+                Id = 88,
+                Name = "Rzapka",
+                Address = a1
 
-            // };
-            // await dbContext.AddAsync(s2);
-            // var s3 = new StationaryStore()
-            // {
-            //     Id = 2,
-            //     Name = "Stonka",
-            //     Address = a4
+            };
+            await dbContext.AddAsync(store2);
+            var s3 = new StationaryStore()
+            {
+                Id = 2,
+                Name = "Stonka",
+                Address = a4
 
-            // };
-            // await dbContext.AddAsync(s3);
+            };
+            await dbContext.AddAsync(s3);
 
 
             // save changes 

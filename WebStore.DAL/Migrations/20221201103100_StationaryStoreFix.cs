@@ -4,7 +4,7 @@
 
 namespace WebStore.DAL.Migrations
 {
-    public partial class StationaryStoresFix : Migration
+    public partial class StationaryStoreFix : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
