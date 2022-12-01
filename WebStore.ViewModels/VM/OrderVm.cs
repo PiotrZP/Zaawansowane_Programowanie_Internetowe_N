@@ -3,7 +3,7 @@ namespace WebStore.ViewModels.VM
     public class OrderVm
     {
         public int Id { get; set; }
-        bool IsDeleted { get; set; }
+        //bool IsDeleted { get; set; }
         public DateTime DeliveryDate { get; set; }
         public DateTime OrderDate { get; set; }
         public decimal TotalAmount { get; }

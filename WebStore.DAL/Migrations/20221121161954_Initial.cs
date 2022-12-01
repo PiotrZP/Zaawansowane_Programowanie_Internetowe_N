@@ -133,7 +133,7 @@ namespace WebStore.DAL.Migrations
                         column: x => x.StationaryStoreId,
                         principalTable: "StationaryStore",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -163,8 +163,7 @@ namespace WebStore.DAL.Migrations
                         name: "FK_Address_StationaryStore_StationaryStoreId",
                         column: x => x.StationaryStoreId,
                         principalTable: "StationaryStore",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(

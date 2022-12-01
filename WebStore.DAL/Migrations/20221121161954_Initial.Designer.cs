@@ -12,7 +12,7 @@ using WebStore.DAL.DataAccess;
 namespace WebStore.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221120125858_Initial")]
+    [Migration("20221121161954_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -582,8 +582,7 @@ namespace WebStore.DAL.Migrations
 
                     b.HasOne("WebStore.Model.DataModels.StationaryStore", "StationaryStore")
                         .WithMany("Addresses")
-                        .HasForeignKey("StationaryStoreId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("StationaryStoreId");
 
                     b.Navigation("Customer");
 
@@ -595,7 +594,7 @@ namespace WebStore.DAL.Migrations
                     b.HasOne("WebStore.Model.DataModels.StationaryStore", "StationaryStore")
                         .WithMany("Invoices")
                         .HasForeignKey("StationaryStoreId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("StationaryStore");

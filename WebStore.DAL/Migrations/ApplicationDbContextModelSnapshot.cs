@@ -580,8 +580,7 @@ namespace WebStore.DAL.Migrations
 
                     b.HasOne("WebStore.Model.DataModels.StationaryStore", "StationaryStore")
                         .WithMany("Addresses")
-                        .HasForeignKey("StationaryStoreId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("StationaryStoreId");
 
                     b.Navigation("Customer");
 
@@ -593,7 +592,7 @@ namespace WebStore.DAL.Migrations
                     b.HasOne("WebStore.Model.DataModels.StationaryStore", "StationaryStore")
                         .WithMany("Invoices")
                         .HasForeignKey("StationaryStoreId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("StationaryStore");
