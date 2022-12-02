@@ -1,10 +1,18 @@
+import { useState } from 'react';
 import './App.css';
-import NewComp7 from './components/NewComp7';
+import NewComp8 from './components/NewComp8';
+import NextComp from './components/NextComp';
 
 function App() {
+  const [show, setShow] = useState(false);
+
+
+
   return (
     <div className="App">
-      <NewComp7></NewComp7>
+      <NewComp8></NewComp8>
+      {show && <NextComp></NextComp>}
+      <button className='Button' onClick={() => setShow(true)}>Wyswietl Drugi</button>
     </div>
   );
 }
