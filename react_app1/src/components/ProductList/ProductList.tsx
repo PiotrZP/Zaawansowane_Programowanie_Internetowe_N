@@ -4,7 +4,7 @@ import IProductList from "../../model/IProductList";
 import AddProductToList from "../AddProductToList/AddProductToList";
 import ProductListItem from "../ProductListItem/ProductListItem";
 
-const ProductList = (props: IProductList): JSX.Element => {
+const ProductList = (props: IProductList) => {
   const { products, name } = props;
   const [listName, setListName] = useState(name ? name : "");
   const [productList, setProductList] = useState<IProduct[]>(products);

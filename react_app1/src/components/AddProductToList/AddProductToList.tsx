@@ -10,7 +10,7 @@ const initialProduct: IProduct = {
   price: 0,
 };
 
-const AddProductToList = (props: IAddProductToList): JSX.Element => {
+const AddProductToList = (props: IAddProductToList) => {
   const { addProduct } = props;
   const [newProduct, setNewProduct] = useState<IProduct>(initialProduct);
   const [error, setError] = useState(false);
