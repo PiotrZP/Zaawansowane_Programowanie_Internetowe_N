@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import './NewComp5.css';
+import './NewComp6.css';
 
-function NewComp5() {
+function NewComp6() {
   const [num, setNum] = useState<number>(0);
+
 
   return (
     <div>
@@ -14,11 +15,19 @@ function NewComp5() {
           <button className='Button' onClick={() => setNum(num +1)}>
             +1
           </button>
-        </div>    
+        </div>
+        <div>
+          <button className='Button' onClick={() => setNum(num -2)}>
+            -2
+          </button>
+          <button className='Button' onClick={() => setNum(num +2)}>
+            +2
+          </button>
+        </div>     
     </div>
     
   );
 }
 
-export default NewComp5;
+export default NewComp6;
 
