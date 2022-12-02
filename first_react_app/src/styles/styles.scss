@@ -1,0 +1,98 @@
+.App{
+    button,a{
+        cursor: pointer;
+    }
+    .d-none{
+        display: none;
+    }
+    .container{
+        max-width: 1400px;
+        width: 100%;
+        margin: 50px auto;
+        padding: 0 12px;
+    }
+    .bg-violet{
+        background-color: violet;
+    }
+    .p-click{
+        cursor: pointer;
+    }
+    .spacing{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .section-heading{
+        font-size: 24px;
+        font-weight: 700;
+    }
+    .counter-wrapper{
+        display: flex;
+        p{
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        button{
+            border: none;
+            background-color: olive;
+            border-radius: 50%;
+            position: relative;
+            width: 45px;
+            height: 45px;
+            margin-left: 10px;
+            margin-right: 10px;
+            .indicator{
+                font-size: 24px;
+                color: white;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin: 0;
+                transform: translate(-50%,-50%);
+                line-height: 20px;
+            }
+        }
+    }
+    .gallery-wrapper{
+        position: relative;
+        padding-left: 50px;
+        padding-right: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 350px;
+            object-fit: cover;
+            transition: all ease-in-out .3s;
+            &.active{
+                height: auto;
+            }
+            &.hidden{
+                opacity: 0;
+                visibility: hidden;
+                height: 0;
+                position: absolute;
+                transition: all ease-in-out .3s;
+            }
+        }
+        button{
+            border: none;
+            background-color: unset;
+            font-size: 45px;
+            position: absolute;
+            top: 50%;
+        }
+        .slide-prev{
+            left: 0;
+        }
+        .slide-next{
+            right: 0;
+        }
+    }
+    .error-wrapper{
+        text-align: center;
+        p{
+            font-size: 32px;
+            color: red;
+        }
+    }
+}

@@ -1,103 +1,74 @@
 using System.Linq.Expressions;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
-using WebStore.DAL.DatabaseContext;
-using WebStore.Model.Models;
+using WebStore.DAL.EF;
+using WebStore.Model.DataModels;
 using WebStore.Services.Interfaces;
 using WebStore.ViewModels.VM;
 
 namespace WebStore.Services.ConcreteServices;
+
 public class AddressService : BaseService, IAddressService
 {
-    public AddressService(WSDbContext context, IMapper mapper, ILogger logger) : base(context, mapper, logger) { }
+    public AddressService(ApplicationDbContext dbContext, IMapper mapper, ILogger logger) : base(dbContext, mapper, logger){ }
 
-    public AddressVm AddOrUpdateAddress(AddOrUpdateAddressVm addOrUpdateAddressVm)
+    
+    public AddressVm AddOrUpdateAddress(AddOrUpdateAddressVm addOrUpdateStoreVm)
     {
-        try
-        {
-            if (addOrUpdateAddressVm == null)
-                throw new ArgumentNullException("View model parameter is null");
-
-            var addressEntity = Mapper.Map<Address>(addOrUpdateAddressVm);
-
-            if (addOrUpdateAddressVm.Id.HasValue || addOrUpdateAddressVm.Id == 0)
-                DbContext.Address.Update(addressEntity);
+        try {
+            if (addOrUpdateStoreVm == null)
+                throw new ArgumentNullException ("View model parameter is null");
+            var addressEntity = Mapper.Map<Address> (addOrUpdateStoreVm);
+            if (addOrUpdateStoreVm.Id.HasValue || addOrUpdateStoreVm.Id == 0)
+                DbContext.Addresses.Update (addressEntity);
             else
-                DbContext.Address.Add(addressEntity);
-
-            DbContext.SaveChanges();
-
-            var addressVm = Mapper.Map<AddressVm>(addressEntity);
-
+                DbContext.Addresses.Add (addressEntity);
+            DbContext.SaveChanges ();
+            var addressVm = Mapper.Map<AddressVm> (addressEntity);
             return addressVm;
-        }
-        catch (Exception ex)
-        {
-            Logger.LogError(ex, ex.Message);
+        } catch (Exception ex) {
+            Logger.LogError (ex, ex.Message);
             throw;
         }
     }
-    public AddressVm GetAddress(Expression<Func<Address, bool>> filterExpression)
-    {
-        try
-        {
-            if (filterExpression == null)
-                throw new ArgumentNullException("Filter expression parameter is null");
-            var addressEntity = DbContext.Address.FirstOrDefault(filterExpression);
-            var addressVm = Mapper.Map<AddressVm>(addressEntity);
-            return addressVm;
-        }
 
-        catch (Exception ex)
-        {
+    public AddressVm GetAddress(Expression<Func<Address, bool>> ? filterExpression = null)
+    {
+        try {
+            if (filterExpression == null)
+                throw new ArgumentNullException ("Filter expression parameter is null");
+            var addressEntity = DbContext.Addresses.FirstOrDefault (filterExpression);
+            var storeVm = Mapper.Map<AddressVm> (addressEntity);
+            return storeVm;
+        } catch (Exception ex) {
             {
-                Logger.LogError(ex, ex.Message);
+                Logger.LogError (ex, ex.Message);
                 throw;
             }
-        }
-    }
-    public IEnumerable<AddressVm> GetAddresss(Expression<Func<Address, bool>>? filterExpression = null)
-    {
-        try
-        {
-            var addresssQuery = DbContext.Address.AsQueryable();
-            if (filterExpression != null)
-                addresssQuery = addresssQuery.Where(filterExpression);
-            var addressVms = Mapper.Map<IEnumerable<AddressVm>>(addresssQuery);
-
-            return addressVms;
-        }
-
-        catch (Exception ex)
-        {
-            Logger.LogError(ex, ex.Message);
-            throw;
         }
     }
 
     public async Task DeleteAddress(Expression<Func<Address, bool>> filterExpression)
     {
-        try
-        {
-            if (filterExpression == null)
+        try {
+            if (filterExpression == null) {
                 throw new ArgumentNullException("Filter expression parameter is null");
-
-            var addressEntity = DbContext.Address
-                .FirstOrDefault(filterExpression);
-
-            if (addressEntity == null)
-            {
-                throw new Exception("Address not found");
             }
 
-            DbContext.Address.Remove(addressEntity);
+            var addressEntity = DbContext.Addresses.FirstOrDefault(filterExpression);
+
+            if (addressEntity == null) {
+                throw new Exception("Product not found");
+            }
+
+            DbContext.Addresses.Remove(addressEntity);
 
             await DbContext.SaveChangesAsync();
-        }
-        catch (Exception ex)
-        {
+
+        }catch(Exception ex) {
             Logger.LogError(ex, ex.Message);
             throw;
         }
     }
+    
 }

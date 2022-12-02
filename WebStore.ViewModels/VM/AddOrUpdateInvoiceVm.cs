@@ -1,8 +1,14 @@
-namespace WebStore.ViewModels.VM;
-public class AddOrUpdateInvoiceVm
+using System.ComponentModel.DataAnnotations;
+namespace WebStore.ViewModels.VM
+
 {
-    public int? Id { get; set; }
-    public decimal TotalPrice { get; set; }
-    public DateTime Date { get; set; }
-    public int StationaryStoreId { get; set; }
+    public class AddOrUpdateInvoiceVm
+    {
+        public int? Id {get; set;}
+        
+        public decimal TotalPrice {get; set;} 
+        
+        public DateTime InvoiceDate { get; set; } 
+        public virtual IList<OrderVm> Orders {get; set;} = default!;
+    }
 }

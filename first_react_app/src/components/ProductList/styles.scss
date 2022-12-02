@@ -1,0 +1,26 @@
+.product-list-wrapper{
+    .product-list-name-changer{
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        input{
+            border: 1px solid red;
+            padding: 12px 15px;
+            border-radius: 10px;
+            max-width: 450px;
+            width: 100%;
+            transition: all ease-in-out .3s;
+            &:active,&:focus,&:focus-visible{
+                outline: none;
+                border-color: cadetblue;
+            }
+        }
+    }
+    .list-items{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .product-list-name{
+        text-align: center;
+    }
+}

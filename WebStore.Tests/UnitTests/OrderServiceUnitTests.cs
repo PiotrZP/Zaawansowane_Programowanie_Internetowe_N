@@ -1,88 +1,55 @@
-using Microsoft.EntityFrameworkCore;
-using WebStore.DAL.DatabaseContext;
-using WebStore.Services.Interfaces;
-using WebStore.ViewModels.VM;
-using Xunit;
+using System; 
+using System.Collections.Generic; 
+using System.Linq; 
+using System.Text; 
+using System.Threading.Tasks; 
+using WebStore.DAL.EF; 
+using WebStore.Model.DataModels; 
+using WebStore.Services.Interfaces; 
+using WebStore.ViewModels.VM; 
+using Xunit; 
 
-namespace WebStore.Tests.UnitTests;
-public class OrderServiceUnitTests : BaseUnitTests
-{
-    private readonly IOrderService _service;
-    private readonly WSDbContext _context;
-    public OrderServiceUnitTests(WSDbContext dbContext,
-        IOrderService orderService) : base(dbContext)
-    {
-        _service = orderService;
-        _context = dbContext;
-    }
+namespace WebStore.Tests.UnitTests { 
+    public class OrderServiceUnitTests : BaseUnitTests { 
+        private readonly IOrderService _orderService; 
+        public OrderServiceUnitTests (ApplicationDbContext dbContext, 
+        IOrderService orderService) : base (dbContext) { 
+            _orderService = orderService; 
+        } 
+        
+        [Fact]
+        public void addOrderTest () {
+            var newOrderVm = new AddOrUpdateOrderVm () { 
+                CustomerId = 1,
+                DeliveryDate = new DateTime(),
+                OrderDate = new DateTime(),
+                TotalAmount = 100.00M,
+            }; 
+            var createdOrder = _orderService.AddOrUpdateOrder (newOrderVm); 
+            Assert.NotNull (createdOrder);
+        }
 
-    [Fact]
-    public void GetOrderTest()
-    {
-        var order = _service.GetOrder(p => p.TrackingNumber == 1244);
-        Assert.NotNull(order);
-    }
+        [Fact]
+        public void UpdateOrderTest () { 
+            var updateOrderVm = new AddOrUpdateOrderVm () { 
+                CustomerId = 1,
+                DeliveryDate = new DateTime(),
+                OrderDate = new DateTime(),
+                TotalAmount = 100.00M,
+            }; 
+            var editedOrderVm = _orderService.AddOrUpdateOrder (updateOrderVm); 
+            Assert.NotNull (editedOrderVm); 
+            Assert.Equal (1, editedOrderVm.Id); 
+            Assert.Equal (100.00M, editedOrderVm.TotalAmount); 
+        } 
 
-    [Fact]
-    public void GetMultipleOrdersTest()
-    {
-        var orders = _service.GetOrders(p => p.Id >= 1 && p.Id <= 2);
-        Assert.NotNull(orders);
-        Assert.NotEmpty(orders);
-        Assert.Equal(2, orders.Count());
-    }
-
-    [Fact]
-    public void GetAllOrdersTest()
-    {
-        var orders = _service.GetOrders();
-        Assert.NotNull(orders);
-        Assert.NotEmpty(orders);
-        Assert.Equal(orders.Count(), orders.Count());
-    }
-
-    [Fact]
-    public void AddNewOrderTest()
-    {
-        var newOrderVm = new AddOrUpdateOrderVm()
-        {
-            CustomerId = 1,
-            DeliveryDate = new DateTime(2020, 10, 10),
-            Invoiceid = 1,
-            StationaryStoreId = 1
-        };
-
-        var createdOrder = _service.AddOrUpdateOrder(newOrderVm);
-        Assert.NotNull(createdOrder);
-        Assert.Equal(createdOrder.DeliveryDate, new DateTime(2020, 10, 10));
-    }
-
-    [Fact]
-    public void UpdateOrderTest()
-    {
-        var updateOrderVm = new AddOrUpdateOrderVm()
-        {
-            CustomerId = 2,
-            DeliveryDate = new DateTime(2020, 5, 5),
-            Invoiceid = 1,
-            StationaryStoreId = 1
-        };
-        var editedOrderVm = _service.AddOrUpdateOrder(updateOrderVm);
-        Assert.NotNull(editedOrderVm);
-        Assert.Equal(2, editedOrderVm.CustomerId);
-        Assert.Equal(new DateTime(2020, 5, 5), editedOrderVm.DeliveryDate);
-    }
-
-    [Fact]
-    public async Task DeleteOrderTest()
-    {
-        int orderId = 3;
-
-        bool doesOrderExistsBefore = await _context.Order.AnyAsync(x => x.Id == orderId);
-        await _service.DeleteOrder(x => x.Id == orderId);
-        bool doesOrderExistsAfter = await _context.Order.AnyAsync(x => x.Id == orderId);
-
-        Assert.True(doesOrderExistsBefore);
-        Assert.False(doesOrderExistsAfter);
+        [Fact]
+        public void DeleteOrderTest () { 
+            var deleteOrderVar = new DeleteOrderVm () { 
+                Id = 1,
+            }; 
+            var editedOrderVm = _orderService.DeleteOrder (deleteOrderVar); 
+            Assert.NotNull (editedOrderVm); 
+        } 
     }
 }

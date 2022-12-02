@@ -1,12 +1,14 @@
-using System.Linq.Expressions;
-using WebStore.Model.Models;
+using System; 
+using System.Collections.Generic; 
+using System.Linq.Expressions; 
+using WebStore.Model.DataModels; 
 using WebStore.ViewModels.VM;
 
-namespace WebStore.Services.Interfaces;
-public interface IOrderService
-{
-    public OrderVm AddOrUpdateOrder(AddOrUpdateOrderVm addOrUpdateOrderVm);
-    public OrderVm GetOrder(Expression<Func<Order, bool>> filterExpression);
-    public IEnumerable<OrderVm> GetOrders(Expression<Func<Order, bool>>? filterExpression = null);
-    public Task DeleteOrder(Expression<Func<Order, bool>> filterExpression);
+namespace WebStore.Services.Interfaces { 
+    public interface IOrderService {
+        OrderVm AddOrUpdateOrder (AddOrUpdateOrderVm addOrUpdateOrderVm);
+        OrderVm DeleteOrder (DeleteOrderVm deleteOrderVm);
+        OrderVm GetOrder (Expression<Func<Order, bool>> filterExpression);
+        IEnumerable<OrderVm> GetOrders (Expression<Func<Order, bool>> ? filterExpression = null);
+    }
 }

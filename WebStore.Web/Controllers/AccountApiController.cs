@@ -7,26 +7,26 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using WebStore.Model.Models;
 using WebStore.ViewModels.VM;
+using WebStore.Model.DataModels;
 
 namespace WebStore.Web.Controllers;
 
-[Route("[controller]")]
 public class AccountApiController : BaseApiController
 {
     private readonly SignInManager<User> _signInManager;
     private readonly UserManager<User> _userManager;
     private readonly JwtOptionsVm _jwtOptions;
 
-    public AccountApiController(ILogger logger, IMapper mapper, IOptions<JwtOptionsVm> jwtOptions,
-        SignInManager<User> signInManager, UserManager<User> userManager) : base(logger, mapper)
+    public AccountApiController(
+        ILogger logger,
+        IMapper mapper,
+        IOptions<JwtOptionsVm> jwtOptions,
+        SignInManager<User> signInManager,
+        UserManager<User> userManager) : base(logger, mapper)
     {
-        _jwtOptions = jwtOptions.Value;
-        _signInManager = signInManager;
-        _userManager = userManager;
+        _jwtOptions = jwtOptions.Value; _signInManager = signInManager; _userManager = userManager;
     }
-
 
     [AllowAnonymous]
     [HttpPost("[action]")]
@@ -40,36 +40,31 @@ public class AccountApiController : BaseApiController
                 return BadRequest("Invalid credentials");
             }
 
-            var result = await _signInManager.PasswordSignInAsync(applicationUser.Login, applicationUser.Password, true, false); if (result.Succeeded == false)
+            var result = await _signInManager.PasswordSignInAsync(applicationUser.Login, applicationUser.Password, true, false);
+
+            if (result.Succeeded == false)
             {
                 Logger.LogInformation($"Invalid username ({applicationUser.Login}) or password ({applicationUser.Password})");
                 return BadRequest("Invalid credentials");
             }
+
             var user = await _userManager.FindByEmailAsync(applicationUser.Login); var userRoles = await _userManager.GetRolesAsync(user);
-
-            var claims = new List<Claim>
-            {
+            var claims = new List<Claim> {
                 new Claim (ClaimTypes.Name, applicationUser.Login),
-                new Claim (JwtRegisteredClaimNames.Nbf,
-                new DateTimeOffset (DateTime.Now).ToUnixTimeSeconds().ToString ()),
-                new Claim (JwtRegisteredClaimNames.Exp,
-                ((long) ((DateTime.Now.AddMinutes (_jwtOptions.TokenExpirationMinutes) - new DateTime (1970, 1, 1, 0, 0, 0)).TotalSeconds)).ToString ())
+                new Claim (JwtRegisteredClaimNames.Nbf, new DateTimeOffset (DateTime.Now).ToUnixTimeSeconds ().ToString()),
+                new Claim (JwtRegisteredClaimNames.Exp, ((long) ((DateTime.Now.AddMinutes (_jwtOptions.TokenExpirationMinutes) - new DateTime (1970, 1, 1, 0, 0, 0)).TotalSeconds)).ToString ())
             };
+            claims.AddRange(userRoles.Select(ur => new Claim(ClaimTypes.Role, ur))); var token = new JwtSecurityToken(
 
-            claims.AddRange(userRoles.Select(ur => new Claim(ClaimTypes.Role, ur)));
-
-            var token = new JwtSecurityToken(
-                 new JwtHeader(new SigningCredentials(
-
-            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.SecretKey)), SecurityAlgorithms.HmacSha256)),
-
+            new JwtHeader(new SigningCredentials(
+                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.SecretKey)),
+                SecurityAlgorithms.HmacSha256)),
             new JwtPayload(claims));
 
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(token); var response = new
             {
                 access_token = encodedJwt,
                 expires_in = token.ValidTo.ToString("yyyy-MM-ddTHH:mm:ss")
-
             };
             return Ok(response);
         }
@@ -79,4 +74,5 @@ public class AccountApiController : BaseApiController
             return BadRequest("Error occurred");
         }
     }
+
 }

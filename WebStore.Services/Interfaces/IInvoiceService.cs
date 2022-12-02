@@ -1,12 +1,14 @@
-using System.Linq.Expressions;
-using WebStore.Model.Models;
+using System; 
+using System.Collections.Generic; 
+using System.Linq.Expressions; 
+using WebStore.Model.DataModels; 
 using WebStore.ViewModels.VM;
 
-namespace WebStore.Services.Interfaces;
-public interface IInvoiceService
-{
-    public InvoiceVm AddOrUpdateInvoice(AddOrUpdateInvoiceVm addOrUpdateInvoiceVm);
-    public InvoiceVm GetInvoice(Expression<Func<Invoice, bool>> filterExpression);
-    public IEnumerable<InvoiceVm> GetInvoices(Expression<Func<Invoice, bool>>? filterExpression = null);
-    public Task DeleteInvoice(Expression<Func<Invoice, bool>> filterExpression);
+namespace WebStore.Services.Interfaces { 
+    public interface IInvoiceService {
+        InvoiceVm AddOrUpdateInvoice (AddOrUpdateInvoiceVm addOrUpdateInvoiceVm);
+        InvoiceVm GetInvoice (Expression<Func<Invoice, bool>> filterExpression);
+        public Task DeleteInvoice(Expression<Func<Invoice, bool>> filterExpression);
+        IEnumerable<InvoiceVm> GetInvoices (Expression<Func<Invoice, bool>> ? filterExpression = null);
+    }
 }
