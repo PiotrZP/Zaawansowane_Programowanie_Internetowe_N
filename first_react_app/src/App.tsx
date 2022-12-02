@@ -1,10 +1,10 @@
 import './App.css';
-import NewComp4 from './components/NewComp4';
+import NewComp5 from './components/NewComp5';
 
 function App() {
   return (
     <div className="App">
-      <NewComp4></NewComp4>
+      <NewComp5></NewComp5>
     </div>
   );
 }
