@@ -1,0 +1,38 @@
+.product-list-name-change-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    
+  }
+
+  input {
+    padding: 10px;
+    border-radius: 2rem;
+    border: 2px solid black;
+  }
+
+.product-list {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    background-color: blueviolet;
+    align-self: center;
+    padding: 20px;
+    margin: 60px;
+  }
+  
+  
+  .product-list-name-change-container > input {
+    
+    font-size: 20px;
+    border-radius: 1rem;
+    margin: 20px;
+    padding: 10px;
+    border: 3px solid rgb(0, 0, 0);
+    background-color: cornflowerblue;
+  }
+  
+  
+  .product-list-name-text {
+    font-family: 'Times New Roman', Times, serif
+  }

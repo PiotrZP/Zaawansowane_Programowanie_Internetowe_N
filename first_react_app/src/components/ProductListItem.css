@@ -1,0 +1,19 @@
+.product-item-span{
+    display: block;
+    }
+
+    .product-item-input{
+        font-size: 20px;
+        font-weight: bold;
+        font-style: italic;
+        color: rgba(0, 0, 255, 0.945);
+        
+
+    }
+    .product-item-element{
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    
+
+    }

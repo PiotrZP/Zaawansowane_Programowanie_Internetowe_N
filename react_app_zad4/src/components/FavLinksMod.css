@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 40px;
+  flex-direction: row;
+  border: solid 2px;
+  padding: 10px;
+  color: black;
+  background-color: rgb(63, 214, 33);
+  
+}
+.container-link {
+  padding: 20px;
+  background-color: rgb(125, 153, 0);
+}
+.colored {
+  background-color: rgb(35, 177, 49);
+}
