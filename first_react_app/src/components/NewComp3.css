@@ -27,3 +27,27 @@
     background-color: rgb(174, 212, 246);
     transition: 0.3s ease-in-out;
 }
+ul {
+    list-style: none;
+}
+li {
+    text-decoration: none;
+    cursor: pointer;
+    background-color: aliceblue;
+    color: rgb(25, 0, 78);
+    padding:30px 20px;
+    font-size: 15px;
+    font-family: Verdana;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+    border: none;
+}
+li[data-selected=true] {
+    background-color: rgb(123, 181, 231);
+    color: rgb(255, 255, 255);
+    transition: 0.3s ease-in;
+}
+li[data-selected=false] {
+    background-color: rgb(255, 255, 255);
+    transition: 0.3s ease-in;
+}
