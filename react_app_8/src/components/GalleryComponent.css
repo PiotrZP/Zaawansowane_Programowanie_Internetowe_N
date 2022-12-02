@@ -1,0 +1,25 @@
+.gc-main-container {
+  display: flex;
+  flex-direction: row;
+  padding: 36px;
+}
+
+.gc-thumbnails-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 100px;
+  width: 100%;
+}
+
+.gc-thumbnail {
+  border: 1px solid black;
+  background: red;
+  width: 64px;
+  height: 64px;
+  border-radius: 4px;
+}
+
+.gc-image-container {
+  width: 100%;
+}
