@@ -1,0 +1,13 @@
+.mc-main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.mc-link-normal {
+  background: none;
+}
+
+.mc-link-active {
+  background: aqua;
+}

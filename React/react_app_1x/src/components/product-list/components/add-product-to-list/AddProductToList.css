@@ -1,0 +1,50 @@
+.aptl-form-container > form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px;
+}
+
+.aptl-product-item-element {
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: flex-start;
+}
+
+.aptl-product-item-element > span {
+  font-size: 0.9rem;
+}
+
+.aptl-product-item-input {
+  min-height: 24px;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.aptl-product-item-submit-button {
+  height: 36px;
+  border-radius: 4px;
+  background: #fafbfc;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: ease-in-out 0.5s;
+  width: 100%;
+}
+
+.aptl-product-item-submit-button:hover {
+  background: lightblue;
+}
+
+.aptl-product-item-error {
+  color: red;
+  font-size: 0.75rem;
+}
+
+@media screen and (max-width: 480px) {
+  .aptl-form-container > form {
+    padding: 0;
+  }
+}
