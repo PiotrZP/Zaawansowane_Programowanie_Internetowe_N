@@ -1,21 +1,21 @@
 import React from "react";
-import { Counter } from "./components/Counter";
-import { Home } from "./components/Home";
+import { AddressGrid } from "./components/address/AddressGrid";
+
 import { MuiTest } from "./components/MuiTest";
 
 const AppRoutes = [
   {
     index: true,
-    element: <Home />
+    element: <AddressGrid />,
   },
   {
-    path: '/counter',
-    element: <Counter />
+    path: "/address",
+    element: <AddressGrid />,
   },
   {
-    path: '/mui-test',
-    element: <MuiTest />
-  }
+    path: "/address/add",
+    element: <AddressAdd />,
+  },
 ];
 
 export default AppRoutes;

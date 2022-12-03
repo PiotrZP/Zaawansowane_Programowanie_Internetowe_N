@@ -7,6 +7,7 @@ namespace Kolokwium.ViewModels.VM
 {
     public class ProductVm
     {
+        public int ProductId { get; set; }
         public string Description { get; set; } = default!;
         public byte[] ImageBytes { get; set; } = default!;
         public string Name { get; set; } = default!;
