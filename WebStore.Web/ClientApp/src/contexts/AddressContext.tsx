@@ -4,25 +4,24 @@ import { IAddress } from "../models/IAddress";
 type IProps = {
     children: React.ReactNode
 }
-type IStateAddress = {
-    addresses: IAddress[]
-}
-type ContextType = {
+
+interface IContextValue {
     state: {
-        addresses: [],
+        addresses: IAddress[]
     },
-    setState: (state: ContextType) => void,
+    setState: (state: IContextValue) => void,
 }
-const contextInitialValue : ContextType = {
+
+const AddressContext = createContext<IContextValue>({
     state: {
         addresses: []
     },
-    setState: (state: ContextType) => {}
-}
-const AddressContext = createContext(contextInitialValue);
+    setState: () => {},
+})
+
 
 export const AddressProvider = (props: IProps) => {
-    const [state, setState] = useState(contextInitialValue.state);
+    const [state, setState] = useState(AddressContext);
     const contextValue = useMemo(() => {
         return {
             state,
