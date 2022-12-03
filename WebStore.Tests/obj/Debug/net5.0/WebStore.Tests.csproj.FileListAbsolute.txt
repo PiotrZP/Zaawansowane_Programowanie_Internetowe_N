@@ -1,5 +1,0 @@
-C:\Studia\Zaawansowane programowanie internetowe\Adam_Dunajewski\Zaawansowane_Programowanie_Internetowe_N\WebStore.Tests\obj\Debug\net5.0\WebStore.Tests.csproj.AssemblyReference.cache
-C:\Studia\Zaawansowane programowanie internetowe\Adam_Dunajewski\Zaawansowane_Programowanie_Internetowe_N\WebStore.Tests\obj\Debug\net5.0\WebStore.Tests.GeneratedMSBuildEditorConfig.editorconfig
-C:\Studia\Zaawansowane programowanie internetowe\Adam_Dunajewski\Zaawansowane_Programowanie_Internetowe_N\WebStore.Tests\obj\Debug\net5.0\WebStore.Tests.AssemblyInfoInputs.cache
-C:\Studia\Zaawansowane programowanie internetowe\Adam_Dunajewski\Zaawansowane_Programowanie_Internetowe_N\WebStore.Tests\obj\Debug\net5.0\WebStore.Tests.AssemblyInfo.cs
-C:\Studia\Zaawansowane programowanie internetowe\Adam_Dunajewski\Zaawansowane_Programowanie_Internetowe_N\WebStore.Tests\obj\Debug\net5.0\WebStore.Tests.csproj.CoreCompileInputs.cache
