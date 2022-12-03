@@ -1,0 +1,19 @@
+ul {
+    list-style: none;
+}
+
+li {
+    padding: 0.5em;
+}
+
+li {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: color 150ms ease;
+}
+
+li[data-selected=true] {
+    color: greenyellow;
+}
