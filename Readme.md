@@ -8,7 +8,7 @@
 
 ## ToDos
 
-> - Note: Add models and migrations []
+> -
 
 ## Migrations && Updates
 
