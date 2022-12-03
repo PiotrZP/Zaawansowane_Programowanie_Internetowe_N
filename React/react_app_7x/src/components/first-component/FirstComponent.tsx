@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import SecondComponent from "../second-component/SecondComponent";
 
 const FirstComponent = (): JSX.Element => {
@@ -8,15 +8,15 @@ const FirstComponent = (): JSX.Element => {
   const handleButton = (confirm: boolean) => {
     setIsVisible(false);
     const newMessage = confirm
-      ? "Cieszę się! Idźmy dalej!"
-      : "Przykro mi, że się męczysz!";
+      ? "Ciesze sie! Idzmy dalej!"
+      : "Przykro mi, że się meczysz!";
     setMessage(newMessage);
   };
 
   return (
     <div>
       <div>
-        <button onClick={() => setIsVisible(true)}>SHOW</button>
+        <button onClick={() => setIsVisible(true)}>Let's see</button>
       </div>
       {isVisible && <SecondComponent handleButton={handleButton} />}
       {!isVisible && message}

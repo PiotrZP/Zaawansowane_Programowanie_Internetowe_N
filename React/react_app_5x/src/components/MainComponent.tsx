@@ -17,7 +17,7 @@ const MainComponent = (props: MainComponentProps): JSX.Element => {
 
   const goToPreviousImage = () => {
     if (imageIndex === 0) {
-      setError("Początek albumu");
+      setError("Start albumu");
       return;
     }
     setError(undefined);
@@ -26,7 +26,7 @@ const MainComponent = (props: MainComponentProps): JSX.Element => {
 
   const goToNextImage = () => {
     if (imageIndex === images.length - 1) {
-      setError("Koniec albumu");
+      setError("End albumu");
       return;
     }
     setError(undefined);
