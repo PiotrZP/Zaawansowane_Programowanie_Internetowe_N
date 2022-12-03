@@ -163,23 +163,30 @@ namespace WebStore.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int?>("ApartmentNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BuildingNumber")
+                        .HasColumnType("int");
+
                     b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<string>("PostCode")
+                    b.Property<string>("Street")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StreetName")
+                    b.Property<string>("ZipCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("StreetNumber")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

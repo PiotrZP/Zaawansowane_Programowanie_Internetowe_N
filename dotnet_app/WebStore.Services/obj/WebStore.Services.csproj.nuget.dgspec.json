@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.Services\\WebStore.Services.csproj": {}
+    "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.Services/WebStore.Services.csproj": {}
   },
   "projects": {
-    "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.DAL\\WebStore.DAL.csproj": {
+    "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.DAL/WebStore.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.DAL\\WebStore.DAL.csproj",
+        "projectUniqueName": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.DAL/WebStore.DAL.csproj",
         "projectName": "WebStore.DAL",
-        "projectPath": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.DAL\\WebStore.DAL.csproj",
-        "packagesPath": "C:\\Users\\spyth\\.nuget\\packages\\",
-        "outputPath": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.DAL\\obj\\",
+        "projectPath": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.DAL/WebStore.DAL.csproj",
+        "packagesPath": "/home/spythere/.nuget/packages/",
+        "outputPath": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.DAL/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\spyth\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/spythere/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -26,8 +26,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.Model\\WebStore.Model.csproj": {
-                "projectPath": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.Model\\WebStore.Model.csproj"
+              "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.Model/WebStore.Model.csproj": {
+                "projectPath": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.Model/WebStore.Model.csproj"
               }
             }
           }
@@ -71,8 +71,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -81,21 +80,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/dotnet6-6.0.110/sdk/6.0.110/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.Model\\WebStore.Model.csproj": {
+    "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.Model/WebStore.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.Model\\WebStore.Model.csproj",
+        "projectUniqueName": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.Model/WebStore.Model.csproj",
         "projectName": "WebStore.Model",
-        "projectPath": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.Model\\WebStore.Model.csproj",
-        "packagesPath": "C:\\Users\\spyth\\.nuget\\packages\\",
-        "outputPath": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.Model\\obj\\",
+        "projectPath": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.Model/WebStore.Model.csproj",
+        "packagesPath": "/home/spythere/.nuget/packages/",
+        "outputPath": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.Model/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\spyth\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/spythere/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -130,8 +129,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -140,21 +138,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/dotnet6-6.0.110/sdk/6.0.110/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.Services\\WebStore.Services.csproj": {
+    "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.Services/WebStore.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.Services\\WebStore.Services.csproj",
+        "projectUniqueName": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.Services/WebStore.Services.csproj",
         "projectName": "WebStore.Services",
-        "projectPath": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.Services\\WebStore.Services.csproj",
-        "packagesPath": "C:\\Users\\spyth\\.nuget\\packages\\",
-        "outputPath": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.Services\\obj\\",
+        "projectPath": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.Services/WebStore.Services.csproj",
+        "packagesPath": "/home/spythere/.nuget/packages/",
+        "outputPath": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.Services/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\spyth\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/spythere/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -166,14 +164,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.DAL\\WebStore.DAL.csproj": {
-                "projectPath": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.DAL\\WebStore.DAL.csproj"
+              "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.DAL/WebStore.DAL.csproj": {
+                "projectPath": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.DAL/WebStore.DAL.csproj"
               },
-              "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.Model\\WebStore.Model.csproj": {
-                "projectPath": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.Model\\WebStore.Model.csproj"
+              "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.Model/WebStore.Model.csproj": {
+                "projectPath": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.Model/WebStore.Model.csproj"
               },
-              "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.ViewModels\\WebStore.ViewModels.csproj": {
-                "projectPath": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.ViewModels\\WebStore.ViewModels.csproj"
+              "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.ViewModels/WebStore.ViewModels.csproj": {
+                "projectPath": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.ViewModels/WebStore.ViewModels.csproj"
               }
             }
           }
@@ -211,8 +209,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -221,21 +218,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/dotnet6-6.0.110/sdk/6.0.110/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.ViewModels\\WebStore.ViewModels.csproj": {
+    "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.ViewModels/WebStore.ViewModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.ViewModels\\WebStore.ViewModels.csproj",
+        "projectUniqueName": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.ViewModels/WebStore.ViewModels.csproj",
         "projectName": "WebStore.ViewModels",
-        "projectPath": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.ViewModels\\WebStore.ViewModels.csproj",
-        "packagesPath": "C:\\Users\\spyth\\.nuget\\packages\\",
-        "outputPath": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.ViewModels\\obj\\",
+        "projectPath": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.ViewModels/WebStore.ViewModels.csproj",
+        "packagesPath": "/home/spythere/.nuget/packages/",
+        "outputPath": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.ViewModels/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\spyth\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/spythere/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -247,8 +244,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.Model\\WebStore.Model.csproj": {
-                "projectPath": "E:\\Coding\\Studia\\ZPI\\dotnet_app\\WebStore.Model\\WebStore.Model.csproj"
+              "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.Model/WebStore.Model.csproj": {
+                "projectPath": "/mnt/Dane/Coding/Studia/ZPI/dotnet_app/WebStore.Model/WebStore.Model.csproj"
               }
             }
           }
@@ -268,8 +265,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -278,7 +274,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/dotnet6-6.0.110/sdk/6.0.110/RuntimeIdentifierGraph.json"
         }
       }
     }
