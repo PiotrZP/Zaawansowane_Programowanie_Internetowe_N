@@ -64,14 +64,12 @@ namespace WebStore.DAL.EF
             .HasForeignKey(o => o.CustomerId)
             .OnDelete(DeleteBehavior.Restrict); */
 
-            /*modelBuilder.Entity<Customer>()
+            modelBuilder.Entity<Customer>()
             .HasOne(o => o.ShippingAddress)
             .WithMany(po => po.Customers)
             .HasForeignKey(o => o.ShippingAddressId)
-            .OnDelete(DeleteBehavior.Restrict); */
+            .OnDelete(DeleteBehavior.Restrict);
 
         }
-
-
     }
 }
