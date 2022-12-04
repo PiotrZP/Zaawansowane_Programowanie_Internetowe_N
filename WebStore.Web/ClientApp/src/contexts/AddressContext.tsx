@@ -6,16 +6,18 @@ type IProps = {
   children: React.ReactNode;
 };
 
-interface AddressesContext {
-    state:{
-        addresses: IAddress[];
-        isLoading: boolean;
-        getAddresses: () => void,
-    }
-    setState: (state: AddressesContext) => void
+interface Addresses {
+    addresses: IAddress[];
+    isLoading: boolean;
+    getAddresses: () => void,
 }
 
-export const AddressesInitialData: AddressesContext = {
+interface IAddressContext {
+    state: Addresses
+    setState: (state: Addresses) => void
+}
+ 
+const AddressesInitialData: IAddressContext = {
     state: {
         addresses: [],
         isLoading: false,
@@ -23,14 +25,15 @@ export const AddressesInitialData: AddressesContext = {
           return await axios.get<IAddress[]>("/api/Address");
         }
     },
-    setState: (state: AddressesContext) => {}
+    setState: (state: Addresses) => {}
 };
 
-const AddressContext = createContext<AddressesContext>(AddressesInitialData);
+
+const AddressContext = createContext<IAddressContext>(AddressesInitialData);
 export default AddressContext;
 
 export const AddressProvider = (props: IProps) => {
-  const [state, setState] = useState<AddressesContext>(AddressesInitialData.state);
+  const [state, setState] = useState<Addresses>(AddressesInitialData.state);
 
   const contextValue = useMemo(() => {
     return {
@@ -41,7 +44,7 @@ export const AddressProvider = (props: IProps) => {
 
 
   return (
-    <AddressContext.Provider value={contextValue}>
+    <AddressContext.Provider value={{state,setState}}>
       {props.children}
     </AddressContext.Provider>
   );
