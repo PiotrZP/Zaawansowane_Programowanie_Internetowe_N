@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import ProductList from './components/ProductList';
+import ProductListItem from "./components/ProductListItem";
 import IProduct from './models/IProduct';
 
 
