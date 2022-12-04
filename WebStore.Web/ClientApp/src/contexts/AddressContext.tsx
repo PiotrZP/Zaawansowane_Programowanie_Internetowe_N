@@ -1,40 +1,42 @@
-import React, { useState, useContext, useMemo, createContext } from "react";
-import { IAddress } from "../models/IAddress";
+import React, { createContext, useMemo, useState } from 'react';
+import { IAddress } from '../models/IAddress';
+import axios from 'axios';
 
 type IProps = {
-    children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 interface AddressesContext {
-    state: {
-        addresses: IAddress[],
-        isLoading: boolean,
-    },
-    setState: () => void,
+  addresses: IAddress[];
+  isLoading: boolean;
+  getAddresses: () => void,
 }
 
-const AddressesInitialData : AddressesContext = {
-    state: {
-        addresses: [],
-        isLoading: false,
-    },
-    setState: () => null,
-}
+const AddressesInitialData: AddressesContext = {
+  addresses: [],
+  isLoading: false,
+  getAddresses: async () => {
+    return await axios.get<IAddress[]>("/api/Address");
+  }
+};
 
-const AddressContext = createContext<AddressesContext>(AddressesInitialData)
+const AddressContext = createContext<AddressesContext>(AddressesInitialData);
 
 export const AddressProvider = (props: IProps) => {
-    const [state, setState] = useState(AddressContext);
-    const contextValue = useMemo(() => {
-        return {
-            state,
-            setState,
-        };
-    }, [state]);
-    
-    return(
-        <AddressContext.Provider value={contextValue}>
+  const [state, setState] = useState<AddressesContext>(AddressesInitialData);
 
-        </AddressContext.Provider>
-    )
-}
+  const contextValue = useMemo(() => {
+    return {
+      state,
+      setState,
+      ...AddressesInitialData,
+    };
+  }, [state]);
+
+
+  return (
+    <AddressContext.Provider value={contextValue}>
+      {props.children}
+    </AddressContext.Provider>
+  );
+};
