@@ -5,20 +5,23 @@ type IProps = {
     children: React.ReactNode
 }
 
-interface IContextValue {
+interface AddressesContext {
     state: {
-        addresses: IAddress[]
+        addresses: IAddress[],
+        isLoading: boolean,
     },
-    setState: (state: IContextValue) => void,
+    setState: () => void,
 }
 
-const AddressContext = createContext<IContextValue>({
+const AddressesInitialData : AddressesContext = {
     state: {
-        addresses: []
+        addresses: [],
+        isLoading: false,
     },
-    setState: () => {},
-})
+    setState: () => null,
+}
 
+const AddressContext = createContext<AddressesContext>(AddressesInitialData)
 
 export const AddressProvider = (props: IProps) => {
     const [state, setState] = useState(AddressContext);
