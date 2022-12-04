@@ -7,29 +7,35 @@ type IProps = {
 };
 
 interface AddressesContext {
-  addresses: IAddress[];
-  isLoading: boolean;
-  getAddresses: () => void,
+    state:{
+        addresses: IAddress[];
+        isLoading: boolean;
+        getAddresses: () => void,
+    }
+    setState: (state: AddressesContext) => void
 }
 
-const AddressesInitialData: AddressesContext = {
-  addresses: [],
-  isLoading: false,
-  getAddresses: async () => {
-    return await axios.get<IAddress[]>("/api/Address");
-  }
+export const AddressesInitialData: AddressesContext = {
+    state: {
+        addresses: [],
+        isLoading: false,
+        getAddresses: async () => {
+          return await axios.get<IAddress[]>("/api/Address");
+        }
+    },
+    setState: (state: AddressesContext) => {}
 };
 
 const AddressContext = createContext<AddressesContext>(AddressesInitialData);
+export default AddressContext;
 
 export const AddressProvider = (props: IProps) => {
-  const [state, setState] = useState<AddressesContext>(AddressesInitialData);
+  const [state, setState] = useState<AddressesContext>(AddressesInitialData.state);
 
   const contextValue = useMemo(() => {
     return {
       state,
-      setState,
-      ...AddressesInitialData,
+      setState
     };
   }, [state]);
 
