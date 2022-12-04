@@ -42,7 +42,22 @@ namespace Kolokwium.Services.ConcreteServices
 
         public bool DeleteAdress(Expression<Func<Address, bool>> filterExpression)
         {
-            throw new NotImplementedException();
+           try
+           {
+                if(filterExpression == null) throw new ArgumentNullException("Filter param is null");
+                var addressEntity = DbContext.Addresses.FirstOrDefault(filterExpression);
+                if(addressEntity != null){
+                    DbContext.Addresses.Remove(addressEntity);
+                    DbContext.SaveChanges();
+                    return true;
+                }
+                else return false;
+           }
+           catch (Exception ex)
+           {
+            Logger.LogError(ex, ex.Message);
+            throw;
+           }
         }
 
         public AddressVm GetAddress(Expression<Func<Address, bool>> filterExpression)

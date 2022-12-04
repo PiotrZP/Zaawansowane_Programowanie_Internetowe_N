@@ -79,7 +79,7 @@ namespace Kolokwium.Web.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{id:int:min(1)}")]
         public IActionResult Delete(int id)
         {
             try

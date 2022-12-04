@@ -6,6 +6,7 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import { AddressProvider } from "./contexts/AddressContext";
+import { ProductProvider } from "./contexts/ProductContext";
 
 const baseUrl = document
   .getElementsByTagName("base")[0]
@@ -15,9 +16,11 @@ const root = createRoot(rootElement);
 
 root.render(
   <BrowserRouter basename={baseUrl}>
-    <AddressProvider>
-      <App />
-    </AddressProvider>
+    <ProductProvider>
+      <AddressProvider>
+        <App />
+      </AddressProvider>
+    </ProductProvider>
   </BrowserRouter>
 );
 // If you want your app to work offline and load faster, you can change

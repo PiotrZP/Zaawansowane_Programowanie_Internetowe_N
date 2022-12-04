@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IAddress } from "../../models/IAddress";
+import { IProduct } from "../../models/IProduct";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -14,24 +14,26 @@ import axios from "axios";
 type IProps = {
   labelName: string;
 };
-export const AddressAddOrEditForm = (props: IProps) => {
+export const ProductAddOrEditForm = (props: IProps) => {
   const navigate = useNavigate();
   const params = useParams();
-  const [state, setState] = useState<IAddress>({
-    addressId: 0,
-    city: "",
-    streetName: "",
-    postCode: "",
-    streetNumber: 0,
+  const [state, setState] = useState<IProduct>({
+    productId: 0,
+    name: "",
+    description: "",
+    weight: 0,
+    quantity: 0,
+    price: 0,
+    imageBytes: [],
   });
   useEffect(() => {
-    const addressId: number | undefined = params["addressId"]
-      ? parseInt(params["addressId"])
+    const productId: number | undefined = params["productId"]
+      ? parseInt(params["productId"])
       : undefined;
-    if (addressId !== undefined) {
+    if (productId !== undefined) {
       const getAddress = async () => {
-        const response = await axios.get<IAddress>(
-          `/api/AddressApiContorller/${addressId}`
+        const response = await axios.get<IProduct>(
+          `/api/ProductApi${productId}`
         );
         if (response.status == 200) setState({ ...response.data });
       };
@@ -44,23 +46,22 @@ export const AddressAddOrEditForm = (props: IProps) => {
   };
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = await axios.post<IAddress>(
-      "/api/AddressApiContorller",
-      state
-    );
+    const response = await axios.post<IProduct>("/api/ProductApi", state);
     if (response.status == 200)
       setState({
-        addressId: 0,
-        city: "",
-        streetName: "",
-        postCode: "",
-        streetNumber: 0,
+        productId: 0,
+        name: "",
+        description: "",
+        weight: 0,
+        quantity: 0,
+        price: 0,
+        imageBytes: [],
       });
-    navigate("/address");
+    navigate("/product");
   };
   const onCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    navigate("/address");
+    navigate("/product");
   };
   return (
     <div className="form-container">
@@ -77,34 +78,41 @@ export const AddressAddOrEditForm = (props: IProps) => {
           <CardHeader title={props.labelName}></CardHeader>
           <CardContent>
             <div>
-              <input type="hidden" value={state.addressId} />
+              <input type="hidden" value={state.productId} />
               <TextField
                 required
                 onChange={onInputTextChange}
-                label="City"
-                name="city"
-                value={state.city}
+                label="Name"
+                name="name"
+                value={state.name}
               />
               <TextField
                 required
                 onChange={onInputTextChange}
-                label="Zip code"
-                name="postCode"
-                value={state.postCode}
+                label="Description"
+                name="description"
+                value={state.description}
               />
               <TextField
                 required
                 onChange={onInputTextChange}
-                label="Street"
-                name="streetName"
-                value={state.streetName}
+                label="Weight"
+                name="weight"
+                value={state.weight}
               />
               <TextField
                 required
                 onChange={onInputTextChange}
-                label="Street Number"
-                name="streetNumber"
-                value={state.streetNumber}
+                label="Quantity"
+                name="quantity"
+                value={state.quantity}
+              />
+              <TextField
+                required
+                onChange={onInputTextChange}
+                label="Price"
+                name="price"
+                value={state.price}
               />
             </div>
             <hr />
