@@ -48,7 +48,7 @@ namespace Kolokwium.Tests.UnitTests
         {
             var newInvoiceVm = new AddOrUpdateInvoiceVm()
             {
-                InvoiceId = 3,
+                Id = 3,
                 TotalPrice = 70,
                 InvoiceDate = new DateTime()
             };
@@ -64,7 +64,7 @@ namespace Kolokwium.Tests.UnitTests
         {
             var updateInvoiceVm = new AddOrUpdateInvoiceVm()
             {
-                InvoiceId = 4,
+                Id = 4,
                 TotalPrice = 80,
                 InvoiceDate = new DateTime()
             };

@@ -19,5 +19,10 @@ namespace Kolokwium.ViewModels.VM
 
         [Required]
         public long TrackingNumber { get; set; }
+        [Required]
+        public int InvoiceId { get; set; }
+
+        [Required]
+        public int CustomerId { get; set; }
     }
 }
