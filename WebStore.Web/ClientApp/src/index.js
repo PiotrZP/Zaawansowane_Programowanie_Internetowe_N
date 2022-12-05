@@ -12,17 +12,21 @@ import { AddressAdd } from './components/Address/AddressAdd';
 import { AddressEdit } from './components/Address/AddressEdit';
 import { AddressDelete } from './components/Address/AddressDelete';
 import { Root } from './components/Root';
+import { Home } from './components/Home';
 
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const rootElement = document.getElementById('root');
 
 const router = createBrowserRouter([
   {
-    path: '/',
     element: <Root/>,
     children: [
       {
         index: true,
+        path: '/',
+        element: <Home/>
+      },
+      {
         path: '/address',
         element: <AddressGrid/>
       },
