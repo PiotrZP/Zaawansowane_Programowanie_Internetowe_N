@@ -17,7 +17,7 @@ export const Header = () => {
         <header>
             <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
             <Container>
-                <NavbarBrand tag={Link} to="/">WebStore.Web</NavbarBrand>
+                <NavbarBrand tag={Link} to="/">Jakub Ociepa - ZPI</NavbarBrand>
                 <NavbarToggler onClick={toggleNavbar} className="mr-2" />
                 <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!state.collapsed} navbar>
                     <ul className="navbar-nav flex-grow">
