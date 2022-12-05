@@ -9,6 +9,10 @@ namespace Kolokwium.Services.Configuration.Profiles
         public MainProfile()
         {
             //AutoMapper maps
+            CreateMap<AddOrUpdateCustomerVm, Customer>();
+            CreateMap<CustomerVm, Customer>();
+            CreateMap<Customer, CustomerVm>();
+
             CreateMap<AddOrUpdateProductVm, Product>();
             CreateMap<ProductVm, Product>();
             CreateMap<Product, ProductVm>();

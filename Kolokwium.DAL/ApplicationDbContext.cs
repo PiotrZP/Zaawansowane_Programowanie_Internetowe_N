@@ -56,5 +56,6 @@ namespace Kolokwium.DAL
         public virtual DbSet<ProductStock> ProductStocks { get; set; } = default!;
         public virtual DbSet<Product> Products { get; set; } = default!;
         public virtual DbSet<StationaryStore> StationaryStores { get; set; } = default!;
+        public virtual DbSet<Customer> Customers { get; set; } = default!;
     }
 }
