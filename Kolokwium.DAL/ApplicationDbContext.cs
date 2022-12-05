@@ -46,6 +46,18 @@ namespace Kolokwium.DAL
             .HasValue<Customer>(1)
             .HasValue<Supplier>(2)
             .HasValue<StationaryStoreEmployee>(3);
+
+            modelBuilder.Entity<Customer>().HasData(
+        new Customer
+        {
+            Id = 1,
+            FirstName = "William",
+            LastName = "Shakespeare",
+            BillingAddresId = 1,
+            ShippingAddressId = 1,
+            RegistrationDate = new DateTime(2010, 1, 1)
+        }
+    );
         }
 
         public virtual DbSet<Address> Addresses { get; set; } = default!;

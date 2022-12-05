@@ -36,6 +36,19 @@ namespace Kolokwium.Tests
             };
             await userManager.CreateAsync(supplier1, "User1234");
 
+            // Customers
+            var customer1 = new Customer()
+            {
+                Id = 1,
+                FirstName = "Jhon",
+                LastName = "Kennedy",
+
+                BillingAddresId = 1,
+                ShippingAddressId = 1,
+                RegistrationDate = new DateTime(2010, 1, 1),
+            };
+            await userManager.CreateAsync(customer1, "User666");
+
             //Categories 
             var category1 = new Category()
             {
@@ -168,7 +181,7 @@ namespace Kolokwium.Tests
                 AgreementNumber = 2222
             };
             await dbContext.AddAsync(s2);
-            // save changes
+
 
             // save changes
             await dbContext.SaveChangesAsync();

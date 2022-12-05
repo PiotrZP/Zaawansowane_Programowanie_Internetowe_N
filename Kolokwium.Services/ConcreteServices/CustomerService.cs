@@ -8,14 +8,21 @@ using Kolokwium.DAL;
 using Kolokwium.Model.Models;
 using Kolokwium.ViewModels.Interfaces;
 using Kolokwium.ViewModels.VM;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace Kolokwium.Services.ConcreteServices
 {
-     public class CustomerService : BaseService, ICustomerService
+    public class CustomerService : BaseService, ICustomerService
     {
+
         public CustomerService(ApplicationDbContext dbContext, IMapper mapper, ILogger logger)
-        : base(dbContext, mapper, logger) { }
+        : base(dbContext, mapper, logger)
+        {
+
+        }
+
         public CustomerVm AddOrUpdateCustomer(AddOrUpdateCustomerVm addOrUpdateCustomerVm)
         {
             try
@@ -73,5 +80,7 @@ namespace Kolokwium.Services.ConcreteServices
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

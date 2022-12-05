@@ -42,29 +42,30 @@ namespace Kolokwium.Services.ConcreteServices
 
         public bool DeleteAdress(Expression<Func<Address, bool>> filterExpression)
         {
-           try
-           {
-                if(filterExpression == null) throw new ArgumentNullException("Filter param is null");
+            try
+            {
+                if (filterExpression == null) throw new ArgumentNullException("Filter param is null");
                 var addressEntity = DbContext.Addresses.FirstOrDefault(filterExpression);
-                if(addressEntity != null){
+                if (addressEntity != null)
+                {
                     DbContext.Addresses.Remove(addressEntity);
                     DbContext.SaveChanges();
                     return true;
                 }
                 else return false;
-           }
-           catch (Exception ex)
-           {
-            Logger.LogError(ex, ex.Message);
-            throw;
-           }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
+            }
         }
 
         public AddressVm GetAddress(Expression<Func<Address, bool>> filterExpression)
         {
             try
             {
-                if(filterExpression == null) throw new ArgumentNullException("Filter param is null");
+                if (filterExpression == null) throw new ArgumentNullException("Filter param is null");
                 var addressEntity = DbContext.Addresses.FirstOrDefault(filterExpression);
                 var addressVm = Mapper.Map<AddressVm>(addressEntity);
                 return addressVm;
@@ -81,7 +82,7 @@ namespace Kolokwium.Services.ConcreteServices
             try
             {
                 var addressQuery = DbContext.Addresses.AsQueryable();
-                if(filterExpression != null) addressQuery = addressQuery.Where(filterExpression);
+                if (filterExpression != null) addressQuery = addressQuery.Where(filterExpression);
                 var addressVm = Mapper.Map<IEnumerable<AddressVm>>(addressQuery);
                 return addressVm;
             }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Kolokwium.DAL;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace Kolokwium.Services.ConcreteServices
@@ -9,12 +10,15 @@ namespace Kolokwium.Services.ConcreteServices
         protected readonly ApplicationDbContext DbContext;
         protected readonly ILogger Logger;
         protected readonly IMapper Mapper;
+
+
         protected BaseService(ApplicationDbContext dbContext,
             IMapper mapper, ILogger logger)
         {
             DbContext = dbContext;
             Logger = logger;
             Mapper = mapper;
+
         }
     }
 }
