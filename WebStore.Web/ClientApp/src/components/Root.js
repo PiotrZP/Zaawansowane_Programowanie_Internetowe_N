@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 import { Container } from 'reactstrap';
+import { AddressGrid } from './Address/AddressGrid';
 import { Header } from './Header';
-import { NavMenu } from './NavMenu';
 
-export const Layout = () => {
+export const Root = (props) => {
     return (
       <div>
         <Header/>
         <Container>
-          {this.props.children}
+          <Outlet/>
         </Container>
       </div>
     );

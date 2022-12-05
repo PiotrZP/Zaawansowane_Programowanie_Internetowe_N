@@ -3,9 +3,10 @@ import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 import { IAddress } from '../../models/IAddress';
 import { Link } from 'react-router-dom';
 import AddressContext from '../../contexts/AddressContext';
+import { FetchData } from '../FetchData';
 
 
-export const AddressGrid = () => {
+export const AddressGrid: React.FC = () => {
 
     const cols: GridColDef[] = [
         { field: 'id', headerName: 'ID', width: 50 },
@@ -47,6 +48,37 @@ export const AddressGrid = () => {
 
     const {state, setState} = useContext(AddressContext);
 
+    useEffect(() => {
+        // const fetchData = async () => {
+        //     let addresses = await state.getAddresses();
+        //     setState({
+        //         ...state,
+        //         addresses: addresses,
+        //         isLoading: false,
+        //     })
+        // }
+        // fetchData();
+    }, [null])
+
+    if(state.isLoading){
+        return(
+            <p>Loading...</p>
+        )
+    }
+    return (
+        <section>
+            <Link style={{ marginBottom: "5px" }} to={'/address/add'} className='btn btn-primary'>Add</Link>
+            <div className="address-grid">
+                <DataGrid
+                    rows={state.addresses}
+                    columns={cols}
+                    pageSize={5}
+                    rowsPerPageOptions={[5]}
+                    checkboxSelection={true}
+                />
+            </div>
+        </section>
+    )
 
 }    
 

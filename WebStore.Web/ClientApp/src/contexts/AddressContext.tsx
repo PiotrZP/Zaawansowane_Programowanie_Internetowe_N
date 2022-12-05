@@ -1,6 +1,6 @@
 import React, { createContext, useMemo, useState } from 'react';
 import { IAddress } from '../models/IAddress';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 type IProps = {
   children: React.ReactNode;
@@ -9,7 +9,9 @@ type IProps = {
 interface Addresses {
     addresses: IAddress[];
     isLoading: boolean;
-    getAddresses: () => void,
+    getAddresses: () => Promise<IAddress[]>,
+    setAddress: (data: IAddress) => Promise<AxiosResponse>,
+    deleteAddress: (id: number) => Promise<AxiosResponse>,
 }
 
 interface IAddressContext {
@@ -21,8 +23,14 @@ const AddressesInitialData: IAddressContext = {
     state: {
         addresses: [],
         isLoading: false,
-        getAddresses: async () => {
-          return await axios.get<IAddress[]>("/api/Address");
+        getAddresses: () => {
+          return axios.get<IAddress[]>("/api/Address").then((res) => res.data);
+        },
+        setAddress: (data) => {
+          return axios.post<IAddress[]>("/api/Address",data);
+        },
+        deleteAddress: (id) => {
+          return axios.delete<AxiosResponse>(`api/Address/${id}`);
         }
     },
     setState: (state: Addresses) => {}
