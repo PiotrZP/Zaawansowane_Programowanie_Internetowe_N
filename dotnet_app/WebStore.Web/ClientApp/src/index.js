@@ -11,9 +11,10 @@ const rootElement = document.getElementById('root');
 
 ReactDOM.render(
   <BrowserRouter basename={baseUrl}>
-    <AddressProvider>
+    {/* <AddressProvider>
       <App />
-    </AddressProvider>
+    </AddressProvider> */}
+    <App />
   </BrowserRouter>,
   rootElement
 );
