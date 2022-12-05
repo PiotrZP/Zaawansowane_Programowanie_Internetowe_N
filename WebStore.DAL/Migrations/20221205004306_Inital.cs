@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebStore.DAL.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Inital : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -77,13 +77,12 @@ namespace WebStore.DAL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StationaryStoreId = table.Column<int>(type: "int", nullable: false),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Street = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    StreetNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BuildingNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ApartmentNumber = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    BuildingNumber = table.Column<int>(type: "int", nullable: false),
+                    ApartmentNumber = table.Column<int>(type: "int", nullable: true),
+                    StationaryStoreId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -92,8 +91,7 @@ namespace WebStore.DAL.Migrations
                         name: "FK_Adresses_StationaryStores_StationaryStoreId",
                         column: x => x.StationaryStoreId,
                         principalTable: "StationaryStores",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -133,8 +131,7 @@ namespace WebStore.DAL.Migrations
                         name: "FK_AspNetUsers_Adresses_BillingAddressId",
                         column: x => x.BillingAddressId,
                         principalTable: "Adresses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_AspNetUsers_Adresses_ShippingAddressId",
                         column: x => x.ShippingAddressId,
@@ -234,19 +231,21 @@ namespace WebStore.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Invoices",
+                name: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TotalAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    CustomerId = table.Column<int>(type: "int", nullable: false)
+                    CustomerId = table.Column<int>(type: "int", nullable: false),
+                    DeliveryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TrackingNumber = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Invoices", x => x.Id);
+                    table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Invoices_AspNetUsers_CustomerId",
+                        name: "FK_Orders_AspNetUsers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -285,50 +284,21 @@ namespace WebStore.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Orders",
+                name: "Invoices",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CustomerId = table.Column<int>(type: "int", nullable: false),
-                    InvoiceId = table.Column<int>(type: "int", nullable: false),
-                    DeliveryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TrackingNumber = table.Column<long>(type: "bigint", nullable: false)
+                    TotalAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    OrderId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.PrimaryKey("PK_Invoices", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Orders_AspNetUsers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Orders_Invoices_InvoiceId",
-                        column: x => x.InvoiceId,
-                        principalTable: "Invoices",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductStocks",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductId = table.Column<int>(type: "int", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductStocks", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ProductStocks_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
+                        name: "FK_Invoices_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -352,6 +322,26 @@ namespace WebStore.DAL.Migrations
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_OrderProducts_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductStocks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductStocks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductStocks_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
@@ -418,9 +408,9 @@ namespace WebStore.DAL.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Invoices_CustomerId",
+                name: "IX_Invoices_OrderId",
                 table: "Invoices",
-                column: "CustomerId");
+                column: "OrderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderProducts_ProductId",
@@ -431,11 +421,6 @@ namespace WebStore.DAL.Migrations
                 name: "IX_Orders_CustomerId",
                 table: "Orders",
                 column: "CustomerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Orders_InvoiceId",
-                table: "Orders",
-                column: "InvoiceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
@@ -471,6 +456,9 @@ namespace WebStore.DAL.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Invoices");
+
+            migrationBuilder.DropTable(
                 name: "OrderProducts");
 
             migrationBuilder.DropTable(
@@ -486,13 +474,10 @@ namespace WebStore.DAL.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Invoices");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Categories");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Adresses");

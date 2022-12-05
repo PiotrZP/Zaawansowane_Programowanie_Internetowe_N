@@ -51,25 +51,6 @@ namespace WebStore.DAL.EF
             .WithMany(po => po.ProductOrders)
             .HasForeignKey(o => o.OrderId)
             .OnDelete(DeleteBehavior.Restrict);
-
-            /*modelBuilder.Entity<Customer>()
-            .HasOne(o => o.BillingAddress)
-            .WithMany(po => po.Customers)
-            .HasForeignKey(o => o.BillingAddressId)
-            .OnDelete(DeleteBehavior.Restrict); */
-
-            /*modelBuilder.Entity<Address>()
-            .HasOne(o => o.Customer)
-            .WithMany(po => po.Addresses)
-            .HasForeignKey(o => o.CustomerId)
-            .OnDelete(DeleteBehavior.Restrict); */
-
-            modelBuilder.Entity<Customer>()
-            .HasOne(o => o.ShippingAddress)
-            .WithMany(po => po.Customers)
-            .HasForeignKey(o => o.ShippingAddressId)
-            .OnDelete(DeleteBehavior.Restrict);
-
         }
     }
 }
