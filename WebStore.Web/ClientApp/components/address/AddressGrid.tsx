@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
-import { IAddress } from '../../models/IAddress';
+import { IAddress } from '../../src/models/IAddress';
 import { Link } from 'react-router-dom';
-import AddressContext from '../../contexts/AddressContext'
+import AddressContext from '../../../ClientApp/src/contexts/AddressContext';
 
 type IState = {
     addresses: IAddress[];
