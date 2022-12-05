@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options; 
 using Microsoft.IdentityModel.Tokens; 
+using WebStore.Model.DataModels;
 using WebStore.ViewModels.VM;
-using WebStore.Model.DataModels; 
 
 namespace WebStore.Web.Controllers;
 public class AccountApiController : BaseApiController

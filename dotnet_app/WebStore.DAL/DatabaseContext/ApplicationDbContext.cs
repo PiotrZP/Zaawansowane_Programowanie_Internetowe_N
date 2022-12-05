@@ -16,6 +16,8 @@ namespace WebStore.DAL.DatabaseContext
         public virtual DbSet<Invoice> Invoices { get; set; } = default!;
         public virtual DbSet<StationaryStore> StationaryStores { get; set; } = default!;
 
+        public virtual DbSet<Customer> Customers { get; set; } = default!;
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

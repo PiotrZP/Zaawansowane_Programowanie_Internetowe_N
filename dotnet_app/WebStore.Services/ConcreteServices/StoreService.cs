@@ -38,40 +38,44 @@ namespace WebStore.Services.ConcreteServices
 
         public StoreVm GetStore(Expression<Func<StationaryStore, bool>> filterExpression)
         {
-            try {
-            if (filterExpression == null)
-                throw new ArgumentNullException ("Filter expression parameter is null");
-            var storeEntity = DbContext.StationaryStores.FirstOrDefault (filterExpression);
-            var storeVm = Mapper.Map<StoreVm> (storeEntity);
-            return storeVm;
-        } catch (Exception ex) {
+            try
             {
-                Logger.LogError (ex, ex.Message);
+                if (filterExpression == null)
+                    throw new ArgumentNullException("Filter expression parameter is null");
+                var storeEntity = DbContext.StationaryStores.FirstOrDefault(filterExpression);
+                var storeVm = Mapper.Map<StoreVm>(storeEntity);
+                return storeVm;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
                 throw;
             }
-        }
         }
 
         public IEnumerable<StoreVm> GetStores(Expression<Func<StationaryStore, bool>>? filterExpression = null)
         {
-            try {
-            var storesQuery = DbContext.StationaryStores.AsQueryable ();
-            if (filterExpression != null)
-                storesQuery = storesQuery.Where (filterExpression);
-            var storeVms = Mapper.Map<IEnumerable<StoreVm>> (storesQuery);
-            return storeVms;
-        } catch (Exception ex) {
-            Logger.LogError (ex, ex.Message);
-            throw;
+            try
+            {
+                var storesQuery = DbContext.StationaryStores.AsQueryable();
+                if (filterExpression != null)
+                    storesQuery = storesQuery.Where(filterExpression);
+                var storeVms = Mapper.Map<IEnumerable<StoreVm>>(storesQuery);
+                return storeVms;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
+            }
         }
-        }
-            bool IStoreService.DeleteStore(Expression<Func<StationaryStore, bool>> filterExpression)
+        bool IStoreService.DeleteStore(Expression<Func<StationaryStore, bool>> filterExpression)
         {
             throw new NotImplementedException();
         }
     }
 }
-    
-    
+
+
 
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebStore.ViewModels.VM {
     public class AddOrUpdateCustomerVm {
+        public int? Id { get; set; } = default!;
         public int? BillingAddressId { get; set; }
         public int ShippingAddressId { get; set; }
         [Required]

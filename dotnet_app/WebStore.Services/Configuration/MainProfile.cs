@@ -8,6 +8,10 @@ namespace WebStore.Services.Configuration{
     {
         public MainProfile()
         {
+            CreateMap<AddOrUpdateCustomerVm, Customer>();
+            CreateMap<CustomerVm, Customer>();
+            CreateMap<Customer, CustomerVm>();
+
             CreateMap<AddOrUpdateProductVm, Product>();
             CreateMap<ProductVm, Product>();
             CreateMap<Product, ProductVm>();
@@ -27,6 +31,7 @@ namespace WebStore.Services.Configuration{
             CreateMap<AddOrUpdateStoreVm, StationaryStore>();
             CreateMap<StoreVm, StationaryStore>();
             CreateMap<StationaryStore, StoreVm>();
+            
             
         }
     }
