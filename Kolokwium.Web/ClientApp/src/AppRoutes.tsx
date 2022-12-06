@@ -7,6 +7,8 @@ import HomeGrid from "./components/home/HomeGrid";
 
 
 import { ProductAdd } from "./components/product/ProductAdd";
+import { ProductDelete } from "./components/product/ProductDelete";
+import { ProductEdit } from "./components/product/ProductEdit";
 import { ProductGrid } from "./components/product/ProductGrid";
 
 const AppRoutes = [
@@ -37,6 +39,14 @@ const AppRoutes = [
   {
     path: "/product/add",
     element: <ProductAdd />,
+  },
+  {
+    path: "/product/edit/:productId",
+    element: <ProductEdit />,
+  },
+  {
+    path: "/product/delete/:productId",
+    element: <ProductDelete />,
   },
 ];
 
