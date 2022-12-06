@@ -24,7 +24,7 @@ export const ProductAddOrEditForm = (props: IProps) => {
     weight: 0,
     quantity: 0,
     price: 0,
-    imageBytes: [],
+    imageBytes: "",
   });
   useEffect(() => {
     const productId: number | undefined = params["productId"]
@@ -55,7 +55,7 @@ export const ProductAddOrEditForm = (props: IProps) => {
         weight: 0,
         quantity: 0,
         price: 0,
-        imageBytes: [],
+        imageBytes: "////gA==",
       });
     navigate("/product");
   };
@@ -137,3 +137,5 @@ export const ProductAddOrEditForm = (props: IProps) => {
     </div>
   );
 };
+
+

@@ -3,15 +3,16 @@ import { AddressAdd } from "./components/address/AddressAdd";
 import { AddressDelete } from "./components/address/AddressDelete";
 import { AddressEdit } from "./components/address/AddressEdit";
 import { AddressGrid } from "./components/address/AddressGrid";
+import HomeGrid from "./components/home/HomeGrid";
 
-import { MuiTest } from "./components/MuiTest";
+
 import { ProductAdd } from "./components/product/ProductAdd";
 import { ProductGrid } from "./components/product/ProductGrid";
 
 const AppRoutes = [
   {
     index: true,
-    element: <ProductGrid />,
+    element: <HomeGrid />,
   },
   {
     path: "/address",

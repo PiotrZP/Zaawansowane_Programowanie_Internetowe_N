@@ -1,9 +1,9 @@
 export interface IProduct {
-  productId: number;
+  productId?: number;
   name: string;
   description: string;
   weight: number;
   quantity: number;
   price: number;
-  imageBytes: [];
+  imageBytes: string;
 }

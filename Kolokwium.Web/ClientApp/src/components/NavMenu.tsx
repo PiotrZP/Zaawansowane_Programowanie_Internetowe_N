@@ -57,8 +57,8 @@ export class NavMenu extends Component<{}, { collapsed: boolean }> {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/mui-test">
-                  MUI Test
+                <NavLink tag={Link} className="text-dark" to="/product">
+                  Product
                 </NavLink>
               </NavItem>
             </ul>
