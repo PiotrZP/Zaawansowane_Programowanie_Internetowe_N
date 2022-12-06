@@ -47,17 +47,121 @@ namespace Kolokwium.DAL
             .HasValue<Supplier>(2)
             .HasValue<StationaryStoreEmployee>(3);
 
+            // Seed data in model
+
+            // add Address
+            modelBuilder.Entity<Address>().HasData(
+                new Address
+                {
+                    AddressId = 1,
+                    StreetName = "test",
+                    StreetNumber = 12,
+                    City = "test",
+                    PostCode = 98300
+                }
+            );
+
+            // add Customer
             modelBuilder.Entity<Customer>().HasData(
-        new Customer
-        {
-            Id = 1,
-            FirstName = "William",
-            LastName = "Shakespeare",
-            BillingAddresId = 1,
-            ShippingAddressId = 1,
-            RegistrationDate = new DateTime(2010, 1, 1)
-        }
-    );
+            new Customer
+            {
+                Id = 1,
+                FirstName = "William",
+                LastName = "Shakespeare",
+                BillingAddresId = 1,
+                ShippingAddressId = 1,
+                RegistrationDate = new DateTime(2010, 1, 1)
+            }
+        );
+            // add Supplier
+            modelBuilder.Entity<Supplier>().HasData(
+             new Supplier
+             {
+                 Id = 2,
+                 FirstName = "Adam",
+                 LastName = "Bednarski",
+                 UserName = "supp1@eg.eg",
+                 Email = "supp1@eg.eg",
+                 RegistrationDate = new DateTime(2010, 1, 1),
+             }
+         );
+
+            // add Category
+            modelBuilder.Entity<Category>().HasData(
+               new Category
+               {
+                   CategoryId = 1,
+                   Name = "Computers",
+                   Tag = "#computer"
+               }
+            );
+
+            // add Product
+            modelBuilder.Entity<Product>().HasData(
+                new Product
+                {
+                    ProductId = 1,
+                    CategoryId = 1,
+                    SupplierId = 1,
+                    Description = "Bardzo praktyczny monitor 32 cale",
+                    ImageBytes = new byte[] { 0xff, 0xff, 0xff, 0x80 },
+                    Name = "Monitor Dell 32",
+                    Price = 1000,
+                    Weight = 20,
+                }
+            );
+
+            // add Invoice
+            modelBuilder.Entity<Invoice>().HasData(
+                new Invoice
+                {
+                    InvoiceId = 1,
+                    TotalPrice = 10,
+                    InvoiceDate = new DateTime()
+                }
+            );
+
+            // add Order
+            modelBuilder.Entity<Order>().HasData(
+                new Order
+                {
+                    OrderId = 1,
+                    DeliveryDate = new DateTime(),
+                    OrderDate = new DateTime(),
+                    TotalAmount = 1987,
+                    TrackingNumber = 1,
+                    InvoiceId = 1,
+                    CustomerId = 1
+                }
+            );
+
+            // add store
+            modelBuilder.Entity<StationaryStore>().HasData(
+                new StationaryStore
+                {
+                    StationaryStoreId = 1,
+                    AgreementNumber = 1
+                }
+            );
+
+            // add StationaryEmployee
+            modelBuilder.Entity<StationaryStoreEmployee>().HasData(
+                new StationaryStoreEmployee
+                {
+                    Id = 3,
+                    FirstName = "William",
+                    LastName = "Shakespeare",
+                    RegistrationDate = new DateTime(2010, 1, 1),
+                    AgreementNumber = 1,
+                    EmploymeentDate = new DateTime(2010, 1, 1),
+                    Position = "Menago",
+                    Salary = 100,
+                    StationaryStoreId = 1
+
+                }
+            );
+
+
         }
 
         public virtual DbSet<Address> Addresses { get; set; } = default!;

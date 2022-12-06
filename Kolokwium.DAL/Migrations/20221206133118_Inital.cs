@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Kolokwium.DAL.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Inital : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -358,6 +358,51 @@ namespace Kolokwium.DAL.Migrations
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Addresses",
+                columns: new[] { "AddressId", "City", "CustomerId", "PostCode", "StreetName", "StreetNumber" },
+                values: new object[] { 1, "test", null, 98300, "test", 12 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RegistrationDate", "SecurityStamp", "TwoFactorEnabled", "UserName", "UserType" },
+                values: new object[] { 2, 0, "080a2a6e-c114-4341-88a6-302d6b5658a7", "supp1@eg.eg", false, "Adam", "Bednarski", false, null, null, null, null, null, false, new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, "supp1@eg.eg", 2 });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "Name", "Tag" },
+                values: new object[] { 1, "Computers", "#computer" });
+
+            migrationBuilder.InsertData(
+                table: "Invoices",
+                columns: new[] { "InvoiceId", "InvoiceDate", "TotalPrice" },
+                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 10m });
+
+            migrationBuilder.InsertData(
+                table: "StationaryStores",
+                columns: new[] { "StationaryStoreId", "AdressAddressId", "AgreementNumber" },
+                values: new object[] { 1, null, 1 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "BillingAddresId", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RegistrationDate", "SecurityStamp", "ShippingAddressId", "TwoFactorEnabled", "UserName", "UserType" },
+                values: new object[] { 1, 0, 1, "bad77f9e-1609-4ed9-bd9d-47c609e49cea", null, false, "William", "Shakespeare", false, null, null, null, null, null, false, new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, false, null, 1 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "AgreementNumber", "ConcurrencyStamp", "Email", "EmailConfirmed", "EmploymeentDate", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Position", "RegistrationDate", "Salary", "SecurityStamp", "StationaryStoreId", "TwoFactorEnabled", "UserName", "UserType" },
+                values: new object[] { 3, 0, 1, "792a89ad-4f39-44af-a365-3fdf30e7f44e", null, false, new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "William", "Shakespeare", false, null, null, null, null, null, false, "Menago", new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 100m, null, 1, false, null, 3 });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ProductId", "CategoryId", "Description", "ImageBytes", "Name", "Price", "SupplierId", "Weight" },
+                values: new object[] { 1, 1, "Bardzo praktyczny monitor 32 cale", new byte[] { 255, 255, 255, 128 }, "Monitor Dell 32", 1000m, 1, 20f });
+
+            migrationBuilder.InsertData(
+                table: "Orders",
+                columns: new[] { "OrderId", "CustomerId", "DeliveryDate", "InvoiceId", "OrderDate", "StationaryStoreId", "TotalAmount", "TrackingNumber" },
+                values: new object[] { 1, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1987m, 1L });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_CustomerId",

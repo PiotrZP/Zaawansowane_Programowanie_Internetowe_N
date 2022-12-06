@@ -10,8 +10,7 @@ namespace Kolokwium.ViewModels.VM
     {
         public int? Id { get; set; }
         [Required]
-        public int AddressId { get; set; }
-        [Required]
-        public long AgreementNumber { get; set; } = default!;
+        public int AgreementNumber { get; set; } = default!;
+
     }
 }

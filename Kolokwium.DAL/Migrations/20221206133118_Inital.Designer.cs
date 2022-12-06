@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kolokwium.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221205165239_Initial")]
-    partial class Initial
+    [Migration("20221206133118_Inital")]
+    partial class Inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,6 +54,16 @@ namespace Kolokwium.DAL.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Addresses");
+
+                    b.HasData(
+                        new
+                        {
+                            AddressId = 1,
+                            City = "test",
+                            PostCode = 98300,
+                            StreetName = "test",
+                            StreetNumber = 12
+                        });
                 });
 
             modelBuilder.Entity("Kolokwium.Model.Models.Category", b =>
@@ -75,6 +85,14 @@ namespace Kolokwium.DAL.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            Name = "Computers",
+                            Tag = "#computer"
+                        });
                 });
 
             modelBuilder.Entity("Kolokwium.Model.Models.Invoice", b =>
@@ -94,6 +112,14 @@ namespace Kolokwium.DAL.Migrations
                     b.HasKey("InvoiceId");
 
                     b.ToTable("Invoices");
+
+                    b.HasData(
+                        new
+                        {
+                            InvoiceId = 1,
+                            InvoiceDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TotalPrice = 10m
+                        });
                 });
 
             modelBuilder.Entity("Kolokwium.Model.Models.Order", b =>
@@ -134,6 +160,18 @@ namespace Kolokwium.DAL.Migrations
                     b.HasIndex("StationaryStoreId");
 
                     b.ToTable("Orders");
+
+                    b.HasData(
+                        new
+                        {
+                            OrderId = 1,
+                            CustomerId = 1,
+                            DeliveryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            InvoiceId = 1,
+                            OrderDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TotalAmount = 1987m,
+                            TrackingNumber = 1L
+                        });
                 });
 
             modelBuilder.Entity("Kolokwium.Model.Models.OrderProduct", b =>
@@ -193,6 +231,19 @@ namespace Kolokwium.DAL.Migrations
                     b.HasIndex("SupplierId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            CategoryId = 1,
+                            Description = "Bardzo praktyczny monitor 32 cale",
+                            ImageBytes = new byte[] { 255, 255, 255, 128 },
+                            Name = "Monitor Dell 32",
+                            Price = 1000m,
+                            SupplierId = 1,
+                            Weight = 20f
+                        });
                 });
 
             modelBuilder.Entity("Kolokwium.Model.Models.ProductStock", b =>
@@ -235,6 +286,13 @@ namespace Kolokwium.DAL.Migrations
                     b.HasIndex("AdressAddressId");
 
                     b.ToTable("StationaryStores");
+
+                    b.HasData(
+                        new
+                        {
+                            StationaryStoreId = 1,
+                            AgreementNumber = 1
+                        });
                 });
 
             modelBuilder.Entity("Kolokwium.Model.Models.User", b =>
@@ -469,6 +527,23 @@ namespace Kolokwium.DAL.Migrations
                     b.HasIndex("ShippingAddressId");
 
                     b.HasDiscriminator().HasValue(1);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "bad77f9e-1609-4ed9-bd9d-47c609e49cea",
+                            EmailConfirmed = false,
+                            FirstName = "William",
+                            LastName = "Shakespeare",
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            RegistrationDate = new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TwoFactorEnabled = false,
+                            BillingAddresId = 1,
+                            ShippingAddressId = 1
+                        });
                 });
 
             modelBuilder.Entity("Kolokwium.Model.Models.StationaryStoreEmployee", b =>
@@ -494,6 +569,26 @@ namespace Kolokwium.DAL.Migrations
                     b.HasIndex("StationaryStoreId");
 
                     b.HasDiscriminator().HasValue(3);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 3,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "792a89ad-4f39-44af-a365-3fdf30e7f44e",
+                            EmailConfirmed = false,
+                            FirstName = "William",
+                            LastName = "Shakespeare",
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            RegistrationDate = new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TwoFactorEnabled = false,
+                            AgreementNumber = 1,
+                            EmploymeentDate = new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Position = "Menago",
+                            Salary = 100m,
+                            StationaryStoreId = 1
+                        });
                 });
 
             modelBuilder.Entity("Kolokwium.Model.Models.Supplier", b =>
@@ -501,6 +596,23 @@ namespace Kolokwium.DAL.Migrations
                     b.HasBaseType("Kolokwium.Model.Models.User");
 
                     b.HasDiscriminator().HasValue(2);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "080a2a6e-c114-4341-88a6-302d6b5658a7",
+                            Email = "supp1@eg.eg",
+                            EmailConfirmed = false,
+                            FirstName = "Adam",
+                            LastName = "Bednarski",
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            RegistrationDate = new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TwoFactorEnabled = false,
+                            UserName = "supp1@eg.eg"
+                        });
                 });
 
             modelBuilder.Entity("Kolokwium.Model.Models.Address", b =>
