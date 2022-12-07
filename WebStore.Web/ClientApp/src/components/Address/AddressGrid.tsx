@@ -3,29 +3,17 @@ import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 import { IAddress } from '../../models/IAddress';
 import { Link } from 'react-router-dom';
 import AddressContext from '../../contexts/AddressContext';
-import { FetchData } from '../FetchData';
-
+import { Backdrop, CircularProgress } from '@mui/material';
+import { Col, Row } from 'reactstrap';
 
 export const AddressGrid: React.FC = () => {
 
     const cols: GridColDef[] = [
         { field: 'id', headerName: 'ID', width: 50 },
-        { field: 'city', headerName: 'City', width: 130 },
-        { field: 'zipCode', headerName: 'ZipCode', width: 130 },
-        { field: 'street', headerName: 'Street', width: 150 },
-        { field: 'country', headerName: 'Country', width: 150 },
-        {
-            field: 'buildingNumber',
-            headerName: 'Building Number',
-            type: 'number',
-            width: 130
-        },
-        {
-            field: 'apartmentNumber',
-            headerName: 'Apartment number',
-            type: 'number',
-            width: 150,
-        },
+        { field: 'city', headerName: 'City', width: 250 },
+        { field: 'postCode', headerName: 'Post code', width: 130 },
+        { field: 'StreetName', headerName: 'Street Name', width: 250 },
+        { field: 'StreetNumber', headerName: 'Street Number', width: 250 },
         {
             field: "edit",
             headerName: "Edit",
@@ -47,38 +35,45 @@ export const AddressGrid: React.FC = () => {
     ];
 
     const {state, setState} = useContext(AddressContext);
-
+    
     useEffect(() => {
-        // const fetchData = async () => {
-        //     let addresses = await state.getAddresses();
-        //     setState({
-        //         ...state,
-        //         addresses: addresses,
-        //         isLoading: false,
-        //     })
-        // }
-        // fetchData();
+        state.getAddresses().then((res)=>{
+            setState({
+                ...state,
+                addresses: res,
+                isLoading: false,
+            })
+        })
     }, [null])
-
+    
     if(state.isLoading){
         return(
-            <p>Loading...</p>
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={true}
+            >
+                <CircularProgress color='inherit'/>
+            </Backdrop>
+        )
+    }else{
+        return (
+            <Row>
+                <Col>
+                    <Link style={{ marginBottom: "5px" }} to={'/address/add'} className='btn btn-primary'>Add</Link>
+                    <div className="address-grid">
+                        <DataGrid
+                            rows={state.addresses}
+                            columns={cols}
+                            pageSize={5}
+                            rowsPerPageOptions={[5]}
+                            checkboxSelection={true}
+                            autoHeight
+                        />
+                    </div>
+                </Col>
+            </Row>
         )
     }
-    return (
-        <section>
-            <Link style={{ marginBottom: "5px" }} to={'/address/add'} className='btn btn-primary'>Add</Link>
-            <div className="address-grid">
-                <DataGrid
-                    rows={state.addresses}
-                    columns={cols}
-                    pageSize={5}
-                    rowsPerPageOptions={[5]}
-                    checkboxSelection={true}
-                />
-            </div>
-        </section>
-    )
 
 }    
 

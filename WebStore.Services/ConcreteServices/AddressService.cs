@@ -48,6 +48,20 @@ public class AddressService : BaseService, IAddressService
         }
     }
 
+    public IEnumerable<AddressVm> GetAddresses(Expression<Func<Address, bool>>? filterExpression = null)
+    {
+        try {
+            var addressQuery = DbContext.Addresses.AsQueryable ();
+            if (filterExpression != null)
+                addressQuery = addressQuery.Where (filterExpression);
+            var addressVms = Mapper.Map<IEnumerable<AddressVm>> (addressQuery);
+            return addressVms;
+        } catch (Exception ex) {
+            Logger.LogError (ex, ex.Message);
+            throw;
+        }
+    }
+
     public async Task DeleteAddress(Expression<Func<Address, bool>> filterExpression)
     {
         try {

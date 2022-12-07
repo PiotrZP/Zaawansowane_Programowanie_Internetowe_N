@@ -10,6 +10,7 @@ interface Addresses {
     addresses: IAddress[];
     isLoading: boolean;
     getAddresses: () => Promise<IAddress[]>,
+    getAddressById: (id: number) => Promise<IAddress>,
     setAddress: (data: IAddress) => Promise<AxiosResponse>,
     deleteAddress: (id: number) => Promise<AxiosResponse>,
 }
@@ -22,15 +23,18 @@ interface IAddressContext {
 const AddressesInitialData: IAddressContext = {
     state: {
         addresses: [],
-        isLoading: false,
+        isLoading: true,
         getAddresses: () => {
-          return axios.get<IAddress[]>("/api/Address").then((res) => res.data);
+          return axios.get<IAddress[]>("/api/AddressApi").then((res) => res.data);
         },
         setAddress: (data) => {
-          return axios.post<IAddress[]>("/api/Address",data);
+          return axios.post<IAddress[]>("/api/AddressApi",data);
         },
         deleteAddress: (id) => {
-          return axios.delete<AxiosResponse>(`api/Address/${id}`);
+          return axios.delete<AxiosResponse>(`api/AddressApi/${id}`);
+        },
+        getAddressById: (id) => {
+          return axios.get<IAddress>("/api/AddressApi/"+id).then((res) => res.data);
         }
     },
     setState: (state: Addresses) => {}
@@ -52,7 +56,7 @@ export const AddressProvider = (props: IProps) => {
 
 
   return (
-    <AddressContext.Provider value={{state,setState}}>
+    <AddressContext.Provider value={contextValue}>
       {props.children}
     </AddressContext.Provider>
   );

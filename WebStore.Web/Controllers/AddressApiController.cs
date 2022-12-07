@@ -11,6 +11,18 @@ public class AddressApiController : BaseApiController {
         _addressService = addressService;
     }
 
+    [HttpGet]
+    public IActionResult Get(){
+        try{
+            var address = _addressService.GetAddresses();
+            return Ok(address);
+        }catch(Exception ex){
+            Logger.LogError(ex, ex.Message);
+            return StatusCode(500, "Error occured");
+        }
+    }
+
+
     [HttpGet("{id:int:min(1)}")]
     public IActionResult Get(int id){
         try{

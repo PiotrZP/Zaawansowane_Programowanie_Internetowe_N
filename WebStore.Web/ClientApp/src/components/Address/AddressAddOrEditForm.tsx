@@ -37,8 +37,8 @@ export const AddressAddOrEditForm = (props: IProps) => {
         buildingNumber: 0,
         city: "",
         country: "",
-        street: "",
-        zipCode: "",
+        streetName: "",
+        postCode: "",
         appartmentNumber: 0
     });
     const {state, setState} = useContext(AddressContext);
@@ -47,12 +47,12 @@ export const AddressAddOrEditForm = (props: IProps) => {
         const id: number | undefined = params["id"] ? parseInt(params["id"]) : undefined;
         if (id !== undefined) {
             const fetchData = async () => {
-                let addresses = await state.getAddresses();
+                let fetchedAddress = await state.getAddressById(id);
                 setState({
                     ...state,
-                    addresses: addresses,
                     isLoading: false,
                 })
+                setAddress(fetchedAddress)
             }
             fetchData();
         }
@@ -72,8 +72,8 @@ export const AddressAddOrEditForm = (props: IProps) => {
                 buildingNumber: 0,
                 city: "",
                 country: "",
-                street: "",
-                zipCode: "",
+                streetName: "",
+                postCode: "",
                 appartmentNumber: 0
             });
             navigate("/address");
@@ -110,15 +110,15 @@ export const AddressAddOrEditForm = (props: IProps) => {
                                 required
                                 onChange={onInputTextChange}
                                 label="Zip code"
-                                name="zipCode"
-                                value={address.zipCode}
+                                name="postCode"
+                                value={address.postCode}
                             />
                             <TextField
                                 required
                                 onChange={onInputTextChange}
                                 label="Street"
-                                name="street"
-                                value={address.street}
+                                name="streetName"
+                                value={address.streetName}
                             />
                             <TextField
                                 required

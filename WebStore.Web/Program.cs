@@ -12,6 +12,8 @@ using System.Text;
 using WebStore.ViewModels.VM;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 builder.Services.AddAutoMapper(typeof(MainProfile));
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")

@@ -1,9 +1,9 @@
 export interface IAddress {
     id?: number
     city: string
-    zipCode: string
+    postCode: string
     buildingNumber: number
-    street: string
+    streetName: string
     appartmentNumber?: number
     country: string
 }
