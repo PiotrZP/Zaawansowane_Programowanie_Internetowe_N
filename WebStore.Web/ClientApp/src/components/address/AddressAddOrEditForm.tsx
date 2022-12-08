@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { IAddress } from '../../../ClientApp/src/models/IAddress';
+import { IAddress } from '../../models/IAddress';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';

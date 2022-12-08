@@ -4,7 +4,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import { CardHeader } from '@mui/material';
 import Button from '@mui/material/Button';
-import AddressContext from '../../../ClientApp/src/contexts/AddressContext';
+import AddressContext from '../../contexts/AddressContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
