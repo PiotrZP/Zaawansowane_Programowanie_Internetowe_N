@@ -1,0 +1,28 @@
+/* Define the styles for the PhotoGallery component */
+.photo-gallery {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Define the styles for the Photo component */
+  .photo {
+    width: 50%;
+    text-align: center;
+  }
+  
+  .photo img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid black;
+  }
+  
+  /* Define the styles for the Thumbnail component */
+  .thumbnail {
+    cursor: pointer;
+  }
+  
+  .thumbnail img {
+    max-width: 100%;
+    height: auto;
+  }
+  

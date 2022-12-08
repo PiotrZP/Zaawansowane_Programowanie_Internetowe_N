@@ -1,17 +1,18 @@
 import "./App.css";
-import GalleryComponent from "./components/GalleryComponent";
 
-const images: string[] = [
-  "../..//assets/File_1.jpg",
-  "../..//assets/File_2.jpg",
-  "../..//assets/File_3.jpg",
-  "../..//assets/File_4.jpg",
+import PhotoGallery from "./components/PhotoGallery/PhotoGallery";
+
+
+const photos = [
+  { src: '../..//assets/File_1.jpg', color: 'red' },
+  { src: '../..//assets/File_2.jpg', color: 'green' },
+  { src: '../..//assets/File_3.jpg', color: 'blue' },
 ];
 
 function App() {
   return (
     <div className="App">
-      <GalleryComponent images={images} />
+       <PhotoGallery photos={photos} />
     </div>
   );
 }
