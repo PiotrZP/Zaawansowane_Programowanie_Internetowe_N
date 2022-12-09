@@ -5,32 +5,26 @@ using WebStore.ViewModels.VM;
 namespace WebStore.Services.Configuration;
 public class AutoMapperProfile : Profile
 {
-    public AutoMapperProfile()
-    {
-        CreateMap<CategoryVm, Category>();
-        CreateMap<InvoiceVm, Invoice>();
-        CreateMap<OrderVm, Order>();
-        CreateMap<ProductStockVm, ProductStock>();
-        CreateMap<ProductVm, Product>();
-        CreateMap<ShippingAddressVm, ShippingAddress>();
-        CreateMap<SupplierVm, Supplier>();
-        CreateMap<Category, CategoryVm>();
-        CreateMap<Customer, CustomerVm>();
-        CreateMap<Invoice, InvoiceVm>();
+  public AutoMapperProfile()
+  {
+    CreateMap<AddOrUpdateProductVm, Product>();
+    CreateMap<ProductVm, Product>();
+    CreateMap<Product, ProductVm>();
 
-        CreateMap<Order, OrderVm>()
-            .ForMember(dest => dest.Products, x => x
-            .MapFrom(src => src.OrderProducts
-            .Select(y => y.Product != null ? y.Product : null)));
+    CreateMap<AddOrUpdateOrderVm, Order>();
+    CreateMap<OrderVm, Order>();
+    CreateMap<Order, OrderVm>();
 
-        CreateMap<ProductStock, ProductStockVm>();
-        CreateMap<Product, ProductVm>()
-            .ForMember(dest => dest.Orders, x => x
-            .MapFrom(src => src.OrderProducts
-            .Select(y => y.Order != null ? y.Order : null)));
+    CreateMap<AddOrUpdateStationaryStoreVm, StationaryStore>();
+    CreateMap<StationaryStoreVm, StationaryStore>();
+    CreateMap<StationaryStore, StationaryStoreVm>();
 
-        CreateMap<Product, AddOrUpdateProductVm>();
-        CreateMap<AddOrUpdateProductVm, Product>();
-        CreateMap<ShippingAddress, ShippingAddressVm>();
-    }
+    CreateMap<AddOrUpdateInvoiceVm, Invoice>();
+    CreateMap<InvoiceVm, Invoice>();
+    CreateMap<Invoice, InvoiceVm>();
+
+    CreateMap<AddOrUpdateAddressVm, Address>();
+    CreateMap<AddressVm, Address>();
+    CreateMap<Address, AddressVm>();
+  }
 }

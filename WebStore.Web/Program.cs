@@ -13,16 +13,16 @@ using WebStore.ViewModels.VM;
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
-builder.Services.AddDbContext<WSDbContext>(options => 
+builder.Services.AddDbContext<WSDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.Configure<JwtOptionsVm>(options =>builder.Configuration.GetSection("JwtOptions").Bind(options));
+builder.Services.Configure<JwtOptionsVm>(options => builder.Configuration.GetSection("JwtOptions").Bind(options));
 builder.Services.AddIdentity<User, IdentityRole<int>>(o =>
 {
-    o.Password.RequireDigit = false;
-    o.Password.RequireUppercase = false;
-    o.Password.RequireLowercase = false;
-    o.Password.RequireNonAlphanumeric = false;
-    o.User.RequireUniqueEmail = false;
+  o.Password.RequireDigit = false;
+  o.Password.RequireUppercase = false;
+  o.Password.RequireLowercase = false;
+  o.Password.RequireNonAlphanumeric = false;
+  o.User.RequireUniqueEmail = false;
 }).AddRoleManager<RoleManager<IdentityRole<int>>>()
     .AddUserManager<UserManager<User>>()
     .AddEntityFrameworkStores<WSDbContext>()
@@ -30,29 +30,33 @@ builder.Services.AddIdentity<User, IdentityRole<int>>(o =>
 builder.Services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
 builder.Services.AddTransient(typeof(ILogger), typeof(Logger<Program>));
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IAddressService, AddressService>();
+builder.Services.AddScoped<IInvoiceService, InvoiceService>();
+builder.Services.AddScoped<IStoreService, StoreService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 //builder.Services.AddScoped<IAddressService, AddressService>();
 builder.Services.AddAuthentication(options =>
     {
-        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+      options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+      options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
     })
 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
 {
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateAudience = false,
-        ValidateIssuer = false,
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new
-    SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtOptions:SecretKey"])),
-        ValidateLifetime = true,
-        ClockSkew = TimeSpan.FromMinutes(5)
-    };
+  options.TokenValidationParameters = new TokenValidationParameters
+  {
+    ValidateAudience = false,
+    ValidateIssuer = false,
+    ValidateIssuerSigningKey = true,
+    IssuerSigningKey = new
+  SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtOptions:SecretKey"])),
+    ValidateLifetime = true,
+    ClockSkew = TimeSpan.FromMinutes(5)
+  };
 });
 builder.Services.AddControllersWithViews().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebStore API", Version = "v1" });
+  c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebStore API", Version = "v1" });
 });
 var app = builder.Build();
 app.UseSwagger();
@@ -60,8 +64,8 @@ app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebStore AP
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
-    app.UseHsts();
+  app.UseDeveloperExceptionPage();
+  app.UseHsts();
 }
 app.UseHttpsRedirection();
 app.UseStaticFiles();

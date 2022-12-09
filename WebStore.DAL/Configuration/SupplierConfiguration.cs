@@ -13,3 +13,4 @@ public class SupplierConfiguration : IEntityTypeConfiguration<Supplier>
             .OnDelete(DeleteBehavior.Restrict);
     }
 }
+

@@ -22,3 +22,4 @@ public class OrderProductConfiguration : IEntityTypeConfiguration<OrderProduct>
             .OnDelete(DeleteBehavior.Cascade);
     }
 }
+

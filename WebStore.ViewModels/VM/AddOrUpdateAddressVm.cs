@@ -5,17 +5,15 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 namespace WebStore.ViewModels.VM
 {
-    public class AddOrUpdateAddressVm
-    {
-        public int? Id { get; set; }
-        [Required]
-        public string StreetName { get; set; } = default!;
-        [Required]
-        public int StreetNumber { get; set; } 
-        [Required]
-        public string City { get; set; } = default!;
-        [Required]
-        public string PostCode { get; set; } = default!;
+  public class AddOrUpdateAddressVm
+  {
+    public int? Id { get; set; }
+    public int? StationaryStoreId { get; set; }
+    public int? CustomerId { get; set; }
+    public string City { get; set; } = default!;
+    public string StreetName { get; set; } = default!;
+    public int StreetNumber { get; set; } = default!;
+    public string PostCode { get; set; } = default!;
+  }
 
-    }
 }

@@ -11,9 +11,7 @@ namespace WebStore.Services.ConcreteServices
     public class InvoiceService : BaseService, IInvoiceService
     {
         public InvoiceService(WSDbContext dbContext, IMapper mapper, ILogger logger) : base(dbContext, mapper, logger) { }
-
-
-        public InvoiceVm AddorUpdateInvoice(AddOrUpdateInvoiceVm addOrUpdateInvoiceVm)
+        public InvoiceVm AddOrUpdateInvoice(AddOrUpdateInvoiceVm addOrUpdateInvoiceVm)
         {
             try
             {

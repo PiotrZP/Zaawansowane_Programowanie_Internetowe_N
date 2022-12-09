@@ -1,7 +1,8 @@
 namespace WebStore.ViewModels.VM;
 public class CustomerVm : UserVm
 {
-    public IList<BillingAddressVm> BillingAddresses { get; set; } = default!;
-    public IList<ShippingAddressVm> ShippingAddresses { get; set; } = default!;
+    public AddressVm ShippingAddresses { get; set; } = default!;
+    public AddressVm BillingAddress { get; set; } = default!;
+    public IList<AddressVm> Addresses { get; set; } = default!;
     public IList<OrderVm> Orders { get; set; } = default!;
 }

@@ -2,7 +2,6 @@ namespace WebStore.ViewModels.VM;
 public class ProductVm
 {
     public int Id { get; set; }
-    public IList<OrderVm> Orders { get; set; } = default!;
     public string Description { get; set; } = default!;
     public byte[] ImageBytes { get; set; } = default!;
     public string Name { get; set; } = default!;
@@ -12,5 +11,5 @@ public class ProductVm
     public int? SupplierId { get; set; }
     public CategoryVm Category { get; set; } = default!;
     public IList<ProductStockVm> ProductStocks { get; set; } = default!;
-    
+    public IList<OrderVm> Orders { get; set; } = default!;
 }

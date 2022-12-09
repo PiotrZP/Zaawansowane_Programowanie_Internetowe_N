@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using WebStore.DAL.DatabaseContext;
@@ -59,6 +60,88 @@ namespace WebStore.Tests
                 Weight = 0.5f,
             };
             await dbContext.AddAsync(p2);
+            
+            var a1 = new Address()
+            {
+               Id = 1,
+               StationaryStoreId = 1,
+               City = "Bialystok",
+               PostCode = "97-500",
+               StreetName = "Szkolna",
+               StreetNumber = 17
+            };
+            await dbContext.AddAsync(a1);
+            var a2 = new Address()
+            {
+               Id = 2,
+               StationaryStoreId = 12,
+               City = "Bialystok",
+               PostCode = "97-500",
+               StreetName = "Szkolna",
+               StreetNumber = 17
+            };
+            await dbContext.AddAsync(a2);
+            var i1 = new Invoice()
+            {
+                Id = 1,
+                TotalPrice = 100,
+                Date = new DateTime(2022, 11, 11),
+                StationaryStoreId = 1
+            };
+            await dbContext.AddAsync(i1);
+             var i2 = new Invoice()
+            {
+                Id = 2,
+                TotalPrice = 1000,
+                Date = new DateTime(2022, 11, 11),
+                StationaryStoreId = 1
+            };
+            await dbContext.AddAsync(i2);
+            var o1 = new Order()
+            {
+                Id = 1,
+                TotalAmount = 1000,
+                TrackingNumber = 123456789,
+                DeliveryDate = new DateTime(2022, 11, 11),
+                OrderDate = new DateTime(2022, 11, 11),
+                StationaryStoreId = 1,
+                CustomerId = 2,
+                Invoiceid = 1, 
+
+            };
+            await dbContext.AddAsync(o1);
+            var o2 = new Order()
+            {
+                Id = 2,
+                TotalAmount = 10000,
+                TrackingNumber = 123456789,
+                DeliveryDate = new DateTime(2022, 11, 11),
+                OrderDate = new DateTime(2022, 11, 11),
+                StationaryStoreId = 1,
+                CustomerId = 2,
+                Invoiceid = 1, 
+
+            };
+            await dbContext.AddAsync(o2);
+            var c1 = new Customer()
+            {
+                FirstName = "Bartosz",
+                LastName = "Walaszek",
+                RegistrationDate = new DateTime(2022, 11, 11),
+            };
+            await dbContext.AddAsync(c1);
+            var store1 = new StationaryStore()
+            {
+                Id = 1,
+                Name = "XYZ",
+            };
+            await dbContext.AddAsync(store1);
+            var store2 = new StationaryStore()
+            {
+                Id = 2,
+                Name = "ABC",
+            };
+            await dbContext.AddAsync(store2);
             // save changes
             await dbContext.SaveChangesAsync();
         }

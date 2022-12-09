@@ -19,7 +19,7 @@ public class StoreApiController : BaseApiController
         { 
             try 
             { 
-                var stores = _storeService.GetStores(); 
+                var stores = _storeService.GetStationaryStores(); 
                 return Ok(stores); 
             } 
             catch (Exception ex) 
@@ -33,7 +33,7 @@ public class StoreApiController : BaseApiController
         { 
             try
             { 
-                var store = _storeService.GetStore(s => s.Id == id); 
+                var store = _storeService.GetStationaryStores(s => s.Id == id); 
                 return Ok(store); 
             } 
             catch (Exception ex) 
@@ -43,21 +43,21 @@ public class StoreApiController : BaseApiController
             } 
         } 
         [HttpPut] 
-        public IActionResult Put([FromBody] AddOrUpdateStoreVm addOrUpdateStoreVm) 
+        public IActionResult Put([FromBody] AddOrUpdateStationaryStoreVm addOrUpdateStationaryStoreVm) 
         { 
-            return PostOrPutHelper(addOrUpdateStoreVm); 
+            return PostOrPutHelper(addOrUpdateStationaryStoreVm); 
         } 
         [HttpPost] 
-        public IActionResult Post([FromBody] AddOrUpdateStoreVm addOrUpdateStoreVm) 
+        public IActionResult Post([FromBody] AddOrUpdateStationaryStoreVm addOrUpdateStationaryStoreVm) 
         { 
-            return PostOrPutHelper(addOrUpdateStoreVm); 
+            return PostOrPutHelper(addOrUpdateStationaryStoreVm); 
         } 
         [HttpDelete("{id:int:min(1)}")] 
         public IActionResult Delete(int id) 
         { 
             try 
             { 
-                var result = _storeService.DeleteStore(s => s.Id == id); 
+                var result = _storeService.DeleteStationaryStore(s => s.Id == id); 
                 return Ok(result); 
             } 
             catch (Exception ex) 
@@ -66,13 +66,13 @@ public class StoreApiController : BaseApiController
                 return StatusCode(500, "Error occured"); 
             } 
         } 
-        private IActionResult PostOrPutHelper(AddOrUpdateStoreVm addOrUpdateStoreVm) 
+        private IActionResult PostOrPutHelper(AddOrUpdateStationaryStoreVm addOrUpdateStationaryStoreVm) 
         { 
             try 
             { 
                 if (!ModelState.IsValid) 
                     return BadRequest(ModelState); 
-                return Ok(_storeService.AddOrUpdateStore(addOrUpdateStoreVm)); 
+                return Ok(_storeService.AddOrUpdateStationaryStore(addOrUpdateStationaryStoreVm)); 
             } 
             catch (Exception ex) 
             { 
