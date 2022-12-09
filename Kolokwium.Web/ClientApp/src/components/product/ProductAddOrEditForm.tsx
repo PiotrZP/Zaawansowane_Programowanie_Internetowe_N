@@ -11,6 +11,9 @@ import CardContent from "@mui/material/CardContent";
 import { CardHeader } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+
+// for now hardcode imageBytes
+// when 200 will pass hardCoded values
 type IProps = {
   labelName: string;
 };
@@ -24,7 +27,9 @@ export const ProductAddOrEditForm = (props: IProps) => {
     weight: 0,
     quantity: 0,
     price: 0,
-    imageBytes: "",
+    imageBytes: "iVBORw0KGgouJSUlIxBUFIBgQABg4PFC4iIyEjKDE1Nzg5QUFBQUFBRUdJWVlaWl",
+    supplierId:1,
+    categoryId: 1
   });
   useEffect(() => {
     const id: number | undefined = params["id"]
@@ -55,7 +60,9 @@ export const ProductAddOrEditForm = (props: IProps) => {
         weight: 0,
         quantity: 0,
         price: 0,
-        imageBytes: "////gA==",
+        imageBytes: "iVBORw0KGgouJSUlIxBUFIBgQABg4PFC4iIyEjKDE1Nzg5QUFBQUFBRUdJWVlaWl",
+        supplierId:1,
+        categoryId: 1
       });
     navigate("/product");
   };

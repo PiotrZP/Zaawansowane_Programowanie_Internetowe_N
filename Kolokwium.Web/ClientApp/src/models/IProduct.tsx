@@ -6,4 +6,6 @@ export interface IProduct {
   quantity: number;
   price: number;
   imageBytes: string;
+  supplierId: number;
+  categoryId: number;
 }
