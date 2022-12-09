@@ -1,74 +1,74 @@
-using System; 
-using System.Collections.Generic; 
-using System.Linq; 
-using System.Text; 
-using System.Threading.Tasks; 
-using WebStore.DAL.DatabaseContext; 
-using WebStore.Model.DataModels; 
-using WebStore.Services.Interfaces; 
-using WebStore.ViewModels.VM; 
-using Xunit; 
-namespace WebStore.Tests.UnitTests { 
-    public class AddressServiceUnitTests : BaseUnitTests { 
-        private readonly IAddressService _addressService; 
-        public AddressServiceUnitTests (ApplicationDbContext dbContext, 
-        IAddressService addressService) : base (dbContext) { 
-            _addressService = addressService; 
-        } 
-        
-        [Fact] 
-        public void GetAddressTest () { 
-            var address = _addressService.GetAddress (a => a.City == "Wielun"); 
-            Assert.NotNull (address); 
-        } 
-        
-        [Fact] 
-        public void GetMultipleAddressTest () { 
-            var addresses = _addressService.GetAddresses (a => a.Id >= 1 && a.Id <= 2); 
-            Assert.NotNull (addresses); 
-            Assert.NotEmpty (addresses); 
-            Assert.Equal (2, addresses.Count ()); 
-        } 
+using WebStore.DAL.DatabaseContext;
+using WebStore.Services.Interfaces;
+using WebStore.ViewModels.VM;
+namespace WebStore.Tests.UnitTests
+{
+    public class AddressServiceUnitTests : BaseUnitTests
+    {
+        private readonly IAddressService _addressService;
+        public AddressServiceUnitTests(ApplicationDbContext dbContext,
+        IAddressService addressService) : base(dbContext)
+        {
+            _addressService = addressService;
+        }
 
-        [Fact] 
-        
-        public void GetAllAddressTest () { 
-            var addresses = _addressService.GetAddresses (); 
-            Assert.NotNull (addresses); 
-            Assert.NotEmpty (addresses); 
-            Assert.Equal (addresses.Count (), addresses.Count ()); 
-        } 
-        
-        [Fact] 
-        
-        public void AddNewAddressTest () { 
-            var newAddressVm = new AddOrUpdateAddressVm () { 
-                Id = 1,
-                Street = "Kaliska",
-                BuildingNumber = 12,
-                City = "Wielun",
-                ZipCode = "98300"
-            }; 
-                var createdAddress = _addressService.AddOrUpdateAddress (newAddressVm); 
-                Assert.NotNull (createdAddress); 
-                Assert.Equal ("Kaliska", createdAddress.Street); 
-                
+        [Fact]
+        public void GetAddressTest()
+        {
+            var address = _addressService.GetAddress(a => a.Id == 1003);
+            Assert.NotNull(address);
+        }
+
+        [Fact]
+        public void GetMultipleAddressTest()
+        {
+            var addresses = _addressService.GetAddresses(a => a.Country == "Poland");
+            Assert.NotNull(addresses);
+            Assert.NotEmpty(addresses);
+            Assert.Equal(2, addresses.Count());
         }
 
         [Fact]
 
-        public void UpdateAddressTest () { 
-            var updateAddressVm = new AddOrUpdateAddressVm () { 
-                Id = 1,
-                Street = "Jasnorzewskiej",
-                BuildingNumber = 23,
-                City = "Wielun",
-                ZipCode = "98300"
-            }; 
-            var editedAddressVm = _addressService.AddOrUpdateAddress (updateAddressVm); 
-            Assert.NotNull (editedAddressVm); 
-            Assert.Equal ("Jasnorzewskiej", editedAddressVm.Street); 
-            Assert.Equal (23, editedAddressVm.BuildingNumber); 
-        } 
+        public void GetAllAddressTest()
+        {
+            var addresses = _addressService.GetAddresses();
+            Assert.NotNull(addresses);
+            Assert.NotEmpty(addresses);
+            Assert.Equal(addresses.Count(), addresses.Count());
+        }
+
+        [Fact]
+
+        public void AddNewAddressTest()
+        {
+            var newAddressVm = new AddOrUpdateAddressVm()
+            {
+                Id = 0,
+                Street = "Złota",
+                BuildingNumber = 18,
+                ApartmentNumber = 2,
+                City = "Pabianice",
+                ZipCode = "98-213"
+            };
+            var createdAddress = _addressService.AddOrUpdateAddress(newAddressVm);
+            Assert.NotNull(createdAddress);
+            Assert.Equal("Złota", createdAddress.Street);
+
+        }
+
+        [Fact]
+
+        public void UpdateAddressTest()
+        {
+            var updateAddressVm = new AddOrUpdateAddressVm()
+            {
+                Id = 1003,
+                Street = "Srebrna",
+            };
+            var editedAddressVm = _addressService.AddOrUpdateAddress(updateAddressVm);
+            Assert.NotNull(editedAddressVm);
+            Assert.Equal("Srebrna", editedAddressVm.Street);
+        }
     }
 }
