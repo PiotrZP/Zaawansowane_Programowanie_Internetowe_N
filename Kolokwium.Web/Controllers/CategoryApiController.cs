@@ -9,40 +9,39 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Kolokwium.Web.Controllers
 {
-    public class ProductApiController : BaseController
+    public class CategoryApiController : BaseController
     {
-        private readonly IProductService _productService;
 
-        public ProductApiController(ILogger logger,
-                                    IMapper mapper,
-                                    IProductService productService) : base(logger, mapper)
+        //1. add filed
+        private readonly ICategoryService _categoryService;
+        public CategoryApiController(ILogger logger, IMapper mapper, ICategoryService categoryService) : base(logger, mapper)
         {
-            _productService = productService;
+            _categoryService = categoryService;
         }
+
+        // get Category
         [HttpGet]
         public IActionResult Get()
         {
             try
             {
-                var products = _productService.GetProducts(); 
-                return Ok(products);
+                var category = _categoryService.GetCategory(c => c.Id == 1);
+                return Ok(category);
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex, ex.Message);
-                return StatusCode(500, "Error occured");
+                return StatusCode(500, "Error Get Category");
             }
         }
-
+        // Get Category by id
         [HttpGet("{id:int:min(1)}")]
         public IActionResult Get(int id)
         {
             try
             {
-                {
-                    var product = _productService.GetProduct(p => p.Id == id);
-                    return Ok(product);
-                }
+                var category = _categoryService.GetCategories(i => i.Id == id);
+                return Ok(category);
             }
             catch (Exception ex)
             {
@@ -50,22 +49,12 @@ namespace Kolokwium.Web.Controllers
                 return StatusCode(500, "Error occured");
             }
         }
-        [HttpPut]
-        public IActionResult Put([FromBody] AddOrUpdateProductVm addOrUpdateProductVm)
-        {
-            return PostOrPutHelper(addOrUpdateProductVm);
-        }
-        [HttpPost]
-        public IActionResult Post([FromBody] AddOrUpdateProductVm addOrUpdateProductVm)
-        {
-            return PostOrPutHelper(addOrUpdateProductVm);
-        }
-        [HttpDelete("{id:int:min(1)}")]
+        [HttpDelete]
         public IActionResult Delete(int id)
         {
             try
             {
-                var result = _productService.DeleteProduct(p => p.Id == id);
+                var result = _categoryService.DeleteCategory(i => i.Id == id);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -74,17 +63,31 @@ namespace Kolokwium.Web.Controllers
                 return StatusCode(500, "Error occured");
             }
         }
-        private IActionResult PostOrPutHelper(AddOrUpdateProductVm addOrUpdateProductVm)
+        [HttpPut]
+        public IActionResult Put([FromBody] AddOrUpdateCategoryVm addOrUpdateCategoryVm)
+        {
+            return PostOrPutHelper(addOrUpdateCategoryVm);
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] AddOrUpdateCategoryVm addOrUpdateCategoryVm)
+        {
+            return PostOrPutHelper(addOrUpdateCategoryVm);
+        }
+
+        private IActionResult PostOrPutHelper(AddOrUpdateCategoryVm addOrUpdateCategoryVm)
         {
             try
             {
                 if (!ModelState.IsValid)
+                {
                     return BadRequest(ModelState);
-                return Ok(_productService.AddOrUpdateProduct(addOrUpdateProductVm));
+                }
+                return Ok(_categoryService.AddOrUpdateCategory(addOrUpdateCategoryVm));
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex.Message, ex);
+                Logger.LogError(ex, ex.Message);
                 return StatusCode(500, "Error occured");
             }
         }

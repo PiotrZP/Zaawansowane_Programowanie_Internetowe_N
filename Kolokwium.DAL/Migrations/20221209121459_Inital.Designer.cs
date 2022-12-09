@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kolokwium.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221209104848_Inital")]
+    [Migration("20221209121459_Inital")]
     partial class Inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -200,7 +200,7 @@ namespace Kolokwium.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -218,7 +218,7 @@ namespace Kolokwium.DAL.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("SupplierId")
+                    b.Property<int?>("SupplierId")
                         .HasColumnType("int");
 
                     b.Property<float>("Weight")
@@ -533,7 +533,7 @@ namespace Kolokwium.DAL.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ba8e7b66-b74c-4a63-8833-54a282e6c222",
+                            ConcurrencyStamp = "78aaa96b-1dbc-4350-a478-7e340ff42cb6",
                             EmailConfirmed = false,
                             FirstName = "William",
                             LastName = "Shakespeare",
@@ -575,7 +575,7 @@ namespace Kolokwium.DAL.Migrations
                         {
                             Id = 3,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6b9d35bc-6049-4168-b56c-15c7d573856e",
+                            ConcurrencyStamp = "8162e8c0-077b-4172-ad26-93633ba002c9",
                             EmailConfirmed = false,
                             FirstName = "William",
                             LastName = "Shakespeare",
@@ -602,7 +602,7 @@ namespace Kolokwium.DAL.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "34bad963-d2ab-47ca-83cb-66f018e10f37",
+                            ConcurrencyStamp = "a530052c-728a-44ac-be8b-ec9515a588af",
                             Email = "supp1@eg.eg",
                             EmailConfirmed = false,
                             FirstName = "Adam",
@@ -668,15 +668,11 @@ namespace Kolokwium.DAL.Migrations
                 {
                     b.HasOne("Kolokwium.Model.Models.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
 
                     b.HasOne("Kolokwium.Model.Models.Supplier", "Supplier")
                         .WithMany("Products")
-                        .HasForeignKey("SupplierId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SupplierId");
 
                     b.Navigation("Category");
 

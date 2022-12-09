@@ -23,8 +23,10 @@ namespace Kolokwium.Services.ConcreteServices
         {
             try
             {
+                // check
                 if (addOrUpdateAddressVm == null) throw new ArgumentNullException("View Model parameter is null");
                 var addressEntity = Mapper.Map<Address>(addOrUpdateAddressVm);
+                // check
                 if (addOrUpdateAddressVm.Id.HasValue || addOrUpdateAddressVm.Id == 0)
                     DbContext.Addresses.Update(addressEntity);
                 else DbContext.Addresses.Add(addressEntity);

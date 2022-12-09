@@ -289,12 +289,12 @@ namespace Kolokwium.DAL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    SupplierId = table.Column<int>(type: "int", nullable: true),
+                    CategoryId = table.Column<int>(type: "int", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImageBytes = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    SupplierId = table.Column<int>(type: "int", nullable: false),
                     Weight = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
@@ -304,14 +304,12 @@ namespace Kolokwium.DAL.Migrations
                         name: "FK_Products_AspNetUsers_SupplierId",
                         column: x => x.SupplierId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Products_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -367,7 +365,7 @@ namespace Kolokwium.DAL.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RegistrationDate", "SecurityStamp", "TwoFactorEnabled", "UserName", "UserType" },
-                values: new object[] { 2, 0, "34bad963-d2ab-47ca-83cb-66f018e10f37", "supp1@eg.eg", false, "Adam", "Bednarski", false, null, null, null, null, null, false, new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, "supp1@eg.eg", 2 });
+                values: new object[] { 2, 0, "a530052c-728a-44ac-be8b-ec9515a588af", "supp1@eg.eg", false, "Adam", "Bednarski", false, null, null, null, null, null, false, new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, "supp1@eg.eg", 2 });
 
             migrationBuilder.InsertData(
                 table: "Categories",
@@ -387,12 +385,12 @@ namespace Kolokwium.DAL.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "BillingAddresId", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RegistrationDate", "SecurityStamp", "ShippingAddressId", "TwoFactorEnabled", "UserName", "UserType" },
-                values: new object[] { 1, 0, 1, "ba8e7b66-b74c-4a63-8833-54a282e6c222", null, false, "William", "Shakespeare", false, null, null, null, null, null, false, new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, false, null, 1 });
+                values: new object[] { 1, 0, 1, "78aaa96b-1dbc-4350-a478-7e340ff42cb6", null, false, "William", "Shakespeare", false, null, null, null, null, null, false, new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, false, null, 1 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "AgreementNumber", "ConcurrencyStamp", "Email", "EmailConfirmed", "EmploymeentDate", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Position", "RegistrationDate", "Salary", "SecurityStamp", "StationaryStoreId", "TwoFactorEnabled", "UserName", "UserType" },
-                values: new object[] { 3, 0, 1, "6b9d35bc-6049-4168-b56c-15c7d573856e", null, false, new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "William", "Shakespeare", false, null, null, null, null, null, false, "Menago", new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 100m, null, 1, false, null, 3 });
+                values: new object[] { 3, 0, 1, "8162e8c0-077b-4172-ad26-93633ba002c9", null, false, new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "William", "Shakespeare", false, null, null, null, null, null, false, "Menago", new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 100m, null, 1, false, null, 3 });
 
             migrationBuilder.InsertData(
                 table: "Products",

@@ -13,9 +13,8 @@ namespace Kolokwium.Model.Models
     {
         [Key]
         public int Id { get; set; }
-        [ForeignKey("CategoryId")]
-        public int CategoryId { get; set; } = default!;
-        public virtual Category Category { get; set; } = default!;
+        public int? SupplierId { get; set; }
+        public int? CategoryId { get; set; } = default!;
         public string Description { get; set; } = default!;
         public byte[] ImageBytes { get; set; } = default!;
         public string Name { get; set; } = default!;
@@ -24,8 +23,12 @@ namespace Kolokwium.Model.Models
         public decimal Price { get; set; }
         public virtual Supplier? Supplier { get; set; }
         [ForeignKey("SupplierId")]
-        public int SupplierId { get; set; }
         public float Weight { get; set; }
+
+        [ForeignKey("CategoryId")]
+        [InverseProperty("Products")]
+        public virtual Category? Category { get; set; } = default!;
+
 
         // one to many ProductStock
         public virtual ICollection<ProductStock>? ProductStocks { get; set; }

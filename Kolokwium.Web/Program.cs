@@ -39,6 +39,8 @@ builder.Services.AddScoped<IAddressService, AddressService>();
 builder.Services.AddScoped<IInvoiceService, InvoiceService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IStoreService, StoreService>();
+//add Category Service
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 builder.Services.AddAuthentication(options =>
 {
