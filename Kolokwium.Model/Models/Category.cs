@@ -12,7 +12,7 @@ namespace Kolokwium.Model.Models
     public class Category
     {
         [Key]
-        public int CategoryId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; } = default!;
         public string Tag { get; set; } = default!;
         public virtual ICollection<Product>? Products { get; set; }

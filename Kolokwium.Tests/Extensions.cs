@@ -52,7 +52,7 @@ namespace Kolokwium.Tests
             //Categories 
             var category1 = new Category()
             {
-                CategoryId = 1,
+                Id = 1,
                 Name = "Computers",
                 Tag = "#computer"
             };
@@ -61,8 +61,8 @@ namespace Kolokwium.Tests
             //Products 
             var p1 = new Product()
             {
-                ProductId = 1,
-                CategoryId = category1.CategoryId,
+                Id = 1,
+                CategoryId = category1.Id,
                 SupplierId = supplier1.Id,
                 Description = "Bardzo praktyczny monitor 32 cale",
                 ImageBytes = new byte[] { 0xff, 0xff, 0xff, 0x80 },
@@ -74,8 +74,8 @@ namespace Kolokwium.Tests
 
             var p2 = new Product()
             {
-                ProductId = 2,
-                CategoryId = category1.CategoryId,
+                Id = 2,
+                CategoryId = category1.Id,
                 SupplierId = supplier1.Id,
                 Description = "Precyzyjna mysz do pracy",
                 ImageBytes = new byte[] { 0xff, 0xff, 0xff, 0x70 },
@@ -89,7 +89,7 @@ namespace Kolokwium.Tests
             var i1 = new Invoice()
             {
 
-                InvoiceId = 1,
+                Id = 1,
                 TotalPrice = 10,
                 InvoiceDate = new DateTime()
             };
@@ -97,7 +97,7 @@ namespace Kolokwium.Tests
             var i2 = new Invoice()
             {
 
-                InvoiceId = 2,
+                Id = 2,
                 TotalPrice = 20,
                 InvoiceDate = new DateTime()
             };
@@ -107,7 +107,7 @@ namespace Kolokwium.Tests
 
             var a1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 StreetName = "test",
                 StreetNumber = 12,
                 City = "test",
@@ -117,7 +117,7 @@ namespace Kolokwium.Tests
             await dbContext.AddAsync(a1);
             var a2 = new Address()
             {
-                AddressId = 2,
+                Id = 2,
                 StreetName = "test",
                 StreetNumber = 14,
                 City = "test",
@@ -127,7 +127,7 @@ namespace Kolokwium.Tests
             await dbContext.AddAsync(a2);
             var a3 = new Address()
             {
-                AddressId = 3,
+                Id = 3,
                 StreetName = "test",
                 StreetNumber = 23,
                 City = "test",
@@ -140,7 +140,7 @@ namespace Kolokwium.Tests
 
             var o1 = new Order()
             {
-                OrderId = 1,
+                Id = 1,
                 DeliveryDate = new DateTime(),
                 OrderDate = new DateTime(),
                 TotalAmount = 1987.89m,
@@ -152,7 +152,7 @@ namespace Kolokwium.Tests
 
             var o2 = new Order()
             {
-                OrderId = 2,
+                Id = 2,
                 DeliveryDate = new DateTime(),
                 OrderDate = new DateTime(),
                 TotalAmount = 2111.89m,

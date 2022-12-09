@@ -40,7 +40,7 @@ namespace Kolokwium.Web.Controllers
         {
             try
             {
-                var address = _addressService.GetAddress(a => a.AddressId == id);
+                var address = _addressService.GetAddress(a => a.Id == id);
                 return Ok(address);
             }
             catch (Exception ex)
@@ -84,7 +84,7 @@ namespace Kolokwium.Web.Controllers
         {
             try
             {
-                var result = _addressService.DeleteAdress(a => a.AddressId == id);
+                var result = _addressService.DeleteAdress(a => a.Id == id);
                 return Ok(result);
             }
             catch (Exception ex)

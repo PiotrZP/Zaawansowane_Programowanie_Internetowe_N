@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kolokwium.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221206133118_Inital")]
+    [Migration("20221209104848_Inital")]
     partial class Inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,11 +26,11 @@ namespace Kolokwium.DAL.Migrations
 
             modelBuilder.Entity("Kolokwium.Model.Models.Address", b =>
                 {
-                    b.Property<int>("AddressId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AddressId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("City")
                         .IsRequired()
@@ -49,7 +49,7 @@ namespace Kolokwium.DAL.Migrations
                     b.Property<int>("StreetNumber")
                         .HasColumnType("int");
 
-                    b.HasKey("AddressId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
@@ -58,7 +58,7 @@ namespace Kolokwium.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            AddressId = 1,
+                            Id = 1,
                             City = "test",
                             PostCode = 98300,
                             StreetName = "test",
@@ -68,11 +68,11 @@ namespace Kolokwium.DAL.Migrations
 
             modelBuilder.Entity("Kolokwium.Model.Models.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -82,14 +82,14 @@ namespace Kolokwium.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("Id");
 
                     b.ToTable("Categories");
 
                     b.HasData(
                         new
                         {
-                            CategoryId = 1,
+                            Id = 1,
                             Name = "Computers",
                             Tag = "#computer"
                         });
@@ -97,11 +97,11 @@ namespace Kolokwium.DAL.Migrations
 
             modelBuilder.Entity("Kolokwium.Model.Models.Invoice", b =>
                 {
-                    b.Property<int>("InvoiceId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InvoiceId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("InvoiceDate")
                         .HasColumnType("datetime2");
@@ -109,14 +109,14 @@ namespace Kolokwium.DAL.Migrations
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("InvoiceId");
+                    b.HasKey("Id");
 
                     b.ToTable("Invoices");
 
                     b.HasData(
                         new
                         {
-                            InvoiceId = 1,
+                            Id = 1,
                             InvoiceDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalPrice = 10m
                         });
@@ -124,11 +124,11 @@ namespace Kolokwium.DAL.Migrations
 
             modelBuilder.Entity("Kolokwium.Model.Models.Order", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
@@ -151,7 +151,7 @@ namespace Kolokwium.DAL.Migrations
                     b.Property<long>("TrackingNumber")
                         .HasColumnType("bigint");
 
-                    b.HasKey("OrderId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
@@ -164,7 +164,7 @@ namespace Kolokwium.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            OrderId = 1,
+                            Id = 1,
                             CustomerId = 1,
                             DeliveryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             InvoiceId = 1,
@@ -194,11 +194,11 @@ namespace Kolokwium.DAL.Migrations
 
             modelBuilder.Entity("Kolokwium.Model.Models.Product", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -224,7 +224,7 @@ namespace Kolokwium.DAL.Migrations
                     b.Property<float>("Weight")
                         .HasColumnType("real");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
@@ -235,7 +235,7 @@ namespace Kolokwium.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            ProductId = 1,
+                            Id = 1,
                             CategoryId = 1,
                             Description = "Bardzo praktyczny monitor 32 cale",
                             ImageBytes = new byte[] { 255, 255, 255, 128 },
@@ -248,11 +248,11 @@ namespace Kolokwium.DAL.Migrations
 
             modelBuilder.Entity("Kolokwium.Model.Models.ProductStock", b =>
                 {
-                    b.Property<int>("ProductStockId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductStockId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -260,7 +260,7 @@ namespace Kolokwium.DAL.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.HasKey("ProductStockId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
@@ -269,28 +269,28 @@ namespace Kolokwium.DAL.Migrations
 
             modelBuilder.Entity("Kolokwium.Model.Models.StationaryStore", b =>
                 {
-                    b.Property<int>("StationaryStoreId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StationaryStoreId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("AdressAddressId")
+                    b.Property<int?>("AdressId")
                         .HasColumnType("int");
 
                     b.Property<int>("AgreementNumber")
                         .HasColumnType("int");
 
-                    b.HasKey("StationaryStoreId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("AdressAddressId");
+                    b.HasIndex("AdressId");
 
                     b.ToTable("StationaryStores");
 
                     b.HasData(
                         new
                         {
-                            StationaryStoreId = 1,
+                            Id = 1,
                             AgreementNumber = 1
                         });
                 });
@@ -533,7 +533,7 @@ namespace Kolokwium.DAL.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bad77f9e-1609-4ed9-bd9d-47c609e49cea",
+                            ConcurrencyStamp = "ba8e7b66-b74c-4a63-8833-54a282e6c222",
                             EmailConfirmed = false,
                             FirstName = "William",
                             LastName = "Shakespeare",
@@ -575,7 +575,7 @@ namespace Kolokwium.DAL.Migrations
                         {
                             Id = 3,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "792a89ad-4f39-44af-a365-3fdf30e7f44e",
+                            ConcurrencyStamp = "6b9d35bc-6049-4168-b56c-15c7d573856e",
                             EmailConfirmed = false,
                             FirstName = "William",
                             LastName = "Shakespeare",
@@ -602,7 +602,7 @@ namespace Kolokwium.DAL.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "080a2a6e-c114-4341-88a6-302d6b5658a7",
+                            ConcurrencyStamp = "34bad963-d2ab-47ca-83cb-66f018e10f37",
                             Email = "supp1@eg.eg",
                             EmailConfirmed = false,
                             FirstName = "Adam",
@@ -666,7 +666,7 @@ namespace Kolokwium.DAL.Migrations
 
             modelBuilder.Entity("Kolokwium.Model.Models.Product", b =>
                 {
-                    b.HasOne("Kolokwium.Model.Models.Category", null)
+                    b.HasOne("Kolokwium.Model.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -677,6 +677,8 @@ namespace Kolokwium.DAL.Migrations
                         .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Category");
 
                     b.Navigation("Supplier");
                 });
@@ -696,7 +698,7 @@ namespace Kolokwium.DAL.Migrations
                 {
                     b.HasOne("Kolokwium.Model.Models.Address", "Adress")
                         .WithMany()
-                        .HasForeignKey("AdressAddressId");
+                        .HasForeignKey("AdressId");
 
                     b.Navigation("Adress");
                 });

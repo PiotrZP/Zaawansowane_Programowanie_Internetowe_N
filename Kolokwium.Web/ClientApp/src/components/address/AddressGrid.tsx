@@ -8,7 +8,7 @@ type IState = {
 };
 export const AddressGrid = () => {
   const columns: GridColDef[] = [
-    { field: "addressId", headerName: "ID", width: 50 },
+    { field: "id", headerName: "ID", width: 50 },
     { field: "city", headerName: "City", width: 130 },
     { field: "postCode", headerName: "PostCode", width: 130 },
     { field: "streetName", headerName: "Street", width: 150 },
@@ -20,7 +20,7 @@ export const AddressGrid = () => {
         const address: IAddress = params.row;
         return (
           <Link
-            to={`/address/edit/${address.addressId}`}
+            to={`/address/edit/${address.id}`}
             className="btn btn-primary"
           >
             Edit
@@ -36,7 +36,7 @@ export const AddressGrid = () => {
         const address: IAddress = params.row;
         return (
           <Link
-            to={`/address/delete/${address.addressId}`}
+            to={`/address/delete/${address.id}`}
             className="btn btn-primary"
           >
             Delete
@@ -61,7 +61,7 @@ export const AddressGrid = () => {
       <div className="address-grid">
         <div style={{ height: 400, width: "100%" }}>
           <DataGrid
-            getRowId={(row) => row.addressId}
+            getRowId={(row) => row.id}
             rows={state.addresses}
             columns={columns}
             pageSize={5}

@@ -7,7 +7,7 @@ namespace Kolokwium.ViewModels.VM
 {
     public class CustomerVm
     {
-        public int CustomerId { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; } = default!;
         public string LastName { get; set; } = default!;
         public DateTime RegistrationDate { get; set; }

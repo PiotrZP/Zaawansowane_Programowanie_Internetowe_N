@@ -13,13 +13,13 @@ export const AddressDelete = () => {
   const onDeleteHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    const addressId: number | undefined = params["addressId"]
-      ? parseInt(params["addressId"])
+    const id: number | undefined = params["id"]
+      ? parseInt(params["id"])
       : undefined;
-    if (addressId !== undefined) {
+    if (id !== undefined) {
       const deleteAddress = async () => {
         const response = await axios.delete(
-          `/api/AddressApiContorller/${addressId}`
+          `/api/AddressApiContorller/${id}`
         );
 
         navigate("/address");

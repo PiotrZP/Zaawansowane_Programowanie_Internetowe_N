@@ -14,7 +14,7 @@ namespace Kolokwium.Model.Models
     public class Invoice
     {
         [Key]
-        public int InvoiceId { get; set; }
+        public int Id { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal TotalPrice { get; set; }
         public DateTime InvoiceDate { get; set; }

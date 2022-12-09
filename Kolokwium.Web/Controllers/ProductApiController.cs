@@ -39,7 +39,7 @@ namespace Kolokwium.Web.Controllers
             try
             {
                 {
-                    var product = _productService.GetProduct(p => p.ProductId == id);
+                    var product = _productService.GetProduct(p => p.Id == id);
                     return Ok(product);
                 }
             }
@@ -64,7 +64,7 @@ namespace Kolokwium.Web.Controllers
         {
             try
             {
-                var result = _productService.DeleteProduct(p => p.ProductId == id);
+                var result = _productService.DeleteProduct(p => p.Id == id);
                 return Ok(result);
             }
             catch (Exception ex)

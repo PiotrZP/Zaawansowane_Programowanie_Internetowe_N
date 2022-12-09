@@ -37,7 +37,7 @@ namespace Kolokwium.Web.Controllers
         {
             try
             {
-                var stationaryStore = _storeService.GetStores(s => s.StationaryStoreId == id);
+                var stationaryStore = _storeService.GetStores(s => s.Id == id);
                 return Ok(stationaryStore);
             }
             catch (Exception ex)
@@ -81,7 +81,7 @@ namespace Kolokwium.Web.Controllers
         {
             try
             {
-                var result = _storeService.DeleteStore(p => p.StationaryStoreId == id);
+                var result = _storeService.DeleteStore(p => p.Id == id);
                 return Ok(result);
             }
             catch (Exception ex)

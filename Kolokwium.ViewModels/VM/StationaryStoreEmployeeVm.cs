@@ -7,7 +7,7 @@ namespace Kolokwium.ViewModels.VM
 {
     public class StationaryStoreEmployeeVm : UserVm
     {
-        public int StationaryStoreId { get; set; }
+
         public string Position { get; set; } = default!;
         public Decimal Salary { get; set; } = default!;
         public StoreVm StationaryStore { get; set; } = default!;

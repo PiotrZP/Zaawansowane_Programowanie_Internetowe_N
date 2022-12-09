@@ -18,20 +18,20 @@ export const AddressAddOrEditForm = (props: IProps) => {
   const navigate = useNavigate();
   const params = useParams();
   const [state, setState] = useState<IAddress>({
-    addressId: 0,
+    id: 0,
     city: "",
     streetName: "",
     postCode: "",
     streetNumber: 0,
   });
   useEffect(() => {
-    const addressId: number | undefined = params["addressId"]
-      ? parseInt(params["addressId"])
+    const id: number | undefined = params["id"]
+      ? parseInt(params["id"])
       : undefined;
-    if (addressId !== undefined) {
+    if (id !== undefined) {
       const getAddress = async () => {
         const response = await axios.get<IAddress>(
-          `/api/AddressApiContorller/${addressId}`
+          `/api/AddressApiContorller/${id}`
         );
         if (response.status == 200) setState({ ...response.data });
       };
@@ -50,7 +50,7 @@ export const AddressAddOrEditForm = (props: IProps) => {
     );
     if (response.status == 200)
       setState({
-        addressId: 0,
+        id: 0,
         city: "",
         streetName: "",
         postCode: "",
@@ -77,7 +77,7 @@ export const AddressAddOrEditForm = (props: IProps) => {
           <CardHeader title={props.labelName}></CardHeader>
           <CardContent>
             <div>
-              <input type="hidden" value={state.addressId} />
+              <input type="hidden" value={state.id} />
               <TextField
                 required
                 onChange={onInputTextChange}

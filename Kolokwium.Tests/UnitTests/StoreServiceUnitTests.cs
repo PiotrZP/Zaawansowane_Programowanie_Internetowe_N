@@ -25,7 +25,7 @@ namespace Kolokwium.Tests.UnitTests
         [Fact]
         public void GetMultipleStoresTest()
         {
-            var stores = _storeService.GetStores(s => s.StationaryStoreId >= 1 && s.StationaryStoreId <= 2);
+            var stores = _storeService.GetStores(s => s.Id >= 1 && s.Id <= 2);
             Assert.NotNull(stores);
             Assert.NotEmpty(stores);
             Assert.Equal(2, stores.Count());

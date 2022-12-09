@@ -53,7 +53,7 @@ namespace Kolokwium.DAL
             modelBuilder.Entity<Address>().HasData(
                 new Address
                 {
-                    AddressId = 1,
+                    Id = 1,
                     StreetName = "test",
                     StreetNumber = 12,
                     City = "test",
@@ -90,7 +90,7 @@ namespace Kolokwium.DAL
             modelBuilder.Entity<Category>().HasData(
                new Category
                {
-                   CategoryId = 1,
+                   Id = 1,
                    Name = "Computers",
                    Tag = "#computer"
                }
@@ -100,7 +100,7 @@ namespace Kolokwium.DAL
             modelBuilder.Entity<Product>().HasData(
                 new Product
                 {
-                    ProductId = 1,
+                    Id = 1,
                     CategoryId = 1,
                     SupplierId = 1,
                     Description = "Bardzo praktyczny monitor 32 cale",
@@ -115,7 +115,7 @@ namespace Kolokwium.DAL
             modelBuilder.Entity<Invoice>().HasData(
                 new Invoice
                 {
-                    InvoiceId = 1,
+                    Id = 1,
                     TotalPrice = 10,
                     InvoiceDate = new DateTime()
                 }
@@ -125,7 +125,7 @@ namespace Kolokwium.DAL
             modelBuilder.Entity<Order>().HasData(
                 new Order
                 {
-                    OrderId = 1,
+                    Id = 1,
                     DeliveryDate = new DateTime(),
                     OrderDate = new DateTime(),
                     TotalAmount = 1987,
@@ -139,7 +139,7 @@ namespace Kolokwium.DAL
             modelBuilder.Entity<StationaryStore>().HasData(
                 new StationaryStore
                 {
-                    StationaryStoreId = 1,
+                    Id = 1,
                     AgreementNumber = 1
                 }
             );

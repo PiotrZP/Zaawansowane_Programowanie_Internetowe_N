@@ -15,7 +15,7 @@ namespace Kolokwium.Model.Models
     public class StationaryStore
     {
         [Key]
-        public int StationaryStoreId { get; set; }
+        public int Id { get; set; }
         public virtual Address? Adress { get; set; }
         public virtual ICollection<Order>? Orders { get; set; }
         public int AgreementNumber { get; set; }

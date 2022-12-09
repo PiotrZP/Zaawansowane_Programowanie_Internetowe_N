@@ -38,7 +38,7 @@ namespace Kolokwium.Web.Controllers
         {
             try
             {
-                var order = _orderService.GetOrder(o => o.OrderId == id);
+                var order = _orderService.GetOrder(o => o.Id == id);
                 return Ok(order);
             }
             catch (Exception ex)
@@ -82,7 +82,7 @@ namespace Kolokwium.Web.Controllers
         {
             try
             {
-                var result = _orderService.DeleteOrder(o => o.OrderId == id);
+                var result = _orderService.DeleteOrder(o => o.Id == id);
                 return Ok(result);
             }
             catch (Exception ex)

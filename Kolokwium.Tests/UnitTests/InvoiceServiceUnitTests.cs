@@ -26,7 +26,7 @@ namespace Kolokwium.Tests.UnitTests
         [Fact]
         public void GetMultipleOrdersTest()
         {
-            var invoices = _invoiceService.GetInvoices(i => i.InvoiceId >= 1 && i.InvoiceId <= 2);
+            var invoices = _invoiceService.GetInvoices(i => i.Id >= 1 && i.Id <= 2);
             Assert.NotNull(invoices);
             Assert.NotEmpty(invoices);
             Assert.Equal(2, invoices.Count());

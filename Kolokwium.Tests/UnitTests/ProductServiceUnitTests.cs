@@ -27,7 +27,7 @@ namespace Kolokwium.Tests.UnitTests
         [Fact]
         public void GetMultipleProductsTest()
         {
-            var products = _productService.GetProducts(p => p.ProductId >= 1 && p.ProductId <= 2);
+            var products = _productService.GetProducts(p => p.Id >= 1 && p.Id <= 2);
             Assert.NotNull(products);
             Assert.NotEmpty(products);
             Assert.Equal(2, products.Count());

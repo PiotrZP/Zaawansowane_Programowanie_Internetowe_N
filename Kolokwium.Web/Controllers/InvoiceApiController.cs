@@ -37,7 +37,7 @@ namespace Kolokwium.Web.Controllers
         {
             try
             {
-                var invoice = _invoiceService.GetInvoices(i => i.InvoiceId == id);
+                var invoice = _invoiceService.GetInvoices(i => i.Id == id);
                 return Ok(invoice);
             }
             catch (Exception ex)
@@ -81,7 +81,7 @@ namespace Kolokwium.Web.Controllers
         {
             try
             {
-                var result = _invoiceService.DeleteInvoice(i => i.InvoiceId == id);
+                var result = _invoiceService.DeleteInvoice(i => i.Id == id);
                 return Ok(result);
             }
             catch (Exception ex)

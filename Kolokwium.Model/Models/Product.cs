@@ -12,9 +12,10 @@ namespace Kolokwium.Model.Models
     public class Product
     {
         [Key]
-        public int ProductId { get; set; }
+        public int Id { get; set; }
         [ForeignKey("CategoryId")]
         public int CategoryId { get; set; } = default!;
+        public virtual Category Category { get; set; } = default!;
         public string Description { get; set; } = default!;
         public byte[] ImageBytes { get; set; } = default!;
         public string Name { get; set; } = default!;

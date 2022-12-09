@@ -12,13 +12,13 @@ export const ProductDelete = () => {
   const onDeleteHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    const productId: number | undefined = params["productId"]
-      ? parseInt(params["productId"])
+    const id: number | undefined = params["id"]
+      ? parseInt(params["id"])
       : undefined;
-    if (productId !== undefined) {
+    if (id !== undefined) {
       const deleteAddress = async () => {
         const response = await axios.delete(
-          `/api/ProductApi/${productId}`
+          `/api/ProductApi/${id}`
         );
 
         navigate("/product");

@@ -20,14 +20,14 @@ namespace Kolokwium.Tests.UnitTests
         [Fact]
         public void GetOrderTest()
         {
-            var order = _orderService.GetOrder(o => o.OrderId == 1);
+            var order = _orderService.GetOrder(o => o.Id == 1);
             Assert.NotNull(order);
         }
 
         [Fact]
         public void GetMultipleOrdersTest()
         {
-            var orders = _orderService.GetOrders(o => o.OrderId >= 1 && o.OrderId <= 2);
+            var orders = _orderService.GetOrders(o => o.Id >= 1 && o.Id <= 2);
             Assert.NotNull(orders);
             Assert.NotEmpty(orders);
             Assert.Equal(2, orders.Count());

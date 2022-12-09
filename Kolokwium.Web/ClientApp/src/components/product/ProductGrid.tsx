@@ -8,7 +8,7 @@ type IState = {
 };
 export const ProductGrid = () => {
   const columns: GridColDef[] = [
-    { field: "productId", headerName: "ID", width: 50 },
+    { field: "id", headerName: "ID", width: 50 },
     { field: "name", headerName: "Name", width: 130 },
     { field: "description", headerName: "Description", width: 130 },
     { field: "weight", headerName: "Weight", width: 150 },
@@ -22,7 +22,7 @@ export const ProductGrid = () => {
         const products: IProduct = params.row;
         return (
           <Link
-            to={`/product/edit/${products.productId}`}
+            to={`/product/edit/${products.id}`}
             className="btn btn-primary"
           >
             Edit
@@ -38,7 +38,7 @@ export const ProductGrid = () => {
         const products: IProduct = params.row;
         return (
           <Link
-            to={`/product/delete/${products.productId}`}
+            to={`/product/delete/${products.id}`}
             className="btn btn-primary"
           >
             Delete
@@ -63,7 +63,7 @@ export const ProductGrid = () => {
       <div className="product-grid">
         <div style={{ height: 400, width: "100%" }}>
           <DataGrid
-            getRowId={(row) => row.productId}
+            getRowId={(row) => row.id}
             rows={state.products}
             columns={columns}
             pageSize={5}

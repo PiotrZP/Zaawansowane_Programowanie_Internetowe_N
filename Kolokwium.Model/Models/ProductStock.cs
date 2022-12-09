@@ -12,7 +12,7 @@ namespace Kolokwium.Model.Models
         // need id
         // add FK Product
         [Key]
-        public int ProductStockId { get; set; }
+        public int Id { get; set; }
         [ForeignKey("ProductId")]
         public int ProductId { get; set; }
         public virtual Product? Product { get; set; }

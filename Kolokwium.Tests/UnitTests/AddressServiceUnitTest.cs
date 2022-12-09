@@ -27,7 +27,7 @@ namespace Kolokwium.Tests.UnitTests
         }
          [Fact] 
         public void GetMultipleAddressTest () { 
-            var addresses = _addressService.GetAddresses (a => a.AddressId >= 1 && a.AddressId <= 2); 
+            var addresses = _addressService.GetAddresses (a => a.Id >= 1 && a.Id <= 2); 
             Assert.NotNull (addresses); 
             Assert.NotEmpty (addresses); 
             Assert.Equal (2, addresses.Count ()); 

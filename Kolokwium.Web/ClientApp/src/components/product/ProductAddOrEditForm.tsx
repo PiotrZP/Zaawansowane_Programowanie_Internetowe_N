@@ -18,7 +18,7 @@ export const ProductAddOrEditForm = (props: IProps) => {
   const navigate = useNavigate();
   const params = useParams();
   const [state, setState] = useState<IProduct>({
-    productId: 0,
+    id: 0,
     name: "",
     description: "",
     weight: 0,
@@ -27,13 +27,13 @@ export const ProductAddOrEditForm = (props: IProps) => {
     imageBytes: "",
   });
   useEffect(() => {
-    const productId: number | undefined = params["productId"]
-      ? parseInt(params["productId"])
+    const id: number | undefined = params["id"]
+      ? parseInt(params["id"])
       : undefined;
-    if (productId !== undefined) {
+    if (id !== undefined) {
       const getAddress = async () => {
         const response = await axios.get<IProduct>(
-          `/api/ProductApi${productId}`
+          `/api/ProductApi${id}`
         );
         if (response.status == 200) setState({ ...response.data });
       };
@@ -49,7 +49,7 @@ export const ProductAddOrEditForm = (props: IProps) => {
     const response = await axios.post<IProduct>("/api/ProductApi", state);
     if (response.status == 200)
       setState({
-        productId: 0,
+        id: 0,
         name: "",
         description: "",
         weight: 0,
@@ -78,7 +78,7 @@ export const ProductAddOrEditForm = (props: IProps) => {
           <CardHeader title={props.labelName}></CardHeader>
           <CardContent>
             <div>
-              <input type="hidden" value={state.productId} />
+              <input type="hidden" value={state.id} />
               <TextField
                 required
                 onChange={onInputTextChange}
