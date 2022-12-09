@@ -89,7 +89,9 @@ namespace WebStore.Tests
                 City = "Uć",
                 Country = "Polska",
                 BuildingNumber = 23,
-                PostalCode = "99-712"
+                ZipCode = "99-712",
+                Street = "Czarna",
+
 
             };
             await dbContext.AddAsync(a1);
@@ -99,7 +101,9 @@ namespace WebStore.Tests
                 City = "Berlin",
                 Country = "Anglia",
                 BuildingNumber = 14,
-                PostalCode = "99-712"
+                ZipCode = "99-712",
+                Street = "Kororowa"
+
 
             };
             await dbContext.AddAsync(a2);
@@ -109,7 +113,9 @@ namespace WebStore.Tests
                 City = "Czikago",
                 Country = "USA",
                 BuildingNumber = 1,
-                PostalCode = "90-210"
+                ZipCode = "90-210",
+                Street = "Stara"
+
 
             };
             await dbContext.AddAsync(a3);
@@ -119,7 +125,8 @@ namespace WebStore.Tests
                 City = "NWM",
                 Country = "Polska",
                 BuildingNumber = 1,
-                PostalCode = "90-322"
+                ZipCode = "90-322",
+                Street = "Nowa"
 
             };
             await dbContext.AddAsync(a4);

@@ -29,6 +29,9 @@ namespace WebStore.Services.Configuration
             CreateMap<AddressVm, Address>();
             CreateMap<Address, AddressVm>();
 
+            CreateMap<AddOrUpdateStoreVm, StationaryStore>();
+            CreateMap<StoreVm, StationaryStore>();
+            CreateMap<StationaryStore, StoreVm>();
         }
     }
 }

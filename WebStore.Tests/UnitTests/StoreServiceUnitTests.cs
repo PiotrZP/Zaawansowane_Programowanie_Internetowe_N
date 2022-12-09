@@ -24,7 +24,7 @@ namespace WebStore.Tests.UnitTests
             var store = _storeService.GetStore(s => s.Id == 1);
             Assert.NotNull(store);
         }
-        // [Fact]
+        [Fact]
         public void GetMultipleStoresTest()
         {
         var stores = _storeService.GetStores(s => s.Id >=1 && s.Id<=2);
@@ -32,14 +32,14 @@ namespace WebStore.Tests.UnitTests
         Assert.NotNull(stores);
         Assert.Equal(2,stores.Count());
         }
-        // [Fact]
+        [Fact]
         public void GetAllStoresTest()
         {
             var stores = _storeService.GetStores();
             Assert.NotEmpty(stores);
             Assert.NotNull(stores);
         }
-        // [Fact]
+        [Fact]
         public void AddNewStoreTest()
         {
             var newStoreVm = new AddOrUpdateStoreVm()
@@ -52,7 +52,7 @@ namespace WebStore.Tests.UnitTests
         Assert.NotNull(createdStore);
         Assert.Equal("Mleczny",createdStore.Name);
         }
-        // [Fact]
+        [Fact]
         public void UpdateStoreTest()
         {
             var updateStoreVm = new AddOrUpdateStoreVm()
@@ -65,7 +65,7 @@ namespace WebStore.Tests.UnitTests
         Assert.NotNull(store);
         Assert.Equal("Mięsny", store.Name);
         }
-        // [Fact]
+        [Fact]
         public void DeleteStoreTest()
         {
             var store = _storeService.DeleteStore(s => s.Id == 2);

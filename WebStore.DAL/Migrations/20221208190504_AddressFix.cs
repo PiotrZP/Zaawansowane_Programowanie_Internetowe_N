@@ -4,7 +4,7 @@
 
 namespace WebStore.DAL.Migrations
 {
-    public partial class StationaryStoreFix : Migration
+    public partial class AddressFix : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,10 +28,28 @@ namespace WebStore.DAL.Migrations
                 name: "StationaryStore",
                 newName: "StationaryStores");
 
+            migrationBuilder.RenameColumn(
+                name: "PostalCode",
+                table: "Addresses",
+                newName: "ZipCode");
+
             migrationBuilder.RenameIndex(
                 name: "IX_StationaryStore_AddressId",
                 table: "StationaryStores",
                 newName: "IX_StationaryStores_AddressId");
+
+            migrationBuilder.AddColumn<int>(
+                name: "ApartmentNumber",
+                table: "Addresses",
+                type: "int",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Street",
+                table: "Addresses",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_StationaryStores",
@@ -80,9 +98,22 @@ namespace WebStore.DAL.Migrations
                 name: "PK_StationaryStores",
                 table: "StationaryStores");
 
+            migrationBuilder.DropColumn(
+                name: "ApartmentNumber",
+                table: "Addresses");
+
+            migrationBuilder.DropColumn(
+                name: "Street",
+                table: "Addresses");
+
             migrationBuilder.RenameTable(
                 name: "StationaryStores",
                 newName: "StationaryStore");
+
+            migrationBuilder.RenameColumn(
+                name: "ZipCode",
+                table: "Addresses",
+                newName: "PostalCode");
 
             migrationBuilder.RenameIndex(
                 name: "IX_StationaryStores_AddressId",

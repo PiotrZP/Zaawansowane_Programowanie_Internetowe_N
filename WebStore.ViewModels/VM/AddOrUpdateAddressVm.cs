@@ -7,15 +7,12 @@ namespace WebStore.ViewModels.VM
 {
     public class AddOrUpdateAddressVm
     {
-        public int? Id { get; set; }
-        [Required]
-        public string Country { get; set; } = default!;
-        [Required]
+        public int? Id { get; set; } = default!;
         public string City { get; set; } = default!;
-        [Required]
+        public string ZipCode { get; set; } = default!;
+        public string Street { get; set; } = default!;
         public int BuildingNumber { get; set; }
-        [Required]
-        public string PostalCode { get; set; } = default!;
-
+        public int? ApartmentNumber { get; set; }
+        public string Country { get; set; } = default!;
     }
 }

@@ -48,7 +48,8 @@ namespace WebStore.Tests.UnitTests
                 City = "Hajduszoboszlo",
                 Country = "Wegry",
                 BuildingNumber = 121,
-                PostalCode = "11-111"
+                ZipCode = "11-111",
+                Street = "Fancy"
             };
             var createAddress = _addressService.AddOrUpdateAddress(newAddress);
             Assert.NotNull(createAddress);
@@ -63,7 +64,8 @@ namespace WebStore.Tests.UnitTests
                 City = "Stolec",
                 Country = "Polska",
                 BuildingNumber = 45,
-                PostalCode = "11-111"
+                ZipCode = "11-111",
+                Street = "Nudna"
             };
             var updateAddress = _addressService.AddOrUpdateAddress(newAddress);
             Assert.NotNull(updateAddress);
