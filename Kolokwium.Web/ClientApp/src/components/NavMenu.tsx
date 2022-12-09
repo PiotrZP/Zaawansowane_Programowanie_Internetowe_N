@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import {
   Collapse,
   Navbar,
@@ -10,25 +10,14 @@ import {
 import { Link } from "react-router-dom";
 import "./NavMenu.css";
 
-export class NavMenu extends Component<{}, { collapsed: boolean }> {
-  static displayName = NavMenu.name;
+export const NavMenu = () => {
+  const [collapsed, setCollapsed] = useState(true);
 
-  constructor(props: {}) {
-    super(props);
+  const toggleNavbar = () => {
+    setCollapsed(!collapsed);
+  };
 
-    this.toggleNavbar = this.toggleNavbar.bind(this);
-    this.state = {
-      collapsed: true,
-    };
-  }
 
-  toggleNavbar() {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  }
-
-  render() {
     return (
       <header>
         <Navbar
@@ -39,10 +28,10 @@ export class NavMenu extends Component<{}, { collapsed: boolean }> {
           <NavbarBrand tag={Link} to="/">
             Kolokwium.Web
           </NavbarBrand>
-          <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+          <NavbarToggler onClick={toggleNavbar} className="mr-2" />
           <Collapse
             className="d-sm-inline-flex flex-sm-row-reverse"
-            isOpen={!this.state.collapsed}
+            isOpen={!collapsed}
             navbar
           >
             <ul className="navbar-nav flex-grow">
@@ -66,10 +55,16 @@ export class NavMenu extends Component<{}, { collapsed: boolean }> {
                   Invoice
                 </NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink tag={Link} className="text-dark" to="/category">
+                  Category
+                </NavLink>
+              </NavItem>
             </ul>
           </Collapse>
         </Navbar>
       </header>
     );
   }
-}
+
+

@@ -8,6 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 import { AddressProvider } from "./contexts/AddressContext";
 import { ProductProvider } from "./contexts/ProductContext";
 import { InvoiceProvider } from "./contexts/InvoiceContext";
+import { CategoryProvider } from "./contexts/CategoryContext";
 
 const baseUrl = document
   .getElementsByTagName("base")[0]
@@ -17,6 +18,7 @@ const root = createRoot(rootElement);
 
 root.render(
   <BrowserRouter basename={baseUrl}>
+    <CategoryProvider>
     <InvoiceProvider>
     <ProductProvider>
       <AddressProvider>
@@ -24,6 +26,7 @@ root.render(
       </AddressProvider>
     </ProductProvider>
     </InvoiceProvider>
+    </CategoryProvider>
   </BrowserRouter>
 );
 // If you want your app to work offline and load faster, you can change

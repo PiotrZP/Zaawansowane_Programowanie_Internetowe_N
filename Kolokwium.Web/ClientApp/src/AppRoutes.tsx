@@ -3,6 +3,7 @@ import { AddressAdd } from "./components/address/AddressAdd";
 import { AddressDelete } from "./components/address/AddressDelete";
 import { AddressEdit } from "./components/address/AddressEdit";
 import { AddressGrid } from "./components/address/AddressGrid";
+import { CategoryGrid } from "./components/category/CategoryGrid";
 import HomeGrid from "./components/home/HomeGrid";
 import { InvoiceAdd } from "./components/invoice/InvoiceAdd";
 import { InvoiceDelete } from "./components/invoice/InvoiceDelete";
@@ -66,6 +67,10 @@ const AppRoutes = [
   {
     path: "/invoice/delete/:id",
     element: <InvoiceDelete/>
+  },
+  {
+    path: "/category",
+    element: <CategoryGrid/>
   },
 ];
 
