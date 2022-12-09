@@ -43,7 +43,23 @@ namespace Kolokwium.Services.ConcreteServices
 
         public bool DeleteInvoice(Expression<Func<Invoice, bool>> filterExpression)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (filterExpression == null) throw new ArgumentNullException("Filter param is null");
+                var invoiceEntity = DbContext.Invoices.FirstOrDefault(filterExpression);
+                if (invoiceEntity != null)
+                {
+                    DbContext.Invoices.Remove(invoiceEntity);
+                    DbContext.SaveChanges();
+                    return true;
+                }
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
+            }
         }
 
         public IEnumerable<InvoiceVm> GetInvoices(Expression<Func<Invoice, bool>>? filterExpression = null)

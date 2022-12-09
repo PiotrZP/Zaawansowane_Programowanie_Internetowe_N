@@ -5,6 +5,7 @@ import { AddressEdit } from "./components/address/AddressEdit";
 import { AddressGrid } from "./components/address/AddressGrid";
 import HomeGrid from "./components/home/HomeGrid";
 import { InvoiceAdd } from "./components/invoice/InvoiceAdd";
+import { InvoiceDelete } from "./components/invoice/InvoiceDelete";
 import { InvoiceGrid } from "./components/invoice/InvoiceGrid";
 
 
@@ -27,11 +28,11 @@ const AppRoutes = [
     element: <AddressAdd />,
   },
   {
-    path: "/address/edit/:addressId",
+    path: "/address/edit/:id",
     element: <AddressEdit />,
   },
   {
-    path: "/address/delete/:addressId",
+    path: "/address/delete/:id",
     element: <AddressDelete />,
   },
   {
@@ -43,11 +44,11 @@ const AppRoutes = [
     element: <ProductAdd />,
   },
   {
-    path: "/product/edit/:productId",
+    path: "/product/edit/:id",
     element: <ProductEdit />,
   },
   {
-    path: "/product/delete/:productId",
+    path: "/product/delete/:id",
     element: <ProductDelete />,
   },
   {
@@ -57,6 +58,14 @@ const AppRoutes = [
   {
     path: "/invoice/add",
     element: <InvoiceAdd/>
+  },
+  {
+    path: "/invoice/edit/:id",
+    element: <InvoiceAdd/>
+  },
+  {
+    path: "/invoice/delete/:id",
+    element: <InvoiceDelete/>
   },
 ];
 

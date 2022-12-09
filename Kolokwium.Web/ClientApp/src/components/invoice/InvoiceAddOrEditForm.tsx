@@ -37,7 +37,7 @@ export const InvoiceAddOrEditForm = (props: IProps) => {
     if (id !== undefined) {
       const getInvoice = async () => {
         const response = await axios.get<IInvoice>(
-          `/api/InvoiceApiController/${id}`
+          `/api/InvoiceApi/${id}`
         );
         if (response.status === 200) setState({ ...response.data });
       };
