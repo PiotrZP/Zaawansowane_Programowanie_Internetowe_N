@@ -36,17 +36,18 @@ export const ProductAddOrEditForm = (props: IProps) => {
       ? parseInt(params["id"])
       : undefined;
     if (id !== undefined) {
-      const getAddress = async () => {
+      const getProduct = async () => {
         const response = await axios.get<IProduct>(
-          `/api/ProductApi${id}`
+          `/api/ProductApi/${id}`
         );
         if (response.status === 200) setState({ ...response.data });
       };
-      getAddress();
+      getProduct();
     }
   }, []);
   const onInputTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name as keyof typeof state;
+    console.log(name,"show")
     setState((state) => ({ ...state, [name]: e.target.value }));
   };
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -104,6 +105,7 @@ export const ProductAddOrEditForm = (props: IProps) => {
                 required
                 onChange={onInputTextChange}
                 label="Weight"
+                type="number"
                 name="weight"
                 value={state.weight}
               />
@@ -111,6 +113,7 @@ export const ProductAddOrEditForm = (props: IProps) => {
                 required
                 onChange={onInputTextChange}
                 label="Quantity"
+                type="number"
                 name="quantity"
                 value={state.quantity}
               />
@@ -118,9 +121,12 @@ export const ProductAddOrEditForm = (props: IProps) => {
                 required
                 onChange={onInputTextChange}
                 label="Price"
+                type="number"
                 name="price"
                 value={state.price}
               />
+            
+              
             </div>
             <hr />
           </CardContent>

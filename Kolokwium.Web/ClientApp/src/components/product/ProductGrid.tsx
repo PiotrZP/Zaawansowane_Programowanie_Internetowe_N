@@ -14,6 +14,7 @@ export const ProductGrid = () => {
     { field: "weight", headerName: "Weight", width: 150 },
     { field: "quantity", headerName: "Quantity", width: 150 },
     { field: "price", headerName: "Price", width: 150 },
+    { field: "supplier", headerName: "Supplier", width: 150 },
     {
       field: "edit",
       headerName: "Edit",

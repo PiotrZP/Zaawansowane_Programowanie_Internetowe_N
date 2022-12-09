@@ -16,14 +16,14 @@ export const ProductDelete = () => {
       ? parseInt(params["id"])
       : undefined;
     if (id !== undefined) {
-      const deleteAddress = async () => {
+      const deleteProduct = async () => {
         const response = await axios.delete(
           `/api/ProductApi/${id}`
         );
 
         navigate("/product");
       };
-      deleteAddress();
+      deleteProduct();
     }
   };
   const onCancelHandler = (e: React.MouseEvent<HTMLButtonElement>) => {

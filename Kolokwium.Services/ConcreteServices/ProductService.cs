@@ -43,7 +43,23 @@ namespace Kolokwium.Services.ConcreteServices
 
         public bool DeleteProduct(Expression<Func<Product, bool>> filterExpression)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (filterExpression == null) throw new ArgumentNullException("Filter param is null");
+                var productEntity = DbContext.Products.FirstOrDefault(filterExpression);
+                if (productEntity != null)
+                {
+                    DbContext.Products.Remove(productEntity);
+                    DbContext.SaveChanges();
+                    return true;
+                }
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
+            }
         }
 
         public ProductVm GetProduct(Expression<Func<Product, bool>> filterExpression)
