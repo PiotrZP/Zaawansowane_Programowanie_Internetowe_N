@@ -40,7 +40,7 @@ export const ProductAddOrEditForm = (props: IProps) => {
         const response = await axios.get<IProduct>(
           `/api/ProductApi${id}`
         );
-        if (response.status == 200) setState({ ...response.data });
+        if (response.status === 200) setState({ ...response.data });
       };
       getAddress();
     }
@@ -52,7 +52,7 @@ export const ProductAddOrEditForm = (props: IProps) => {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const response = await axios.post<IProduct>("/api/ProductApi", state);
-    if (response.status == 200)
+    if (response.status === 200)
       setState({
         id: 0,
         name: "",

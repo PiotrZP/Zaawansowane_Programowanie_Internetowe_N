@@ -25,20 +25,6 @@ const HomeGrid = () => {
             </Typography>
             <Typography variant="body1">Home Component.</Typography>
           </Container>
-          <Box
-            component="footer"
-            sx={{
-              py: 3,
-              px: 2,
-              mt: 'auto',
-              backgroundColor: (theme) =>
-                theme.palette.mode === 'light'
-                  ? theme.palette.grey[200]
-                  : theme.palette.grey[800],
-            }}
-          >
-          
-          </Box>
         </Box>
       );
 }

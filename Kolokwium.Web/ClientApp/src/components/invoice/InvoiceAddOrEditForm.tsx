@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { IAddress } from "../../models/IAddress";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -9,59 +10,66 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import { CardHeader } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+
 type IProps = {
   labelName: string;
 };
-export const AddressAddOrEditForm = (props: IProps) => {
+
+type IInvoice = {
+  id: number;
+  totalPrice: number;
+  invoiceDate: Date;
+};
+
+export const InvoiceAddOrEditForm = (props: IProps) => {
   const navigate = useNavigate();
   const params = useParams();
-  const [state, setState] = useState<IAddress>({
+  const [state, setState] = useState<IInvoice>({
     id: 0,
-    city: "",
-    streetName: "",
-    postCode: "",
-    streetNumber: 0,
+    totalPrice: 0,
+    invoiceDate: new Date(),
   });
+
   useEffect(() => {
     const id: number | undefined = params["id"]
       ? parseInt(params["id"])
       : undefined;
     if (id !== undefined) {
-      const getAddress = async () => {
-        const response = await axios.get<IAddress>(
-          `/api/AddressApiContorller/${id}`
+      const getInvoice = async () => {
+        const response = await axios.get<IInvoice>(
+          `/api/InvoiceApiController/${id}`
         );
         if (response.status === 200) setState({ ...response.data });
       };
-      getAddress();
+      getInvoice();
     }
   }, []);
+
   const onInputTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name as keyof typeof state;
     setState((state) => ({ ...state, [name]: e.target.value }));
   };
+
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = await axios.post<IAddress>(
-      "/api/AddressApiContorller",
+    const response = await axios.post<IInvoice>(
+      "/api/InvoiceApi",
       state
     );
     if (response.status === 200)
       setState({
         id: 0,
-        city: "",
-        streetName: "",
-        postCode: "",
-        streetNumber: 0,
+        totalPrice: 0,
+        invoiceDate: new Date(),
       });
-    navigate("/address");
+    navigate("/invoice");
   };
+
   const onCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    navigate("/address");
+    navigate("/invoice");
   };
+
   return (
     <div className="form-container">
       <Box
@@ -76,38 +84,26 @@ export const AddressAddOrEditForm = (props: IProps) => {
         <Card>
           <CardHeader title={props.labelName}></CardHeader>
           <CardContent>
-            <div>
-              <input type="hidden" value={state.id} />
-              <TextField
-                required
-                onChange={onInputTextChange}
-                label="City"
-                name="city"
-                value={state.city}
-              />
-              <TextField
-                required
-                onChange={onInputTextChange}
-                label="Zip code"
-                name="postCode"
-                value={state.postCode}
-              />
-              <TextField
-                required
-                onChange={onInputTextChange}
-                label="Street"
-                name="streetName"
-                value={state.streetName}
-              />
-              <TextField
-                required
-                onChange={onInputTextChange}
-                label="Street Number"
-                name="streetNumber"
-                value={state.streetNumber}
-              />
-            </div>
-            <hr />
+          <div>
+          <input type="hidden" value={state.id} />
+          <TextField
+            required
+            onChange={onInputTextChange}
+            label="Total Price"
+            name="totalPrice"
+            type="number"
+            value={state.totalPrice}
+          />
+          <TextField
+            required
+            onChange={onInputTextChange}
+            label="Invoice Date"
+            name="invoiceDate"
+            type="date"
+            value={state.invoiceDate}
+          />
+        </div>
+        <hr />
           </CardContent>
           <CardActions>
             <Button type="submit" variant="contained" endIcon={<SaveIcon />}>

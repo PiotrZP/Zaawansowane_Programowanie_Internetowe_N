@@ -61,6 +61,11 @@ export class NavMenu extends Component<{}, { collapsed: boolean }> {
                   Product
                 </NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink tag={Link} className="text-dark" to="/invoice">
+                  Invoice
+                </NavLink>
+              </NavItem>
             </ul>
           </Collapse>
         </Navbar>

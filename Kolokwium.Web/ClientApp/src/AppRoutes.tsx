@@ -4,6 +4,8 @@ import { AddressDelete } from "./components/address/AddressDelete";
 import { AddressEdit } from "./components/address/AddressEdit";
 import { AddressGrid } from "./components/address/AddressGrid";
 import HomeGrid from "./components/home/HomeGrid";
+import { InvoiceAdd } from "./components/invoice/InvoiceAdd";
+import { InvoiceGrid } from "./components/invoice/InvoiceGrid";
 
 
 import { ProductAdd } from "./components/product/ProductAdd";
@@ -47,6 +49,14 @@ const AppRoutes = [
   {
     path: "/product/delete/:productId",
     element: <ProductDelete />,
+  },
+  {
+    path: "/invoice",
+    element: <InvoiceGrid/>
+  },
+  {
+    path: "/invoice/add",
+    element: <InvoiceAdd/>
   },
 ];
 
