@@ -31,8 +31,10 @@ namespace WebStore.Services.Configuration{
             CreateMap<AddOrUpdateStoreVm, StationaryStore>();
             CreateMap<StoreVm, StationaryStore>();
             CreateMap<StationaryStore, StoreVm>();
-            
-            
+
+            CreateMap<AddOrUpdateCategoryVm, Category>();
+            CreateMap<CategoryVm, Category>();
+            CreateMap<Category, CategoryVm>();
         }
     }
 }

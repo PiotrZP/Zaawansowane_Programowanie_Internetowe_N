@@ -21,7 +21,6 @@ public class Product
    public int SupplierId {get; set; }
    public float Weight {get; set;} 
    
-   
    public virtual IList<ProductStock> ProductStocks {get; set;} = default!; 
 
    public virtual IList<OrderProduct> OrderProducts {get; set;} = default!;

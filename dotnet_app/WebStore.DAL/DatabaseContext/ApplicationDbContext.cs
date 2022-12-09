@@ -42,9 +42,9 @@ namespace WebStore.DAL.DatabaseContext
             modelBuilder.Entity<OrderProduct>()
                 .HasKey(sg => new { sg.OrderId, sg.ProductId });
 
-            modelBuilder.Entity<OrderProduct>()
+            modelBuilder.Entity<ProductStock>()
                 .HasOne(g => g.Product)
-                .WithMany(sg => sg.OrderProducts)
+                .WithMany(sg => sg.ProductStocks)
                 .HasForeignKey(g => g.ProductId);
 
             modelBuilder.Entity<OrderProduct>()
