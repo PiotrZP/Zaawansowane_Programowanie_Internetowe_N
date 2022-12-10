@@ -25,7 +25,7 @@ namespace Kolokwium.Web.Controllers
         {
             try
             {
-                var category = _categoryService.GetCategory(c => c.Id == 1);
+                var category = _categoryService.GetCategories();
                 return Ok(category);
             }
             catch (Exception ex)

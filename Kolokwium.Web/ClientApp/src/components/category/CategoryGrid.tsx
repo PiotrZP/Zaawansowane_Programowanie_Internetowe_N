@@ -44,16 +44,17 @@ export const CategoryGrid = () => {
       },
     },
   ];
-  // use any when {}
+  // use any when {} 
   const { getCategories, state}: any = useContext(CategoryContext);
 
   useEffect(() => {
     getCategories();
   }, []);
   // conversion
-  const categories = state.categories || [];
-  const arrayOfObjects = [categories];
-  
+  const categories = state.categories;
+ 
+  // const arrayOfObjects = [categories];
+  console.log(categories,"??")
   return (
     <div>
       <Link
@@ -66,8 +67,8 @@ export const CategoryGrid = () => {
       <div className="category-grid">
         <div style={{ height: 400, width: "100%" }}>
           <DataGrid
-            getRowId={(row) => row.id}
-            rows={arrayOfObjects}
+            getRowId={(row) => row?.id}
+            rows={categories}
             columns={columns}
             pageSize={5}
             rowsPerPageOptions={[5]}
