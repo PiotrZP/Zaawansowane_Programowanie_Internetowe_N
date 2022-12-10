@@ -27,7 +27,7 @@ export const ProductAddOrEditForm = (props: IProps) => {
     weight: 0,
     quantity: 0,
     price: 0,
-    imageBytes: "iVBORw0KGgouJSUlIxBUFIBgQABg4PFC4iIyEjKDE1Nzg5QUFBQUFBRUdJWVlaWl",
+    imageBytes: "",
     supplierId:1,
     categoryId: 1
   });
@@ -52,9 +52,12 @@ export const ProductAddOrEditForm = (props: IProps) => {
   };
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+   console.log(state,"???")
     const response = await axios.post<IProduct>("/api/ProductApi", state);
+   
     if (response.status === 200)
-      setState({
+   
+    setState({
         id: 0,
         name: "",
         description: "",
@@ -125,7 +128,7 @@ export const ProductAddOrEditForm = (props: IProps) => {
                 name="price"
                 value={state.price}
               />
-            
+           
               
             </div>
             <hr />

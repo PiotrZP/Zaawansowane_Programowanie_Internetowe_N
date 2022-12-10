@@ -42,7 +42,23 @@ namespace Kolokwium.Services.ConcreteServices
 
         public bool DeleteStore(Expression<Func<StationaryStore, bool>> filterExpression)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (filterExpression == null) throw new ArgumentNullException("Filter param is null");
+                var storeEntity = DbContext.StationaryStores.FirstOrDefault(filterExpression);
+                if (storeEntity != null)
+                {
+                    DbContext.StationaryStores.Remove(storeEntity);
+                    DbContext.SaveChanges();
+                    return true;
+                }
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
+            }
         }
 
         public StoreVm GetStore(Expression<Func<StationaryStore, bool>> filterExpression)
