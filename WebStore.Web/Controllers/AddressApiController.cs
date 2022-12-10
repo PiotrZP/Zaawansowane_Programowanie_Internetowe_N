@@ -5,6 +5,7 @@ using WebStore.ViewModels.VM;
 
 namespace WebStore.Web.Controllers;
 
+[Route("api/Address")]
 public class AddressApiController : BaseApiController
 { 
         private readonly IAddressService _addressService; 
