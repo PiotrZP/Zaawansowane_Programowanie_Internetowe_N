@@ -1,8 +1,11 @@
-namespace WebStore.ViewModels.VM;
-public class CategoryVm
+namespace WebStore.ViewModels.VM
 {
-    public int Id { get; set; }
-    public string Name { get; set; } = default!;
-    public string Tag { get; set; } = default!;
-    public IList<ProductVm> Products { get; set; } = default!;
+    public class CategoryVm
+    {
+        public int Id { get; set; }
+        //bool IsDeleted { get; set; }
+        public string Name { get; set; } = default!;
+        public string Tag { get; set; } = default!;
+        public virtual IList<ProductVm>? Products { get; set; } = default!;
+    }
 }

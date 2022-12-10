@@ -1,4 +1,4 @@
-using WebStore.DAL.DatabaseContext;
+using WebStore.DAL.DataAccess;
 namespace WebStore.Tests.UnitTests
 {
     public abstract class BaseUnitTests

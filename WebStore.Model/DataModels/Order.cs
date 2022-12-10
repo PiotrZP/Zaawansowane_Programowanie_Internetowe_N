@@ -1,16 +1,27 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace WebStore.Model.DataModels;
+
+
 public class Order
 {
+    [Key]
     public int Id { get; set; }
-    public decimal TotalAmount { get; set; }
-    public long TrackingNumber { get; set; }
+    bool IsDeleted { get; set; }
     public DateTime DeliveryDate { get; set; }
     public DateTime OrderDate { get; set; }
-    public int StationaryStoreId { get; set; }
-    public virtual StationaryStore StationaryStore { get; set; } = default!;
-    public int CustomerId { get; set; }
-    public virtual Customer Customer { get; set; } = default!;
-    public int Invoiceid { get; set; } = default!;
-    public virtual Invoice Invoice { get; set; } = default!;
+    [NotMapped]
+    public decimal TotalAmount { get; set; }
+    public long TrackingNumber { get; set; }
     public virtual IList<OrderProduct> OrderProducts { get; set; } = default!;
+    [ForeignKey("Invoice")]
+    public int? InvoiceId { get; set; }
+    public virtual Invoice Invoice { get; set; } = default!;
+    [ForeignKey("Customer")]
+    public int? CustomerId { get; set; }
+    public virtual Customer Customer { get; set; } = default!;
+    [ForeignKey("StationaryStore")]
+    public int? StationaryStoreId { get; set; }
+    public virtual StationaryStore StationaryStore { get; set; } = default!;
 }

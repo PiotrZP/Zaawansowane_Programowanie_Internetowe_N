@@ -1,5 +1,7 @@
-namespace WebStore.ViewModels.VM;
-public class SupplierVm : UserVm
+namespace WebStore.ViewModels.VM
 {
-    public IList<ProductVm> Products { get; set; } = default!;
+    public class SupplierVm
+    {
+        public virtual IList<ProductVm> Products { get; set; } = default!;
+    }
 }

@@ -1,8 +1,10 @@
-namespace WebStore.ViewModels.VM;
-public class StationaryStoreEmployeeVm : UserVm
+namespace WebStore.ViewModels.VM
 {
-    public string Position { get; set; } = default!;
-    public Decimal Salary { get; set; } = default!;
-    public int StationaryStoreId { get; set; }
-    public StationaryStoreVm StationaryStore { get; set; } = default!;
+    public class StationaryStoreEmployeeVm
+    {
+        public string Position { get; set; } = default!;
+        public decimal Salary { get; set; } = default!;
+        public virtual StationaryStoreVm StationaryStore { get; set; } = default!;
+        public int? StationaryStoreId { get; set; }
+    }
 }
