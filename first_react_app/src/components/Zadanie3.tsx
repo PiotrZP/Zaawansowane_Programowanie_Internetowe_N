@@ -1,22 +1,22 @@
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, useState } from "react";
 
 export const Zadanie3 = () => {
   const links = [
     {
       id: 1,
-      name: 'Wirtualna Polska',
-      url: 'https://www.wp.pl/',
+      name: "Wirtualna Polska",
+      url: "https://www.wp.pl/",
     },
     {
       id: 2,
-      name: 'Onet',
-      url: 'https://www.onet.pl/',
+      name: "Onet",
+      url: "https://www.onet.pl/",
     },
   ];
   const [clickedLinks, setClickedLinks] = useState<number[]>([]);
 
   return (
-    <ul>
+    <ul style={{ listStyle: "none" }}>
       {links.map(({ id, name, url }) => (
         <li>
           <a
@@ -25,7 +25,7 @@ export const Zadanie3 = () => {
               e.preventDefault();
               setClickedLinks((prevClickedLinks) => [...prevClickedLinks, id]);
             }}
-            style={clickedLinks.includes(id) ? { backgroundColor: 'red' } : {}}
+            style={clickedLinks.includes(id) ? { backgroundColor: "red" } : {}}
           >
             {name}
           </a>

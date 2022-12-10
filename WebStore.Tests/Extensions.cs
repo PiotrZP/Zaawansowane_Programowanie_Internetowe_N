@@ -79,30 +79,30 @@ namespace WebStore.Tests {
             var a1 = new Address()
             {
                 Id = 1,
-                StreetName = "Nalkowskiej",
-                StreetNumber = 12,
-                City = "Wielun",
-                PostCode = "98300"
+                Street = "Nalkowskiej",
+                BuildingNumber = 12,
+                City = "Czestochowa",
+                ZipCode = "98300"
 
             };
             await dbContext.AddAsync(a1);
             var a2 = new Address()
             {
                 Id = 2,
-                StreetName = "Orzeszkowej",
-                StreetNumber = 14,
+                Street = "Orzeszkowej",
+                BuildingNumber = 14,
                 City = "Czestochowa",
-                PostCode = "93400"
+                ZipCode = "93400"
 
             };
             await dbContext.AddAsync(a2);
             var a3 = new Address()
             {
                 Id = 3,
-                StreetName = "Poludniowa",
-                StreetNumber = 23,
+                Street = "Poludniowa",
+                BuildingNumber = 23,
                 City = "Pila",
-                PostCode = "93600"
+                ZipCode = "93600"
 
             };
             await dbContext.AddAsync(a3);

@@ -18,7 +18,7 @@ namespace WebStore.Tests.UnitTests {
         
         [Fact] 
         public void GetAddressTest () { 
-            var address = _addressService.GetAddress (a => a.City == "Wielun"); 
+            var address = _addressService.GetAddress (a => a.City == "Czestochowa"); 
             Assert.NotNull (address); 
         } 
         
@@ -44,14 +44,14 @@ namespace WebStore.Tests.UnitTests {
         public void AddNewAddressTest () { 
             var newAddressVm = new AddOrUpdateAddressVm () { 
                 Id = 1,
-                StreetName = "Kaliska",
-                StreetNumber = 12,
-                City = "Wielun",
-                PostCode = "98300"
+                Street = "Kaliska",
+                BuildingNumber = 12,
+                City = "Czestochowa",
+                ZipCode = "98300"
             }; 
                 var createdAddress = _addressService.AddOrUpdateAddress (newAddressVm); 
                 Assert.NotNull (createdAddress); 
-                Assert.Equal ("Kaliska", createdAddress.StreetName); 
+                Assert.Equal ("Kaliska", createdAddress.Street); 
                 
         }
 
@@ -60,15 +60,15 @@ namespace WebStore.Tests.UnitTests {
         public void UpdateAddressTest () { 
             var updateAddressVm = new AddOrUpdateAddressVm () { 
                 Id = 1,
-                StreetName = "Jasnorzewskiej",
-                StreetNumber = 23,
-                City = "Wielun",
-                PostCode = "98300"
+                Street = "Jasnorzewskiej",
+                BuildingNumber = 23,
+                City = "Czestochowa",
+                ZipCode = "98300"
             }; 
             var editedAddressVm = _addressService.AddOrUpdateAddress (updateAddressVm); 
             Assert.NotNull (editedAddressVm); 
-            Assert.Equal ("Jasnorzewskiej", editedAddressVm.StreetName); 
-            Assert.Equal (23, editedAddressVm.StreetNumber); 
+            Assert.Equal ("Jasnorzewskiej", editedAddressVm.Street); 
+            Assert.Equal (23, editedAddressVm.BuildingNumber); 
         } 
     }
 }
