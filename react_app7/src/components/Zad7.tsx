@@ -14,21 +14,6 @@ const Zad7 = (props: IZad7) => {
     () => images.findIndex((image) => image === imageUrl),
     [imageUrl, images]
   );
-
-  // const changeImage = useCallback(
-  //   (num:number) => {
-  //     if (index === 0){
-  //       setError("Początek albumu");
-  //       return;
-  //     }
-  //     else if ( index===images.length - 1) {
-  //       setError("KoniecAlbumu");
-  //       return;        
-  //     }
-  //     setError(undefined);
-  //     setImageUrl(images[index+num]);
-  //   },[index,images]
-  // );
   const prevImage = () => {
     if (index === 0) {
       setError("Początek albumu");
