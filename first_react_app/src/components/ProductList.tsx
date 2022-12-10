@@ -1,8 +1,8 @@
-import { ChangeEvent, FC, useState } from "react";
-import styled from "styled-components";
-import { IProduct } from "../App";
-import { AddProductToList } from "./AddProductToList";
-import { ProductListItem } from "./ProductListItem";
+import { ChangeEvent, FC, useState } from 'react';
+import styled from 'styled-components';
+import { IProduct } from '../App';
+import { AddProductToList } from './AddProductToList';
+import { ProductListItem } from './ProductListItem';
 
 const StyledContainer = styled.div``;
 const StyledInputContainer = styled.div``;
@@ -15,9 +15,9 @@ interface IProductListProps {
   products: Array<IProduct>;
 }
 
-export const ProductList: FC<IProductListProps> = ({ products }) => {
-  const [products, setProducts] = useState([]);
-  const [inputValue, setInputValue] = useState<string>("");
+export const ProductList: FC<IProductListProps> = (props) => {
+  const [products, setProducts] = useState<Array<IProduct>>(props.products);
+  const [inputValue, setInputValue] = useState<string>('');
   const handleAddNewProduct = (product: IProduct) => {
     setProducts((prevProducts: Array<IProduct>) => [...prevProducts, product]);
   };

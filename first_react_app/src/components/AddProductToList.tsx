@@ -1,6 +1,6 @@
-import { ChangeEvent, FC, FormEvent, useState } from "react";
-import styled from "styled-components";
-import { IProduct } from "../App";
+import { ChangeEvent, FC, FormEvent, useState } from 'react';
+import styled from 'styled-components';
+import { IProduct } from '../App';
 
 interface IAddProductToListProps {
   submit: (product: IProduct) => void;
@@ -13,12 +13,13 @@ const StyledInput = styled.input``;
 const StyledButton = styled.button``;
 
 export const AddProductToList: FC<IAddProductToListProps> = ({ submit }) => {
-  const [products, setProducts] = useState<IProduct>({
+  const productsInitialState = {
     id: 0,
-    name: "",
-    type: "",
+    name: '',
+    type: '',
     price: 0,
-  });
+  };
+  const [products, setProducts] = useState<IProduct>(productsInitialState);
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newProducts = { ...products } as any;
     newProducts[e.target.name] = e.target.value;
@@ -27,6 +28,7 @@ export const AddProductToList: FC<IAddProductToListProps> = ({ submit }) => {
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     submit(products);
+    setProducts(productsInitialState);
   };
   return (
     <StyledFormContainer>
@@ -46,7 +48,7 @@ export const AddProductToList: FC<IAddProductToListProps> = ({ submit }) => {
             name="name"
             placeholder="name"
             onChange={handleInputChange}
-            value={products.id}
+            value={products.name}
           />
         </StyledElement>
         <StyledElement>
@@ -55,7 +57,7 @@ export const AddProductToList: FC<IAddProductToListProps> = ({ submit }) => {
             name="type"
             placeholder="type"
             onChange={handleInputChange}
-            value={products.id}
+            value={products.type}
           />
         </StyledElement>
         <StyledElement>
@@ -64,7 +66,7 @@ export const AddProductToList: FC<IAddProductToListProps> = ({ submit }) => {
             name="price"
             placeholder="price"
             onChange={handleInputChange}
-            value={products.id}
+            value={products.price}
           />
         </StyledElement>
         <StyledButton type="submit">Add</StyledButton>
