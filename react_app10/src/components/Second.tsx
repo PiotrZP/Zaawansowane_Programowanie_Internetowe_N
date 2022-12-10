@@ -1,14 +1,15 @@
 import React from "react";
 import ISecond from "../model/ISecond";
+import "./index.css";
 
 const Second = (props: ISecond) => {
   const { handleButton } = props;
   return (
     <div>
-      <span>"Czy chesz dalejqqq uczyć się biblioteki React?</span>
+      <span>"Czy chesz dalej uczyć się biblioteki React?</span>
       <div>
-        <button onClick={() => handleButton(true)}>TAK</button>
-        <button onClick={() => handleButton(false)}>NIE</button>
+        <button id="green" onClick={() => handleButton(true)}>TAK</button>
+        <button id="red" onClick={() => handleButton(false)}>NIE</button>
       </div>
     </div>
   );
