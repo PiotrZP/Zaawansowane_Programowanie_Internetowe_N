@@ -5,7 +5,7 @@ const Zad2 = () => {
   return ( 
     <div>
       <p>{name}</p>
-      <button onClick={()=>setName("Adam Dunajewski")}>Autor</button>
+      <button onClick={()=>setName("Damian Siewiera")}>Autor</button>
     </div>
   );
 }
