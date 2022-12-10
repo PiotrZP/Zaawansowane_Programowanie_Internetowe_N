@@ -5,7 +5,7 @@ const MainComponent = (): JSX.Element => {
   return (
     <div>
       <p>{fullName}</p>
-      <button onClick={() => setFullName("Krzysztof Suski")}>button</button>
+      <button onClick={() => setFullName("Hubert Rozumek")}>button</button>
     </div>
   );
 };
