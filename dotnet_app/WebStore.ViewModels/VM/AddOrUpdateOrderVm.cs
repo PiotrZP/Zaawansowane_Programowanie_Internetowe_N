@@ -26,7 +26,5 @@ namespace WebStore.ViewModels.VM
         [Required]
         public int CustomerId { get; set; }
 
-
-
     }
 }

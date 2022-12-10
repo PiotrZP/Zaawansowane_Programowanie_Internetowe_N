@@ -5,22 +5,22 @@ using WebStore.ViewModels.VM;
 
 namespace WebStore.Web.Controllers;
 
-public class AddressApiController : BaseApiController
+public class CategoryApiController : BaseApiController
 {
-    private readonly IAddressService _addressService;
-    public AddressApiController(ILogger logger, IMapper mapper,
-                IAddressService addressService) :
+    private readonly ICategoryService _categoryService;
+    public CategoryApiController(ILogger logger, IMapper mapper,
+                ICategoryService categorySerivice) :
                 base(logger, mapper)
     {
-        _addressService = addressService;
+        _categoryService = categorySerivice;
     }
     [HttpGet]
     public IActionResult Get()
     {
         try
         {
-            var addresses = _addressService.GetAddresses();
-            return Ok(addresses);
+            var stores = _categoryService.GetCategories();
+            return Ok(stores);
         }
         catch (Exception ex)
         {
@@ -33,8 +33,8 @@ public class AddressApiController : BaseApiController
     {
         try
         {
-            var address = _addressService.GetAddress(a => a.Id == id);
-            return Ok(address);
+            var store = _categoryService.GetCategories(s => s.Id == id);
+            return Ok(store);
         }
         catch (Exception ex)
         {
@@ -43,21 +43,21 @@ public class AddressApiController : BaseApiController
         }
     }
     [HttpPut]
-    public IActionResult Put([FromBody] AddOrUpdateAddressVm addOrUpdateAddressVm)
+    public IActionResult Put([FromBody] AddOrUpdateCategoryVm AddOrUpdateCategoryVm)
     {
-        return PostOrPutHelper(addOrUpdateAddressVm);
+        return PostOrPutHelper(AddOrUpdateCategoryVm);
     }
     [HttpPost]
-    public IActionResult Post([FromBody] AddOrUpdateAddressVm addOrUpdateAddressVm)
+    public IActionResult Post([FromBody] AddOrUpdateCategoryVm AddOrUpdateCategoryVm)
     {
-        return PostOrPutHelper(addOrUpdateAddressVm);
+        return PostOrPutHelper(AddOrUpdateCategoryVm);
     }
     [HttpDelete("{id:int:min(1)}")]
     public IActionResult Delete(int id)
     {
         try
         {
-            var result = _addressService.DeleteAddress(a => a.Id == id);
+            var result = _categoryService.GetCategories(s => s.Id == id);
             return Ok(result);
         }
         catch (Exception ex)
@@ -66,13 +66,13 @@ public class AddressApiController : BaseApiController
             return StatusCode(500, "Error occured");
         }
     }
-    private IActionResult PostOrPutHelper(AddOrUpdateAddressVm addOrUpdateAddressVm)
+    private IActionResult PostOrPutHelper(AddOrUpdateCategoryVm addOrUpdateCategoryVm)
     {
         try
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            return Ok(_addressService.AddOrUpdateAddress(addOrUpdateAddressVm));
+            return Ok(_categoryService.AddOrUpdateCategory(addOrUpdateCategoryVm));
         }
         catch (Exception ex)
         {

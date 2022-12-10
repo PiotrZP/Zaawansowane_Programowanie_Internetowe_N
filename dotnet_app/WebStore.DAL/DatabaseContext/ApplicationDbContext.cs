@@ -15,7 +15,6 @@ namespace WebStore.DAL.DatabaseContext
         public virtual DbSet<Category> Categories { get; set; } = default!;
         public virtual DbSet<Invoice> Invoices { get; set; } = default!;
         public virtual DbSet<StationaryStore> StationaryStores { get; set; } = default!;
-
         public virtual DbSet<Customer> Customers { get; set; } = default!;
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
@@ -42,22 +41,38 @@ namespace WebStore.DAL.DatabaseContext
             modelBuilder.Entity<OrderProduct>()
                 .HasKey(sg => new { sg.OrderId, sg.ProductId });
 
-            modelBuilder.Entity<ProductStock>()
-                .HasOne(g => g.Product)
-                .WithMany(sg => sg.ProductStocks)
-                .HasForeignKey(g => g.ProductId);
-
             modelBuilder.Entity<OrderProduct>()
                 .HasOne(g => g.Order)
                 .WithMany(sg => sg.OrderProducts)
                 .HasForeignKey(g => g.OrderId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<OrderProduct>()
+                .HasOne(op => op.Product)
+                .WithMany(p => p.OrderProducts)
+                .HasForeignKey(op => op.ProductId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<ProductStock>()
+                .HasOne(g => g.Product)
+                .WithMany(sg => sg.ProductStocks)
+                .HasForeignKey(g => g.ProductId);
+
+
             modelBuilder.Entity<StationaryStoreEmployee>()
                 .HasOne(sse => sse.StationaryStore)
                 .WithMany(ss => ss.StationaryStoreEmployees)
                 .HasForeignKey(sse => sse.StationaryStoreId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<Supplier>().HasData(new Supplier
+            {
+                Id = 1,
+                FirstName = "Jan",
+                LastName = "Kowalski",
+                RegistrationDate = new DateTime(2022, 1, 1)
+            });
 
         }
     }

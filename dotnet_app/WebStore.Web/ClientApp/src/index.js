@@ -5,16 +5,16 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { AddressProvider } from "./contexts/AddressContext";
 
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
   <BrowserRouter basename={baseUrl}>
-    {/* <AddressProvider>
+    <AddressProvider>
       <App />
-    </AddressProvider> */}
-    <App />
+    </AddressProvider>
   </BrowserRouter>,
   rootElement
 );
