@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Second from "./Second";
 
-const First = () => {
+const Prime = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -24,4 +24,4 @@ const First = () => {
   );
 };
 
-export default First;
+export default Prime;

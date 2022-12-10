@@ -4,7 +4,7 @@ import First from "./components/First";
 
 function App() {
   return (
-    <div className="Appp">
+    <div className="App">
       <First />
     </div>
   );

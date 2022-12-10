@@ -1,12 +1,12 @@
-import React from 'react';
-import './App.css';
-import First from './components/First';
-
+import React from "react";
+import "./App.css";
+import Zad10First from "./components/Zad10First";
+import First from "./components/Zad10First";
 
 function App() {
   return (
     <div className="App">
-      <First />
+      <Zad10First />
     </div>
   );
 }

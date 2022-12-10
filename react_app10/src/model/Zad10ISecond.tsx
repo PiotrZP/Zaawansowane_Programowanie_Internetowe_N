@@ -1,3 +1,3 @@
-export default interface ISecond {
+export default interface Zad10ISecond {
   handleButton: (confirm: boolean) => void;
 }
