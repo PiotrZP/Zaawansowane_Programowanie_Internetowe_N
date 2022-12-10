@@ -9,9 +9,7 @@ namespace Kolokwium.ViewModels.VM
     {
         public int Id { get; set; }
         public int AgreementNumber { get; set; } = default!;
-        public ICollection<OrderVm> Orders { get; set; } = default!;
-        public AddressVm Addresses { get; set; } = default!;
-        public ICollection<StationaryStoreEmployeeVm> Employees { get; set; } = default!;
+      
 
     }
 }
