@@ -10,6 +10,7 @@ import { Zadanie6 } from './components/Zadanie6';
 import { Zadanie7 } from './components/Zadanie7';
 import { Zadanie8 } from './components/Zadanie8/Zadanie8';
 import { Zadanie9 } from './components/Zadanie9/Zadanie9';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export interface IProduct {
   id: number;
