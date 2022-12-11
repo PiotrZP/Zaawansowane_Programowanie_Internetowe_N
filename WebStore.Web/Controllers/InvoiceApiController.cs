@@ -5,6 +5,8 @@ using WebStore.ViewModels.VM;
 
 namespace WebStore.Web.Controllers;
 
+[Route("api/Invoice")]
+
 public class InvoiceApiController : BaseApiController
 { 
         private readonly IInvoiceService _invoiceService; 

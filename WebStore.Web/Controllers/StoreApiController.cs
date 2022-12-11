@@ -5,6 +5,8 @@ using WebStore.ViewModels.VM;
 
 namespace WebStore.Web.Controllers;
 
+[Route("api/Store")]
+
 public class StoreApiController : BaseApiController
 { 
         private readonly IStoreService _storeService; 

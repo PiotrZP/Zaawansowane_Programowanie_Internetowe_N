@@ -5,6 +5,8 @@ using WebStore.ViewModels.VM;
 
 namespace WebStore.Web.Controllers;
 
+[Route("api/Order")]
+
 public class OrderApiController : BaseApiController
 { 
         private readonly IOrderService _orderService; 

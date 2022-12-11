@@ -1,15 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import {createRoot} from  'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { AddressProvider } from './contexts/AddressContext';
 
-const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
-const rootElement = document.getElementById('root');
+const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href')as string;
+const rootElement = document.getElementById('root') as HTMLElement;
+
 const root = createRoot(rootElement);
 
 root.render(

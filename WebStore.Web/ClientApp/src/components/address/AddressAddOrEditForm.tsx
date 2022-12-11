@@ -36,7 +36,7 @@ export const AddressAddOrEditForm = (props: IProps) => {
         if (id !== undefined) {
             const getAddress = async () => {
                 const response = await axios.get<IAddress>(`/api/Address/${id}`);
-                if (response.status == 200)
+                if (response.status === 200)
                     setState({ ...response.data });
             } 
             getAddress()

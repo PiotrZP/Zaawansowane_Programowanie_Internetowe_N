@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, ReactElement } from 'react';
 import { Container } from 'reactstrap';
 import { NavMenu } from './NavMenu';
 
-export class Layout extends Component {
+export class Layout extends Component<{children: ReactElement}> {
   static displayName = Layout.name;
 
-  render () {
+  render() {
     return (
       <div>
         <NavMenu />
