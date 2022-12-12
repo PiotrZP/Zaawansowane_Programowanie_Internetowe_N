@@ -3,7 +3,7 @@ import IProduct from "../../model/IProductProps";
 import IProductList from "../../model/IProductListProps";
 import AddProductToList from "./AddProductToList";
 import ProductListItem from "./ProductListItem";
-import "../../styles/ProductList";
+import "../../styles/ProductList.css";
 
 const ProductList = (props: IProductList) => {
   const { products, name } = props;

@@ -1,5 +1,5 @@
 import IProductListItem from "../../model/IProductListItemProps";
-import "../../styles/ProductListItem";
+import "../../styles/ProductListItem.css";
 
 const ProductListItem = (props: IProductListItem) => {
   const { id, name, price, type } = props;
