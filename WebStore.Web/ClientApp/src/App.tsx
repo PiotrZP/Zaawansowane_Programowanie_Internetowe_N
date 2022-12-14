@@ -5,7 +5,7 @@ import { Layout } from './components/Layout';
 import './custom.css'
 
 const App = () => {
-  const displayName = App.name;
+  
   return (
     <Layout>
       <Routes>
