@@ -51,7 +51,8 @@ export const AddressAddOrEditForm = (props: IProps) => {
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const response = await axios.post<IAddress>("/api/Address", state);
+        const request = {...state, id : state.id&&state.id > 0? state.id : undefined};
+        const response = await axios.post<IAddress>("/api/Address", request);
         if (response.status === 200)
             setState({
                 id: 0,
