@@ -1,0 +1,567 @@
+Migracja:
+
+dotnet ef migrations add Test --project .\Kolokwium.DAL\Kolokwium.DAL.csproj --startup-project .\Kolokwium.Web\Kolokwium.Web.csproj
+
+dotnet ef database update --project .\Kolokwium.DAL\Kolokwium.DAL.csproj --startup-project .\Kolokwium.Web\Kolokwium.Web.csproj
+
+dotnet ef database drop --project .\Kolokwium.DAL\Kolokwium.DAL.csproj --startup-project .\Kolokwium.Web\Kolokwium.Web.csproj
+
+
+Uruchomienie:
+
+npm install axios (w katalogu ClientApp)
+
+dotnet build
+
+dotnet run --project Kolokwium.Web/Kolokwium.Web.csproj
+
+dotnet clean
+
+
+MovieService.cs
+
+using System.Linq.Expressions;
+using AutoMapper;
+using Microsoft.Extensions.Logging;
+using Kolokwium.Model.DataModels;
+using Kolokwium.Services.interfaces;
+using Kolokwium.ViewModels.VM;
+using Kolokwium.DAL;
+
+namespace Kolokwium.Services.ConcreteServices
+{
+    public class MovieService : BaseService, IMovieService
+    {
+        public MovieService(ApplicationDbContext dbContext, IMapper mapper, ILogger logger) : base(dbContext, mapper, logger)
+        {
+        }
+
+        public MovieVm AddOrUpdateMovie(AddOrUpdateMovieVm addOrUpdateMovieVm)
+        {
+            try
+            {
+                if (addOrUpdateMovieVm == null)
+                    throw new ArgumentNullException("View Model parameter is null");
+                var movieEntity = Mapper.Map<Movie>(addOrUpdateMovieVm);
+                if (addOrUpdateMovieVm.Id.HasValue || addOrUpdateMovieVm.Id == 0)
+                    DbContext.Movies.Update(movieEntity);
+                else
+                    DbContext.Movies.Add(movieEntity);
+                DbContext.SaveChanges();
+                var movieVm = Mapper.Map<MovieVm>(movieEntity);
+                return movieVm;
+
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
+            }
+        }
+
+        public bool DeleteMovie(Expression<Func<Movie, bool>> filterExpressions)
+        {
+            try
+            {
+                if (filterExpressions == null)
+                    throw new ArgumentNullException("Filter expression parameter is null");
+                var movieEntity = DbContext.Movies.FirstOrDefault(filterExpressions);
+                if (movieEntity != null)
+                {
+                    DbContext.Movies.Remove(movieEntity);
+                    DbContext.SaveChanges();
+                    return true;
+                }
+                else
+                    return false;
+            }
+
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
+            }
+        }
+
+        public MovieVm GetMovie(Expression<Func<Movie, bool>> filterExpression)
+        {
+            try
+            {
+                if (filterExpression == null)
+                    throw new ArgumentNullException("Filter expression parameter is null");
+                var movieEntity = DbContext.Movies.FirstOrDefault(filterExpression);
+                var movieVm = Mapper.Map<MovieVm>(movieEntity);
+                return movieVm;
+            }
+
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
+            }
+        }
+
+
+        public IEnumerable<MovieVm> GetMovies(Expression<Func<Movie, bool>>? filterExpressions = null)
+        {
+            try
+            {
+                var movieQuery = DbContext.Movies.AsQueryable();
+                if (filterExpressions != null)
+                    movieQuery = movieQuery.Where(filterExpressions);
+                var movieVms = Mapper.Map<IEnumerable<MovieVm>>(movieQuery);
+                return movieVms;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MovieApiController:
+
+using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Kolokwium.Services.interfaces;
+using Kolokwium.ViewModels.VM;
+
+namespace Kolokwium.Web.Controllers;
+
+[Route("api/Movie")]
+
+public class MovieApiController : BaseController
+{
+    private readonly IMovieService _movieService;
+    public MovieApiController(ILogger logger, IMapper mapper,
+    IMovieService movieService) : base(logger, mapper)
+    {
+        _movieService = movieService;
+    }
+
+    [HttpGet]
+
+    public IActionResult Get()
+    {
+        try{
+            var movies = _movieService.GetMovies();
+            return Ok (movies);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, ex.Message);
+            return StatusCode(500, "Error Occured");
+        }
+    }
+
+    [HttpGet("{id:int:min(1)}")]
+
+    public IActionResult Get(int id)
+    {
+        try{
+            var movies = _movieService.GetMovies(m => m.Id == id);
+            return Ok (movies);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, ex.Message);
+            return StatusCode(500, "Error Occured");
+        }
+    }
+
+    [HttpPut]
+
+    public IActionResult Put([FromBody] AddOrUpdateMovieVm addOrUpdateMovieVm)
+    {
+        return PostOrPutHelper(addOrUpdateMovieVm);
+    }
+
+    [HttpPost]
+    public IActionResult Post([FromBody] AddOrUpdateMovieVm addOrUpdateMovieVm)
+    {
+        return PostOrPutHelper(addOrUpdateMovieVm);
+    }
+
+
+    [HttpDelete("{id:int:min(1)}")]
+
+    public IActionResult Delete (int id)
+    {
+        try
+        {
+            var result = _movieService.DeleteMovie(m => m.Id == id);
+            return Ok (result);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, ex.Message);
+            return StatusCode(500, "Error Occured");
+        }
+        
+    }
+
+    private IActionResult PostOrPutHelper(AddOrUpdateMovieVm addOrUpdateMovieVm)
+    {
+        try
+        {
+            if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+            return Ok(_movieService.AddOrUpdateMovie(addOrUpdateMovieVm));
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, ex.Message);
+            return StatusCode(500, "Error Occured");
+        }
+    }
+}
+
+
+
+
+
+
+
+REACT:
+
+
+
+MovieGrid.tsx
+
+import React, { useState, useEffect, useContext } from 'react';
+import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
+import { IMovie } from '../../models/IMovie';
+import { Link } from 'react-router-dom';
+import MovieContext from '../../contexts/MovieContext';
+import { type } from 'os';
+
+type IState = {
+    movies: IMovie[];
+
+}
+
+export const MovieGrid = () => {
+    const columns: GridColDef[] = [
+        { field: 'title', headerName: 'Title', width: 100 },
+        { field: 'id', headerName: 'Id', width: 130 },
+        { field: 'description', headerName: 'Description', width: 130 },
+        { field: 'genre', headerName: 'Genre', width: 130 },
+        { field: 'premiere', headerName: 'Premiere', width: 130 },
+        {
+            field: "edit",
+            headerName: "Edit",
+            sortable: false,
+            renderCell: (params: GridRenderCellParams) => {
+                const movie: IMovie = params.row;
+                return <Link to={`/movie/edit/${movie.id}`} className="btn btn-primary">Edit</Link>
+            }
+
+        },
+        {
+            field: "delete",
+            headerName: "Delete",
+            sortable: false,
+            renderCell: (params: GridRenderCellParams) => {
+                const movie: IMovie = params.row;
+                return <Link to={`/movie/delete/${movie.id}`} className="btn btn-primary">Delete</Link>
+            }
+
+        },
+
+
+    ]
+
+    const { getMovies, state }: any = useContext(MovieContext);
+
+    useEffect(() => {
+        getMovies();
+    }, []);
+    return (
+        <div>
+            <Link style={{ marginBottom: "5px" }} to={'/movie/add'} className="btn btn-primary">Add</Link>
+            <div className="movie-grid">
+                <div style={{ height: 400, width: '100%' }}>
+                    <DataGrid
+                        rows={state.movies}
+                        columns={columns}
+                        pageSize={5}
+                        rowsPerPageOptions={[5]}
+                        checkboxSelection
+                    />
+                </div>
+            </div>
+        </div>
+    )
+}
+
+
+
+
+
+
+
+
+
+
+
+MovieAddOrEditForm.tsx
+
+import React,{useEffect,useState} from "react";
+import { IMovie } from "../../models/IMovie";
+import Box  from "@mui/material/Box";
+import TextField  from "@mui/material/TextField";
+import Button  from "@mui/material/Button";
+import CancelIcon from "@mui/icons-material/Cancel";
+import SaveIcon from "@mui/icons-material/Save"
+import Card  from "@mui/material/Card";
+import { Navigate, useNavigate } from "react-router";
+import { useParams } from "react-router";
+import { CardActions, CardContent, CardHeader } from "@mui/material";
+import axios from "axios";
+
+
+type IProps = {
+    labelName: string
+}
+
+export const MovieAddOrEditForm = (props: IProps) => {
+    const navigate = useNavigate()
+    const params = useParams();
+
+    const [state, setState] = useState<IMovie>({
+        title: "",
+        id: 0,
+        description: "", 
+        genre: "",
+        premiere: new Date()
+    });
+
+    useEffect(() => {
+        const id: number | undefined = params["id"] ? parseInt(params["id"]) : undefined;
+        if (id !== undefined) {
+            const getMovie = async () => {
+                const response = await axios.get<IMovie>(`/api/Movie/${id}`);
+                if (response.status === 200)
+                    setState({...response.data});
+            }
+            getMovie()
+        }
+    },[]);
+
+    const onInputTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const name = e.target.name as keyof typeof state;
+        setState(state => ({...state,[name]: e.target.value}))
+    }
+
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        const request = {...state, id: state.id&&state.id>0? state.id : undefined};
+        const response = await axios.post<IMovie>("/api/Movie", request);
+        if (response.status ===200)
+            setState({
+                title: "",
+                id: 0,
+                description: "", 
+                genre: "",
+                premiere: new Date()
+
+            });
+        navigate("/movie");
+    }
+
+    const onCancel = (e:React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        navigate("/movie");
+    }
+
+    return(
+        <div className="form-container">
+            <Box
+            component="form"
+            sx={{
+                '.MuiTextField-root' : {m: 1, width: '25ch'},
+            }}
+            noValidate
+            autoComplete = "off"
+            onSubmit = {onSubmit}
+            >
+                <Card>
+                    <CardHeader title={props.labelName}>
+                    </CardHeader>
+                    <CardContent>
+                        <div>
+                            <input type="hidden" value={state.id} />
+                            <TextField
+                            required
+                            onChange={onInputTextChange}
+                            label="Title"
+                            name="title"
+                            value={state.title}
+                            />
+                            <TextField
+                            required
+                            onChange={onInputTextChange}
+                            label="Description"
+                            name="description"
+                            value={state.description}
+                            />
+                            <TextField
+                            required
+                            onChange={onInputTextChange}
+                            label="Genre"
+                            name="genre"
+                            value={state.genre}
+                            />
+                            <TextField
+                            required
+                            onChange={onInputTextChange}
+                            label="Premiere"
+                            name="premiere"
+                            value={state.premiere}
+                            />
+                        </div>
+                        <hr />
+                    </CardContent>
+                    <CardActions>
+                        <Button type="submit" variant="contained" endIcon={<SaveIcon />}>Save</Button>
+                        <Button type="button" variant="contained" onClick={onCancel} endIcon={<CancelIcon />}>Cancel</Button>
+
+                    </CardActions>
+                </Card>
+
+            </Box>
+        </div>
+    );
+}
+
+
+
+
+
+
+
+
+
+MovieDelete.tsx
+
+
+import { CardActions, CardContent } from "@mui/material";
+import axios from "axios";
+import React from "react";
+import { useNavigate, useParams } from "react-router"
+import { Button, Card, CardHeader } from "reactstrap";
+
+
+
+export const MovieDelete = () => {
+    const navigate = useNavigate()
+    const params = useParams();
+
+    const onDeleteHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        const id: number | undefined = params["id"] ? parseInt(params["id"]) : undefined;
+        if (id !== undefined) {
+            const deleteMovie = async () => {
+                const response = await axios.delete(`/api/Movie/${id}`);
+                navigate("/movie")
+            }
+            deleteMovie()
+        }
+    }
+
+    const onCancelHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        navigate("/movie")
+    }
+
+    return (
+        <Card>
+            <CardHeader title={"Delete Movie"} >
+            </CardHeader>
+            <CardContent>
+                <p>
+                    Do you really want to delete?
+                </p>
+                <hr />
+            </CardContent>
+            <CardActions>
+                <Button variant="contained" onClick={onDeleteHandler}>Delete</Button>
+                <Button variant="contained" onClick={onCancelHandler}>Cancel</Button>
+            </CardActions>
+        </Card>
+    );
+}
+
+
+
+
+MovieContext.tsx
+
+
+
+import React, {useState} from 'react';
+import axios from 'axios';
+import { IMovie } from '../models/IMovie';
+
+const MovieContext = React.createContext({});
+
+type IProps = {children: React.ReactNode};
+type IState = {movies: IMovie[]};
+
+export const MovieProvider = (props: IProps) => {
+    const [state, setState] = useState<IState>({movies: []});
+
+    const getMovies = async () => {
+        const response = await axios.get<IMovie[]>("/api/Movie");
+        setState({movies: response.data});
+    }
+
+    return (
+        <MovieContext.Provider value={{
+            state,
+            getMovies,
+        }}>
+            {props.children}
+        </MovieContext.Provider>
+    );
+}
+
+export default MovieContext;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
