@@ -5,14 +5,19 @@ using Microsoft.AspNetCore.Identity;
 
 namespace WebStore.Model.DataModels {
     public class Invoice {
-        public int Id { get; set; } = default !;
+        public int Id { get; set; }
 
         [Column (TypeName = "decimal(18,2)")]
-        public decimal TotalAmount { get; set; } = default !;
+        public decimal TotalPrice { get; set; } = default !;
 
+        public DateTime InvoiceDate { get; set; }
+
+        public virtual IList<Order> Orders {get; set;} = default!;
+        /*
         public virtual Order Order { get; set; } = default !;
 
         [ForeignKey ("Order")]
         public int OrderId { get; set; }
+        */
     }
 }

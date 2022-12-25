@@ -10,9 +10,12 @@ namespace WebStore.Model.DataModels {
 
         public virtual Customer Customer { get; set; } = default !;
         [ForeignKey ("Customer")]
-        public int? CustomerId { get; set; }
+        public int CustomerId { get; set; }
 
-        public virtual IList<Invoice> Invoices { get; set; } = default !;
+
+        public virtual Invoice Invoice { get; set; } = default!;
+        [ForeignKey ("Invoice")]
+        public int InvoiceId { get; set; } = default!;
 
         public DateTime DeliveryDate { get; set; } = default !;
 
@@ -21,5 +24,8 @@ namespace WebStore.Model.DataModels {
         public long TrackingNumber { get; set; } = default !;
 
         public virtual IList<OrderProduct> ProductOrders { get; set; } = default !;
+
+        [Column (TypeName = "decimal(18,2)")]
+        public decimal TotalAmount { get; set; } = default !;
     }
 }

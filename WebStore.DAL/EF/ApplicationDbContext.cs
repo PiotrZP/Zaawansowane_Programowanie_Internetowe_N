@@ -11,7 +11,7 @@ namespace WebStore.DAL.EF
         public virtual DbSet<OrderProduct> OrderProducts { get; set; } = default!;
         public virtual DbSet<Product> Products { get; set; } = default!;
         public virtual DbSet<ProductStock> ProductStocks { get; set; } = default!;
-        public virtual DbSet<Address> Adresses { get; set; } = default!;
+        public virtual DbSet<Address> Addresses { get; set; } = default!;
         public virtual DbSet<Category> Categories { get; set; } = default!;
         public virtual DbSet<Invoice> Invoices { get; set; } = default!;
         public virtual DbSet<StationaryStore> StationaryStores { get; set; } = default!;

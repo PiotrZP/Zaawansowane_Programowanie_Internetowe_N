@@ -29,6 +29,11 @@ namespace WebStore.Tests {
         services.AddTransient (typeof (ILogger), typeof (Logger<Startup>));
         // service binding
         services.AddTransient<IProductService, ProductService> ();
+        services.AddTransient<IOrderService, OrderService>();
+        services.AddTransient<IInvoiceService, InvoiceService>();
+        services.AddTransient<IStoreService, StoreService>();
+        services.AddTransient<IAddressService, AddressService>();
+
         // ... other bindings...
         services.SeedData ();
         }

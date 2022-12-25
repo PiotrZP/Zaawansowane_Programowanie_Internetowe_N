@@ -19,5 +19,7 @@
 
          public int? ApartmentNumber { get; set; } = default !;
 
+         //public virtual IList<StationaryStore> Employees { get; set; } = default!;
+
      }
  }

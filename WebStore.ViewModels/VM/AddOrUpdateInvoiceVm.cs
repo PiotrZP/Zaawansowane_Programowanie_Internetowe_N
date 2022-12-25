@@ -7,9 +7,9 @@ namespace WebStore.ViewModels.VM
         public int? Id { get; set; }
 
         [Required]
-        public int InvoiceId { get; set; }
+        public decimal TotalPrice { get; set; } 
 
         [Required]
-        public decimal TotalAmount  { get; set; } 
+        public DateTime InvoiceDate { get; set; }
     }
 }

@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebStore.ViewModels.VM
 {
-    public class AddOrUpdateStationaryStoreVm
+    public class AddOrUpdateStoreVm
     {
         public int? Id { get; set; }
         [Required]
