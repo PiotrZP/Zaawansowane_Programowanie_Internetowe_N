@@ -11,7 +11,6 @@ namespace Kolokwium.Web.Controllers;
 [ApiController]
 [Produces ("application/json")]
 [Route ("api/[controller]")]
-[Route ("api/[controller]/[action]")]
 public abstract class BaseController : Controller
 {
     protected readonly ILogger Logger;
