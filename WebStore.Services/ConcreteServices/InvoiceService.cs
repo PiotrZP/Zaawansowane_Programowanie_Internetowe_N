@@ -73,5 +73,9 @@ namespace WebStore.Services.ConcreteServices
                 throw;
             }
         }
+        bool IInvoiceService.DeleteInvoice(Expression<Func<Invoice, bool>> filterExpression)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

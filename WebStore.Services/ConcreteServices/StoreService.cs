@@ -73,5 +73,9 @@ namespace WebStore.Services.ConcreteServices
                 throw;
             }
         }
+        bool IStoreService.DeleteStore(Expression<Func<StationaryStore, bool>> filterExpression)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -12,7 +12,7 @@ using WebStore.DAL.EF;
 namespace WebStore.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221210114232_Initial")]
+    [Migration("20230108114611_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -73,5 +73,11 @@ namespace WebStore.Services.ConcreteServices
                 throw;
             }
         }
+
+        bool IProductService.DeleteProduct(Expression<Func<Product, bool>> filterExpression)
+        {
+            throw new NotImplementedException();
+        }
     }
+
 }

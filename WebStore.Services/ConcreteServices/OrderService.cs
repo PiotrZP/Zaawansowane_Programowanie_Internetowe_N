@@ -73,5 +73,9 @@ namespace WebStore.Services.ConcreteServices
                 throw;
             }
         }
+        bool IOrderService.DeleteOrder(Expression<Func<Order, bool>> filterExpression)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

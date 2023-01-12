@@ -1,0 +1,16 @@
+.product-item-span{
+    display: block;
+    }
+
+    .product-item-input{
+        font-size: 16px;
+        font-weight: regular;
+        color: black;
+        
+
+    }
+    .product-item-element{
+    display: flex;
+    justify-content: left;
+    padding: 15px;
+    }

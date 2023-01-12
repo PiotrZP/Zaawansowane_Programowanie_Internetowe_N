@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    justify-content: left;
+    padding: 24px;
+    flex-direction: row;
+    color: blue;
+    
+  }
+  .container-link {
+    padding: 32px;
+  }
+  .visited {
+    color: orange;
+  }
