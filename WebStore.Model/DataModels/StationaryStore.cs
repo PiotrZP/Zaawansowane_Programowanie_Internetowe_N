@@ -2,6 +2,7 @@ namespace WebStore.Model.DataModels
 {
     public class StationaryStore
     {
+        public int Id { get; set; }
         public string? Name { get; set; }
         public IList<Product>? Products { get; set; }
         public IList<Customer>? Customers { get; set; }

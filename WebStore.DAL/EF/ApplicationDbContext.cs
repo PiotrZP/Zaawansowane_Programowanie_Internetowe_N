@@ -87,7 +87,15 @@ namespace WebStore.DAL.EF
                 .HasForeignKey(op => op.ProductId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Address>()
+        .HasOne(a => a.StationaryStore)
+        .WithMany(s => s.Addresses)
+        .HasForeignKey(a => a.StationaryStoreId)
+        .OnDelete(DeleteBehavior.Restrict);
+
         }
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
