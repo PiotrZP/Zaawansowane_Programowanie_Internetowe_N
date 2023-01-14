@@ -72,7 +72,24 @@ namespace WebStore.Services.ConcreteServices
 
         public bool DeleteInvoice(Expression<Func<Invoice, bool>> filterExpression)
         {
-            return true;
+            try
+            {
+                if (filterExpression == null)
+                    throw new ArgumentNullException("Filter expression parameter is null");
+                var invoiceEntity = DbContext.Invoices.FirstOrDefault(filterExpression);
+                if (invoiceEntity != null)
+                {
+                    DbContext.Invoices.Remove(invoiceEntity);
+                    DbContext.SaveChanges();
+                    return true;
+                }
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
+            }
         }
     }
 }

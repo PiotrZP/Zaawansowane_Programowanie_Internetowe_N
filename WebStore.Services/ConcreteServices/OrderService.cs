@@ -71,7 +71,24 @@ namespace WebStore.Services.ConcreteServices
         }
         public bool DeleteOrder(Expression<Func<Order, bool>> filterExpression)
         {
-            return true;
+            try
+            {
+                if (filterExpression == null)
+                    throw new ArgumentNullException("Filter expression parameter is null");
+                var orderEntity = DbContext.Orders.FirstOrDefault(filterExpression);
+                if (orderEntity != null)
+                {
+                    DbContext.Orders.Remove(orderEntity);
+                    DbContext.SaveChanges();
+                    return true;
+                }
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
+            }
         }
 
     }

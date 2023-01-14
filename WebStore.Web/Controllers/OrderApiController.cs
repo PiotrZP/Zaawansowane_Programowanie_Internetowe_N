@@ -31,8 +31,8 @@ public class OrderApiController : BaseApiController
     {
         try
         {
-            var orders = _orderService.GetOrders(p => p.Id == id);
-            return Ok(orders);
+            var order = _orderService.GetOrder(p => p.Id == id);
+            return Ok(order);
         }
         catch (Exception ex)
         {

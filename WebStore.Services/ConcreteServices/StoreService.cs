@@ -74,7 +74,24 @@ namespace WebStore.Services.ConcreteServices
 
         public bool DeleteStore(Expression<Func<StationaryStore, bool>> filterExpression)
         {
-            return true;
+            try
+            {
+                if (filterExpression == null)
+                    throw new ArgumentNullException("Filter expression parameter is null");
+                var storeEntity = DbContext.StationaryStores.FirstOrDefault(filterExpression);
+                if (storeEntity != null)
+                {
+                    DbContext.StationaryStores.Remove(storeEntity);
+                    DbContext.SaveChanges();
+                    return true;
+                }
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
+            }
         }
     }
 }

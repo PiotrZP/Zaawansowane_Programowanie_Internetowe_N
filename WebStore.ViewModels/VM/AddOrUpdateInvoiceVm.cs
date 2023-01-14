@@ -4,7 +4,6 @@ namespace WebStore.ViewModels.VM
 {
     public class AddOrUpdateInvoiceVm
     {
-        [Required]
         public int? Id { get; set; }
         [Required]
         public decimal TotalPrice { get; set; }

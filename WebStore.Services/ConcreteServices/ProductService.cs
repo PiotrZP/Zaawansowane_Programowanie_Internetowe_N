@@ -77,7 +77,24 @@ namespace WebStore.Services.ConcreteServices
 
         public bool DeleteProduct(Expression<Func<Product, bool>> filterExpression)
         {
-            return true;
+            try
+            {
+                if (filterExpression == null)
+                    throw new ArgumentNullException("Filter expression parameter is null");
+                var productEntity = DbContext.Product.FirstOrDefault(filterExpression);
+                if (productEntity != null)
+                {
+                    DbContext.Product.Remove(productEntity);
+                    DbContext.SaveChanges();
+                    return true;
+                }
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
+            }
         }
     }
 }
