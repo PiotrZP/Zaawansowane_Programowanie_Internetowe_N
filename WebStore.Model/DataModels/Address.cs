@@ -12,9 +12,9 @@ namespace WebStore.Model.DataModels
         public string? City { get; set; }
         public string? State { get; set; }
         public string? ZipCode { get; set; }
-        public int CustomerId { get; set; }
+        public int? CustomerId { get; set; }
         public Customer? Customer { get; set; }
-        public int StationaryStoreId { get; set; }
+        public int? StationaryStoreId { get; set; }
         public StationaryStore? StationaryStore { get; set; }
     }
 }

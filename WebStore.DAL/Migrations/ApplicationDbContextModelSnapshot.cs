@@ -33,13 +33,13 @@ namespace WebStore.DAL.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StationaryStoreId")
+                    b.Property<int?>("StationaryStoreId")
                         .HasColumnType("int");
 
                     b.Property<string>("StreetAdress")
@@ -355,14 +355,12 @@ namespace WebStore.DAL.Migrations
                     b.HasOne("WebStore.Model.DataModels.Customer", "Customer")
                         .WithMany("Addresses")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("WebStore.Model.DataModels.StationaryStore", "StationaryStore")
                         .WithMany("Addresses")
                         .HasForeignKey("StationaryStoreId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Customer");
 
