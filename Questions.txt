@@ -7,3 +7,4 @@
 7. What does check this method "ModelState.IsValid"
 8. How do make correctly AddressService and maps?
 9. What do works export and Interface?
+10.What do word default next to Interface in react?

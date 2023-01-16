@@ -9,6 +9,7 @@ export class ButtonShow extends React.Component<{person: IPerson},IButtonState>{
     constructor(props: {person: IPerson}){
         super(props);
         this.state = {
+            person: this.props.person,
             buttonName: "Show Names",
             datesAreHide: true
         }
@@ -38,8 +39,8 @@ export class ButtonShow extends React.Component<{person: IPerson},IButtonState>{
                     {
                         this.state.datesAreHide == false &&
                             <PersonView 
-                                firstName={this.props.person.firstName}
-                                lastName={this.props.person.lastName}
+                                firstName={this.state.person.firstName}
+                                lastName={this.state.person.lastName}
                             ></PersonView>
                     }                    
                 </div>
