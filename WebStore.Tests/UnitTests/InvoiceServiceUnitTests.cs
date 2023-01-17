@@ -19,7 +19,7 @@ public class InvoiceServiceUnitTests : BaseUnitTests
     [Fact]
     public void GetInvoiceTest()
     {
-        var invoice = _service.GetInvoice(p => p.TotalPrice == 1423);
+        var invoice = _service.GetInvoice(p => p.TotalPrice == 2222);
         Assert.NotNull(invoice);
     }
 

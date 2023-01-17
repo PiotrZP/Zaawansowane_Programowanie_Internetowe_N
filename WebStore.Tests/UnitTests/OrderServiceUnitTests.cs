@@ -19,7 +19,7 @@ public class OrderServiceUnitTests : BaseUnitTests
     [Fact]
     public void GetOrderTest()
     {
-        var order = _service.GetOrder(p => p.TrackingNumber == 1244);
+        var order = _service.GetOrder(p => p.TrackingNumber == 1101022);
         Assert.NotNull(order);
     }
 

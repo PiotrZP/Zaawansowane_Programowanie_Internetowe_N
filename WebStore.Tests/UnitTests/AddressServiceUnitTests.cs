@@ -18,7 +18,7 @@ public class AddressServiceUnitTests : BaseUnitTests
     [Fact]
     public void GetAddressTest()
     {
-        var address = _addressService.GetAddress(p => p.StreetName == "Główna");
+        var address = _addressService.GetAddress(p => p.StreetName == "Street2");
         Assert.NotNull(address);
     }
 
@@ -45,7 +45,7 @@ public class AddressServiceUnitTests : BaseUnitTests
     {
         var newAddressVm = new AddOrUpdateAddressVm()
         {
-            BillingCustomerId = 1,
+            CustomerId = 1,
             City = "City",
             StreetName = "Street",
             BuildingNumber = "32",
@@ -65,7 +65,7 @@ public class AddressServiceUnitTests : BaseUnitTests
         {
             Id = 1,
             ApartmentNumber = 2,
-            BillingCustomerId = 1,
+            CustomerId = 1,
             City = "Town",
             StreetName = "Road",
             BuildingNumber = "32A",
@@ -74,7 +74,7 @@ public class AddressServiceUnitTests : BaseUnitTests
         var editedAddressVm = _addressService.AddOrUpdateAddress(updateAddressVm);
         Assert.NotNull(editedAddressVm);
         Assert.Equal(2, editedAddressVm.ApartmentNumber);
-        Assert.Equal("Town", editedAddressVm.StreetName);
+        Assert.Equal("Road", editedAddressVm.StreetName);
         Assert.Equal("32A", editedAddressVm.BuildingNumber);
     }
 

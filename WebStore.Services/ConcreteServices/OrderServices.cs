@@ -8,9 +8,9 @@ using WebStore.ViewModels.VM;
 
 namespace WebStore.Services.ConcreteServices
 {
-    public class OrderServices : BaseService, IOrderService
+    public class OrderService : BaseService, IOrderService
     {
-        public OrderServices(ApplicationDbContext dbContext, IMapper mapper, ILogger logger) : base(dbContext, mapper, logger)
+        public OrderService(ApplicationDbContext dbContext, IMapper mapper, ILogger logger) : base(dbContext, mapper, logger)
         {
         }
 

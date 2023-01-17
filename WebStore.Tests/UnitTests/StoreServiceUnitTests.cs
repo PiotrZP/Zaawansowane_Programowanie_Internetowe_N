@@ -19,7 +19,7 @@ public class StoreServiceUnitTests : BaseUnitTests
     [Fact]
     public void GetStationaryStoreTest()
     {
-        var stationaryStore = _storeService.GetStationaryStore(p => p.Name == "Store 3");
+        var stationaryStore = _storeService.GetStationaryStore(p => p.Name == "Store2");
         Assert.NotNull(stationaryStore);
     }
 
