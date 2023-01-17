@@ -11,4 +11,12 @@ public class Address
     public int? ApartmentNumber { get; set; }
     public string City { get; set; } = default!;
     public string ZipCode { get; set; } = default!;
+    // public int? CustomerId { get; set; }
+    // public virtual Customer? Customer { get; set; } = default!;
+    public int? StationaryStoreId { get; set; }
+    public virtual StationaryStore? StationaryStore { get; set; } = default!;
+    public int? BillingCustomerId { get; set; }
+    public virtual Customer? BillingCustomer { get; set; } = default!;
+    public int? ShippingCustomerId { get; set; }
+    public virtual Customer? ShippingCustomer { get; set; } = default!;
 }

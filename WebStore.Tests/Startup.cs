@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using WebStore.DAL.DataAccess;
 using WebStore.Model.DataModels;
 using WebStore.Services.ConcreteServices;
-using WebStore.Services.Configuration;
+using WebStore.Services.Configuration.Profiles;
 using WebStore.Services.Interfaces;
 namespace WebStore.Tests
 {

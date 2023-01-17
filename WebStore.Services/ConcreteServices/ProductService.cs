@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
@@ -72,6 +69,31 @@ namespace WebStore.Services.ConcreteServices
                 Logger.LogError(ex, ex.Message);
                 throw;
 
+            }
+        }
+        public async Task DeleteProduct(Expression<Func<Product, bool>> filterExpression)
+        {
+            try
+            {
+                if (filterExpression == null)
+                    throw new ArgumentNullException("Filter expression parameter is null");
+
+                var productEntity = DbContext.Product
+                    .FirstOrDefault(filterExpression);
+
+                if (productEntity == null)
+                {
+                    throw new Exception("Product not found");
+                }
+
+                DbContext.Product.Remove(productEntity);
+
+                await DbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
             }
         }
     }

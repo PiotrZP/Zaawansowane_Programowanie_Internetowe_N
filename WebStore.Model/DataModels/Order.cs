@@ -13,14 +13,14 @@ public class Order
     [NotMapped]
     public decimal TotalAmount { get; set; }
     public long TrackingNumber { get; set; }
-    public virtual Invoice Invoice { get; set; } = default!;
+    public virtual IList<OrderProduct> OrderProducts { get; set; } = default!;
     [ForeignKey("Invoice")]
     public int? InvoiceId { get; set; }
-    public virtual Customer Customer { get; set; } = default!;
+    public virtual Invoice Invoice { get; set; } = default!;
     [ForeignKey("Customer")]
     public int? CustomerId { get; set; }
-    public virtual StationaryStore StationaryStore { get; set; } = default!;
+    public virtual Customer Customer { get; set; } = default!;
     [ForeignKey("StationaryStore")]
     public int? StationaryStoreId { get; set; }
-    public virtual IList<OrderProduct> OrderProducts { get; set; } = default!;
+    public virtual StationaryStore StationaryStore { get; set; } = default!;
 }

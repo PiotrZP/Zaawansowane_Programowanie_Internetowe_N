@@ -12,7 +12,7 @@ public class Invoice
     public decimal TotalPrice { get; set; }
     public DateTime Date { get; set; }
     public virtual IList<Order> Orders { get; set; } = default!;
-    public virtual StationaryStore StationaryStore { get; set; } = default!;
     [ForeignKey("StationaryStore")]
     public int? StationaryStoreId { get; set; }
+    public virtual StationaryStore StationaryStore { get; set; } = default!;
 }
