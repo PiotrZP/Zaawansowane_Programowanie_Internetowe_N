@@ -45,11 +45,8 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<int>, i
 
         builder.Entity<Order>().ToTable("Order").HasMany(x => x.OrderProducts).WithOne(y => y.Order).HasForeignKey(y => y.OrderId).OnDelete(DeleteBehavior.Restrict);
         builder.Entity<Product>().ToTable("Product").HasMany(x => x.OrderProducts).WithOne(y => y.Product).HasForeignKey(y => y.ProductId).OnDelete(DeleteBehavior.Restrict);
-
         builder.Entity<StationaryStore>().HasMany(x => x.StationaryStoreEmployees).WithOne(y => y.StationaryStore).HasForeignKey(y => y.StationaryStoreId).OnDelete(DeleteBehavior.Restrict);
         builder.Entity<StationaryStore>().HasMany(x => x.Orders).WithOne(y => y.StationaryStore).HasForeignKey(y => y.StationaryStoreId).OnDelete(DeleteBehavior.Restrict);
-        builder.Entity<StationaryStore>().HasMany(x => x.Invoices).WithOne(y => y.StationaryStore).HasForeignKey(y => y.StationaryStoreId).OnDelete(DeleteBehavior.Restrict);
-        builder.Entity<StationaryStore>().HasMany(x => x.Addresses).WithOne(y => y.StationaryStore).HasForeignKey(y => y.StationaryStoreId).OnDelete(DeleteBehavior.Restrict);
 
         builder.Entity<User>()
             .ToTable("AspNetUsers")

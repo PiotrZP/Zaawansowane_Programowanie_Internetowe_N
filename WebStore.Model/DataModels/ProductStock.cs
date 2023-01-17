@@ -7,6 +7,7 @@ public class ProductStock
 {
     [Key]
     public int Id { get; set; }
+    bool IsDeleted { get; set; }
     public int Quantity { get; set; }
     [ForeignKey("Product")]
     public int ProductId { get; set; }

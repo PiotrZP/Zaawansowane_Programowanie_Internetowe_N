@@ -8,6 +8,7 @@ public class Invoice
 {
     [Key]
     public int Id { get; set; }
+    bool IsDeleted { get; set; }
     [Column(TypeName = "decimal(18,2)")]
     public decimal TotalPrice { get; set; }
     public DateTime Date { get; set; }

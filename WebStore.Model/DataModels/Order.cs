@@ -8,6 +8,7 @@ public class Order
 {
     [Key]
     public int Id { get; set; }
+    bool IsDeleted { get; set; }
     public DateTime DeliveryDate { get; set; }
     public DateTime OrderDate { get; set; }
     [NotMapped]
@@ -20,7 +21,7 @@ public class Order
     [ForeignKey("Customer")]
     public int? CustomerId { get; set; }
     public virtual Customer Customer { get; set; } = default!;
-    [ForeignKey("StationaryStore")]
+   [ForeignKey("StationaryStore")]
     public int? StationaryStoreId { get; set; }
     public virtual StationaryStore StationaryStore { get; set; } = default!;
 }
