@@ -1,0 +1,17 @@
+#ButtonMinus
+{
+    text-align:center;
+    font-size: 30px;
+    background-color: red;
+    width: 35px;
+    margin-right: 15px;
+}
+
+#ButtonPlus
+{
+    text-align:center;
+    font-size: 30px;
+    background-color: Green;
+    width: 35px;
+    margin-left: 15px;
+}
