@@ -9,20 +9,14 @@ export class MainContainer extends React.Component<any, IScreenState>{
     {
         super(props);
         this.state = {value: 0,};
-        this.handleAddOneClick = this.handleAddOneClick.bind(this);
-        this.handleSubtrackOneClick = this.handleSubtrackOneClick.bind(this);
+        //this.handleAddOneClick = this.handleAddOneClick.bind(this);
+        //this.handleSubtrackOneClick = this.handleSubtrackOneClick.bind(this);
             
     }
 
-    handleAddOneClick = () => {
+    handleButtonClick = (operationValue: number) => {
         let newState = {...this.state};
-        newState.value += 1;
-        this.setState( newState)    
-    }
-
-    handleSubtrackOneClick = () => {
-        let newState = {...this.state};
-        newState.value -= 1;
+        newState.value += operationValue;
         this.setState( newState)    
     }
 
@@ -30,7 +24,7 @@ export class MainContainer extends React.Component<any, IScreenState>{
         return(
             <div>
                 <Screen value={this.state.value}></Screen>
-                <Buttons onAddClick = {this.handleAddOneClick} onSubtrackClick = {this.handleSubtrackOneClick}></Buttons>
+                <Buttons onButtonClick = {this.handleButtonClick}></Buttons>
             </div>
         )
     }
