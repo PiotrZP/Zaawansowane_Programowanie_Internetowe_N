@@ -6,7 +6,7 @@ namespace WebStore.ViewModels.VM
         public int? Id { get; set; }
         public int? StationaryStoreId { get; set; }
         public int? CustomerId { get; set; }
-        [Required]
+
         public string StreetName { get; set; } = default!;
         [Required]
         public string BuildingNumber { get; set; } = default!;
