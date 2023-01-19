@@ -9,6 +9,9 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {
         builder.ToTable("Product");
 
+        builder.Property(x => x.SupplierId)
+        .IsRequired(false);
+
         builder.HasOne(x => x.Supplier)
             .WithMany(y => y.Products)
             .HasForeignKey(x => x.SupplierId)

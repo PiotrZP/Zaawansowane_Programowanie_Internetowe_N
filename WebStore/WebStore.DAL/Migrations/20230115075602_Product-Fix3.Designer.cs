@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebStore.DAL.DatabaseContext;
 
@@ -11,9 +12,10 @@ using WebStore.DAL.DatabaseContext;
 namespace WebStore.DAL.Migrations
 {
     [DbContext(typeof(WSDbContext))]
-    partial class WSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230115075602_Product-Fix3")]
+    partial class ProductFix3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -265,7 +267,7 @@ namespace WebStore.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("CustomerId")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DeliveryDate")
@@ -325,6 +327,7 @@ namespace WebStore.DAL.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int?>("CategoryId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -617,7 +620,8 @@ namespace WebStore.DAL.Migrations
                     b.HasOne("WebStore.Model.Models.Customer", "Customer")
                         .WithMany("Orders")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("WebStore.Model.Models.Invoice", "Invoice")
                         .WithMany("Orders")
@@ -662,7 +666,8 @@ namespace WebStore.DAL.Migrations
                     b.HasOne("WebStore.Model.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("WebStore.Model.Models.Supplier", "Supplier")
                         .WithMany("Products")

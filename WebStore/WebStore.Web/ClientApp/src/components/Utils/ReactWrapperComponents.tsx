@@ -1,9 +1,8 @@
-import { AddressEdit } from "../Address/AddressEdit";
-
 import React from "react";
+import { AddressEdit } from "../address/AddressEdit";
 import { ICrudComponent } from "./ICrudComponent";
-import { AddressAdd } from "../Address/AddressAdd";
-import { AddressDelete } from "../Address/AddressDelete";
+import { AddressAdd } from "../address/AddressAdd";
+import { AddressDelete } from "../address/AddressDelete";
 
 type IProps = {
   nestedComponentType: ICrudComponent;

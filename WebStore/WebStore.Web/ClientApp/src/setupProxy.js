@@ -7,7 +7,7 @@ const target = env.ASPNETCORE_HTTPS_PORT
   ? env.ASPNETCORE_URLS.split(";")[0]
   : "http://localhost:20382";
 
-const context = ["/api", "/swagger"];
+const context = ["/api", "/swagger", "/chatHub"];
 
 module.exports = function (app) {
   const appProxy = createProxyMiddleware(context, {

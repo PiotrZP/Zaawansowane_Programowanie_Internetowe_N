@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebStore.DAL.DatabaseContext;
 
@@ -11,9 +12,10 @@ using WebStore.DAL.DatabaseContext;
 namespace WebStore.DAL.Migrations
 {
     [DbContext(typeof(WSDbContext))]
-    partial class WSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230115085019_Order-Fix")]
+    partial class OrderFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

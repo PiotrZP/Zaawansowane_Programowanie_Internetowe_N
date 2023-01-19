@@ -8,8 +8,8 @@ public class Order
     public DateTime OrderDate { get; set; }
     public int StationaryStoreId { get; set; }
     public virtual StationaryStore StationaryStore { get; set; } = default!;
-    public int CustomerId { get; set; }
-    public virtual Customer Customer { get; set; } = default!;
+    public int? CustomerId { get; set; }
+    public virtual Customer? Customer { get; set; } = default!;
     public int Invoiceid { get; set; } = default!;
     public virtual Invoice Invoice { get; set; } = default!;
     public virtual IList<OrderProduct> OrderProducts { get; set; } = default!;
