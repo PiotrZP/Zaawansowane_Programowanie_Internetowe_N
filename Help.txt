@@ -1,0 +1,18 @@
+Migracja:
+
+dotnet ef migrations add Test --project .\Kolokwium.DAL\Kolokwium.DAL.csproj --startup-project .\Kolokwium.Web\Kolokwium.Web.csproj
+
+dotnet ef database update --project .\Kolokwium.DAL\Kolokwium.DAL.csproj --startup-project .\Kolokwium.Web\Kolokwium.Web.csproj
+
+dotnet ef database drop --project .\Kolokwium.DAL\Kolokwium.DAL.csproj --startup-project .\Kolokwium.Web\Kolokwium.Web.csproj
+
+
+Uruchomienie:
+
+npm install axios (w katalogu ClientApp)
+
+dotnet build
+
+dotnet run --project Kolokwium.Web/Kolokwium.Web.csproj
+
+dotnet clean
